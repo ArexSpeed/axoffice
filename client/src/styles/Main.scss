@@ -1,0 +1,70 @@
+@import 'Var';
+
+.main{
+  margin-left: 20px;
+  height: 100%;
+  overflow: scroll;
+  &__header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+  }
+  &__title{
+    margin-right: 20px;
+  }
+  &__section{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    &-title{
+      margin: 10px 0;
+    }
+    &-container{
+      margin: 0 10px;
+    }
+    &-box{
+      width: 350px;
+      height: 550px;
+      border-radius: 20px;
+      background: rgba(238,238,238,0.5);
+      box-shadow: 2px 2px 5px rgba(0,0,0,.1);
+    }
+    &-items{
+      @include center;
+    }
+    &-item{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin: 5px;
+      width: 90%;
+      height: 50px;
+      border-radius: 10px;
+      background: #fff;
+      &-add{
+        margin: 10px 0;
+        width: 50px;
+        height: 50px;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        &.projects{
+          background: $bg-projects-second;
+        }
+        &.lists{
+          background: $bg-lists-second;
+        }
+      }
+      &-title{
+        font-size: 20px;
+        font-weight: 300;
+        margin: 0 10px;
+      }
+    }
+  }
+}

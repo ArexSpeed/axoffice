@@ -1,4 +1,5 @@
 import React from 'react'
+import MainLists from '../components/MainLists'
 import Nav from '../components/Nav'
 import SidebarLists from '../components/SidebarLists'
 
@@ -7,7 +8,7 @@ const Lists = () => {
     <div className="container">
       <Nav app='lists' />
       <SidebarLists />
-      <p style={{fontSize: '100px'}}>Lists</p>
+      <MainLists />
       </div>
   )
 }
