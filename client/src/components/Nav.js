@@ -15,7 +15,7 @@ const Nav = ({app}) => {
             <ViewListIcon />
           </Link>
         </li>
-        <li className="nav-item">
+        <li className={`${app === 'lists' ? "nav-item lists" : "nav-item"}`}>
           <Link to="/lists" className="nav-link">
             <AssignmentIcon />
           </Link>

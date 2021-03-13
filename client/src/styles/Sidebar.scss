@@ -1,0 +1,45 @@
+@import 'Var';
+.sidebar{
+  height: 100%;
+  width: 250px;
+  overflow: scroll;
+  &.projects{
+    background: $bg-projects-second;
+  }
+  &.lists{
+    background: $bg-lists-second;
+  }
+  &__header{
+    @include center;
+    margin: 20px auto;
+  }
+  &__title{
+    font-size: 30px;
+  }
+  &__add{
+    background: $bg-box;
+    margin: 10px 0;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  &__boxes{
+    @include center;
+  }
+  &__box{
+    margin: 5px;
+    width: 200px;
+    min-height: 75px;
+    background: $bg-box;
+    border-radius: 20px;
+    cursor: pointer;
+    &-title{
+      margin: 5px;
+    }
+    &-subtitle{
+      margin: 5px;
+    }
+  }
+}

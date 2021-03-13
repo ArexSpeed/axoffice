@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
 $bg-projects: #1ae7e7;
 $bg-projects-second: #70f8f8;
-
+$bg-lists: #ecdc4c;
+$bg-lists-second: #f0e585;
+$font-family: 'Poppins', sans-serif;
+$bg-box: rgba(255,255,255,.75);
 @mixin center{
   display: flex;
   flex-direction: column;

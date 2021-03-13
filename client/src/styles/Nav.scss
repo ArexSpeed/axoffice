@@ -1,30 +1,37 @@
-@import 'Var.scss';
+@import 'Var';
 
 .nav{
   @include center;
   height: 100vh;
   width: 70px;
-}
-.nav.projects{
-  background: $bg-projects;
-}
-.nav-item{
-  @include center;
-  width: 70px;
-  height: 50px;
-}
-.nav-item:hover{
-  background: rgba(255,255,255,.3);
-}
-.nav-item.projects{
-  background: $bg-projects-second;
-}
-.nav-link{
-  @include center;
-  width: 100%;
-  height: 100%;
-  color: #000000;
-}
-.nav-link > .MuiSvgIcon-root{
-  font-size: 40px;
+  &.projects{
+    background: $bg-projects;
+  }
+  &.lists{
+    background: $bg-lists;
+  }
+  &-item{
+    @include center;
+    width: 70px;
+    height: 50px;
+    &:hover{
+      background: rgba(255,255,255,.3);
+    }
+    &.projects{
+      background: $bg-projects-second;
+    }
+    &.lists{
+      background: $bg-lists-second;
+    }
+  }
+  &-link{
+    @include center;
+    width: 100%;
+    height: 100%;
+    color: #000000;
+    & > .MuiSvgIcon-root{
+      font-size: 40px;
+    }
+  }
+
 }
