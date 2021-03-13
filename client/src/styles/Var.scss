@@ -1,0 +1,10 @@
+
+$bg-projects: #1ae7e7;
+$bg-projects-second: #70f8f8;
+
+@mixin center{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

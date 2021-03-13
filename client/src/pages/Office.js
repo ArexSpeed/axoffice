@@ -1,10 +1,11 @@
 import React from 'react'
+import Nav from '../components/Nav'
+
 
 const Office = () => {
   return (
-    <div>
-      Office site after login
-    </div>
+      <Nav />
+      
   )
 }
 
