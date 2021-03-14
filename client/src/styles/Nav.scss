@@ -26,17 +26,12 @@
     @include center;
     width: 70px;
     height: 50px;
+    @include bg-app-second;
     @media screen and (max-width: 768px){
       flex-direction: row;
     }
     &:hover{
       background: rgba(255,255,255,.3);
-    }
-    &.projects{
-      background: $bg-projects-second;
-    }
-    &.lists{
-      background: $bg-lists-second;
     }
   }
   &-link{

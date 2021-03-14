@@ -1,9 +1,10 @@
 @import 'Var';
 
 .main{
-  margin-left: 20px;
+  padding-left: 20px;
   height: 100%;
   overflow: hidden;
+  @include theme-bg;
   &__header{
     display: flex;
     flex-direction: row;
@@ -17,14 +18,15 @@
   }
   &__title{
     margin-right: 20px;
+    @include theme-color;
     @media screen and (max-width: 540px){
       font-size: 26px;
     }
     &.projects{
-      border-bottom: 5px solid $bg-projects-second;
+      border-bottom: 5px solid $bg-projects;
     }
     &.lists{
-      border-bottom: 5px solid $bg-lists-second;
+      border-bottom: 5px solid $bg-lists;
     }
     &-button{
       margin-right: 5px;
@@ -48,6 +50,7 @@
     }
     &-title{
       margin: 10px 0;
+      @include theme-color;
     }
     &-container{
       margin: 0 10px;
@@ -57,9 +60,15 @@
       width: 350px;
       height: 550px;
       border-radius: 20px;
-      background: rgba(238,238,238,0.5);
-      box-shadow: 2px 2px 5px rgba(0,0,0,.1);
       overflow: hidden;
+      &.dark{
+        background: rgba(85,85,85,0.5);
+        box-shadow: 2px 2px 5px rgba(255,255,255,.1);
+      }
+      &.light{
+        background: rgba(238,238,238,0.5);
+        box-shadow: 2px 2px 5px rgba(0,0,0,.1);
+      }
       @media screen and (max-width: 540px){
         width: 300px;
         height: 450px;
@@ -83,15 +92,24 @@
       width: 90%;
       height: auto;
       border-radius: 10px;
-      background: #fff;
+      @include theme-bg;
       &-title{
         font-size: 20px;
         font-weight: 300;
         margin: 0 10px;
         padding: 5px 0;
+        @include theme-color;
         @media screen and (max-width: 540px){
           font-size: 16px;
         }
+      }
+      &.dark > .MuiSvgIcon-root{
+        color: #ffffff;
+        padding-right: 5px;
+      }
+      &.light > .MuiSvgIcon-root{
+        color: #000000;
+        padding-right: 5px;
       }
     }
   }

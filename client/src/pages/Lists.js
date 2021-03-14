@@ -5,10 +5,11 @@ import Nav from '../components/Nav'
 import SidebarLists from '../components/SidebarLists'
 
 const Lists = () => {
+  const theme = 'dark'
   return (
     <>
     <Head title='AX Office Lists' />
-    <div className="container">
+    <div className={`container ${theme}`}>
       <Nav app='lists' />
       <SidebarLists />
       <MainLists />

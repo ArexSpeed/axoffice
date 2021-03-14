@@ -2,16 +2,18 @@
 
 $bg-office: #859696;
 $bg-office-second: #a8bcbc;
-$bg-projects: #1ae7e7;
-$bg-projects-second: #70f8f8;
-$bg-lists: #ecdc4c;
-$bg-lists-second: #f0e585;
+$bg-projects: rgba(23, 207, 207, 0.75);
+$bg-projects-second: rgba(23, 207, 207, 0.5);
+$bg-lists: rgba(236, 220, 75,0.85);
+$bg-lists-second: rgba(236, 220, 75,0.75);
+//$bg-lists-second: rgba(240, 229, 133, 0.75);
 $bg-budgets: #5fec76;
 $bg-budgets-second: #f0e585;
 $bg-calendars: #e77c1a;
 $bg-calendars-second: #f0e585;
 $font-family: 'Poppins', sans-serif;
 $bg-box: rgba(255,255,255,.75);
+$bg-box-dark: rgba(0,0,0,.75);
 @mixin center{
   display: flex;
   flex-direction: column;
@@ -50,5 +52,29 @@ $bg-box: rgba(255,255,255,.75);
   }
   &.office{
     background: $bg-office-second;
+  }
+}
+@mixin theme-bg{
+  &.light{
+    background: #ffffff;
+  }
+  &.dark{
+    background: #111111;
+  }
+}
+@mixin theme-color{
+  &.light{
+    color: #000000;
+  }
+  &.dark{
+    color: #ffffff;
+  }
+}
+@mixin theme-color-second{
+  &.light{
+    color: #333333;
+  }
+  &.dark{
+    color: #dddddd;
   }
 }

@@ -5,8 +5,9 @@ import ViewListIcon from '@material-ui/icons/ViewList';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
+import InvertColorsIcon from '@material-ui/icons/InvertColors';
 
-const Nav = ({app}) => {
+const Nav = ({app, theme, setTheme}) => {
 
   return (
     <nav className={`nav ${app}`}>
@@ -35,6 +36,11 @@ const Nav = ({app}) => {
           <Link to="/calendar" className="nav-link">
             <CalendarTodayIcon />
           </Link>
+        </li>
+        <li className="nav-item">
+          <button className="nav-link" onClick={() => theme === 'dark' ? setTheme('light') : setTheme('dark')}>
+            <InvertColorsIcon />
+          </button>
         </li>
       </ul>
     </nav>

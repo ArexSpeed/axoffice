@@ -10,6 +10,7 @@
   flex-direction: row;
   height: 100vh;
   font-family: $font-family;
+  @include theme-bg;
   @media screen and (max-width: 768px){
     @include center;
     flex-direction: column-reverse;
@@ -29,7 +30,7 @@ a{
   border: none;
   border-radius: 20px;
   cursor: pointer;
-  @include bg-app-second;
+  @include bg-app;
   @media screen and (max-width: 540px) {
     margin: 5px 0;
   }

@@ -7,8 +7,9 @@ import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 
 const MainOffice = () => {
+  const theme = 'black'
   return (
-    <main className="main">
+    <main className={`main ${theme}`}>
       <h1 className="main__title office">Hello User! What do you want to do today?</h1>
         <section className="office-apps">
           <ul className="office-list">

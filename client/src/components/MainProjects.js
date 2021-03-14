@@ -6,89 +6,63 @@ import AddIcon from '@material-ui/icons/Add';
 import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 import DoneIcon from '@material-ui/icons/Done';
 
-const MainProjects = () => {
+const MainProjects = ({theme}) => {
+
   return (
-    <main className="main">
+    <main className={`main ${theme}`}>
       <header className="main__header">
-        <h1 className="main__title projects">AX Office</h1> <button className="main__title-button button-icon projects"><EditIcon /></button> <button className="main__title-button button-icon projects"><PersonAddIcon /></button>
+        <h1 className={`main__title projects ${theme}`}>AX Office</h1> <button className="main__title-button button-icon projects"><EditIcon /></button> <button className="main__title-button button-icon projects"><PersonAddIcon /></button>
       </header>
       <section className="main__section">
         <div className="main__section-container">
-        <h3 className="main__section-title">Init</h3>
-        <article className="main__section-box">
+        <h3 className={`main__section-title ${theme}`}>Init</h3>
+        <article className={`main__section-box ${theme}`}>
           <div className="main__section-items">
           <button className="button-icon projects"><AddIcon /></button>
-            <div className="main__section-item">
-              <h5 className="main__section-item-title">Task 1</h5> <span><ArrowForwardIosIcon /></span>
+            <div className={`main__section-item ${theme}`}>
+              <h5 className={`main__section-item-title ${theme}`}>Task 1</h5> <ArrowForwardIosIcon />
             </div>
-            <div className="main__section-item">
-              <h5 className="main__section-item-title">Task 1</h5> <span><ArrowForwardIosIcon /></span>
+            <div className={`main__section-item ${theme}`}>
+              <h5 className={`main__section-item-title ${theme}`}>Task 2</h5> <ArrowForwardIosIcon />
             </div>
-            <div className="main__section-item">
-              <h5 className="main__section-item-title">Task 1</h5> <span><ArrowForwardIosIcon /></span>
-            </div>
-            <div className="main__section-item">
-              <h5 className="main__section-item-title">Task 4</h5> <span><ArrowForwardIosIcon /></span>
-            </div>
-            <div className="main__section-item">
-              <h5 className="main__section-item-title">Task 5</h5> <span><ArrowForwardIosIcon /></span>
-            </div>
-            <div className="main__section-item">
-              <h5 className="main__section-item-title">Task 6</h5> <span><ArrowForwardIosIcon /></span>
-            </div>
-            <div className="main__section-item">
-              <h5 className="main__section-item-title">Task with long name to show how to scroll and show</h5> <span><ArrowForwardIosIcon /></span>
-            </div>
-            <div className="main__section-item">
-              <h5 className="main__section-item-title">Task 8</h5> <span><ArrowForwardIosIcon /></span>
-            </div>
-            <div className="main__section-item">
-              <h5 className="main__section-item-title">Task 9</h5> <span><ArrowForwardIosIcon /></span>
-            </div>
-            <div className="main__section-item">
-              <h5 className="main__section-item-title">Task 10</h5> <span><ArrowForwardIosIcon /></span>
-            </div>
-            <div className="main__section-item">
-              <h5 className="main__section-item-title">Task 11</h5> <span><ArrowForwardIosIcon /></span>
-            </div>
-            <div className="main__section-item">
-              <h5 className="main__section-item-title">Task 12</h5> <span><ArrowForwardIosIcon /></span>
+            <div className={`main__section-item ${theme}`}>
+              <h5 className={`main__section-item-title ${theme}`}>Task 3</h5> <ArrowForwardIosIcon />
             </div>
           </div>
         </article>
         </div>
 
         <div className="main__section-container">
-        <h3 className="main__section-title">In Progress</h3>
-        <article className="main__section-box">
+        <h3 className={`main__section-title ${theme}`}>In Progress</h3>
+        <article className={`main__section-box ${theme}`}>
           <div className="main__section-items">
         <button className="button-icon projects"><TrendingUpIcon /></button>
-            <div className="main__section-item">
-              <h5 className="main__section-item-title">Task 1</h5> <span><ArrowForwardIosIcon /></span>
+            <div className={`main__section-item ${theme}`}>
+              <h5 className={`main__section-item-title ${theme}`}>Task 1</h5> <ArrowForwardIosIcon />
             </div>
-            <div className="main__section-item">
-              <h5 className="main__section-item-title">Task 1</h5> <span><ArrowForwardIosIcon /></span>
+            <div className={`main__section-item ${theme}`}>
+              <h5 className={`main__section-item-title ${theme}`}>Task 2</h5> <ArrowForwardIosIcon />
             </div>
-            <div className="main__section-item">
-              <h5 className="main__section-item-title">Task 1</h5> <span><ArrowForwardIosIcon /></span>
+            <div className={`main__section-item ${theme}`}>
+              <h5 className={`main__section-item-title ${theme}`}>Task 3</h5> <ArrowForwardIosIcon />
             </div>
           </div>
         </article>
         </div>
 
         <div className="main__section-container">
-        <h3 className="main__section-title">Finished</h3>
-        <article className="main__section-box">
+        <h3 className={`main__section-title ${theme}`}>Finished</h3>
+        <article className={`main__section-box ${theme}`}>
           <div className="main__section-items">
         <button className="button-icon projects"><DoneIcon /></button>
-            <div className="main__section-item">
-              <h5 className="main__section-item-title">Task 1</h5> <span><DoneIcon /></span>
+            <div className={`main__section-item ${theme}`}>
+              <h5 className={`main__section-item-title ${theme}`}>Task 1</h5> <DoneIcon />
             </div>
-            <div className="main__section-item">
-              <h5 className="main__section-item-title">Task 1</h5> <span><DoneIcon /></span>
+            <div className={`main__section-item ${theme}`}>
+              <h5 className={`main__section-item-title ${theme}`}>Task 2</h5> <DoneIcon />
             </div>
-            <div className="main__section-item">
-              <h5 className="main__section-item-title">Task 1</h5> <span><DoneIcon /></span>
+            <div className={`main__section-item ${theme}`}>
+              <h5 className={`main__section-item-title ${theme}`}>Task 3</h5> <DoneIcon />
             </div>
           </div>
         </article>
