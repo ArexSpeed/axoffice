@@ -3,7 +3,7 @@
 .main{
   margin-left: 20px;
   height: 100%;
-  overflow: scroll;
+  overflow: hidden;
   &__header{
     display: flex;
     flex-direction: row;

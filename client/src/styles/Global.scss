@@ -10,6 +10,11 @@
   flex-direction: row;
   height: 100vh;
   font-family: $font-family;
+  @media screen and (max-width: 768px){
+    @include center;
+    flex-direction: column-reverse;
+    overflow: hidden;
+  }
 }
 li{
   list-style: none;

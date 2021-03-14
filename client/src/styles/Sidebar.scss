@@ -3,6 +3,17 @@
   height: 100%;
   width: 250px;
   overflow: scroll;
+  @media screen and (max-width: 768px){
+    flex-direction: row;
+    width: 100vw;
+    height: 250px;
+    overflow: hidden;
+  }
+  @media screen and (max-width: 540px){
+    flex-direction: row;
+    width: 100vw;
+    height: 200px;
+  }
   &.projects{
     background: $bg-projects-second;
   }
@@ -12,9 +23,20 @@
   &__header{
     @include center;
     margin: 20px auto;
+    @media screen and (max-width: 768px){
+      margin: 5px auto;
+      flex-direction: row;
+      justify-content: space-around;
+    }
   }
   &__title{
     font-size: 30px;
+    @media screen and (max-width: 768px){
+      font-size: 26px;
+    }
+    @media screen and (max-width: 540px){
+      font-size: 22px;
+    }
   }
   &__add{
     background: $bg-box;
@@ -24,9 +46,25 @@
     border: none;
     border-radius: 20px;
     cursor: pointer;
+    @media screen and (max-width: 768px){
+      margin: 0;
+      width: 30px;
+      height: 30px;
+    }
   }
   &__boxes{
     @include center;
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+    @media screen and (max-width: 768px){
+      flex-direction: row;
+      justify-content: flex-start;
+      overflow: scroll;
+    }
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
   }
   &__box{
     margin: 5px;
@@ -34,6 +72,9 @@
     min-height: 75px;
     background: $bg-box;
     border-radius: 20px;
+    @media screen and (max-width: 768px){
+      min-width: 200px;
+    }
     cursor: pointer;
     &-title{
       margin: 5px;
