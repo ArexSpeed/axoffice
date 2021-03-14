@@ -26,12 +26,14 @@
     @include center;
     width: 70px;
     height: 50px;
-    @include bg-app-second;
     @media screen and (max-width: 768px){
       flex-direction: row;
     }
-    &:hover{
+    &.light:hover, &.active.light{
       background: rgba(255,255,255,.3);
+    }
+    &.dark:hover, &.active.dark{
+      background: rgba(0,0,0,.25);
     }
   }
   &-link{
@@ -39,6 +41,11 @@
     width: 100%;
     height: 100%;
     color: #000000;
+    cursor: pointer;
+    &.color{
+      border: none;
+      background: transparent;
+    }
     & > .MuiSvgIcon-root{
       font-size: 40px;
       @media screen and (max-width: 540px){

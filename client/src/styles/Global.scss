@@ -8,6 +8,7 @@
 .container{
   display: flex;
   flex-direction: row;
+  width: 100vw;
   height: 100vh;
   font-family: $font-family;
   @include theme-bg;

@@ -12,33 +12,33 @@ const Nav = ({app, theme, setTheme}) => {
   return (
     <nav className={`nav ${app}`}>
       <ul className="nav-list">
-      <li className="nav-item">
+      <li className={`nav-item ${theme}`}>
           <Link to="/" className="nav-link">
             <HomeIcon />
           </Link>
         </li>
-        <li className={`${app === 'projects' ? "nav-item projects" : "nav-item"}`}>
+        <li className={`${app === 'projects' ? `nav-item active ${theme}` : `nav-item ${theme}`}`}>
           <Link to="/projects" className="nav-link">
             <ViewListIcon />
           </Link>
         </li>
-        <li className={`${app === 'lists' ? "nav-item lists" : "nav-item"}`}>
+        <li className={`${app === 'lists' ? `nav-item active ${theme}` : `nav-item ${theme}`}`}>
           <Link to="/lists" className="nav-link">
             <AssignmentIcon />
           </Link>
         </li>
-        <li className="nav-item">
+        <li className={`${app === 'budget' ? `nav-item active ${theme}` : `nav-item ${theme}`}`}>
           <Link to="/budget" className="nav-link">
             <AttachMoneyIcon />
           </Link>
         </li>
-        <li className="nav-item">
+        <li className={`${app === 'calendar' ? `nav-item active ${theme}` : `nav-item ${theme}`}`}>
           <Link to="/calendar" className="nav-link">
             <CalendarTodayIcon />
           </Link>
         </li>
         <li className="nav-item">
-          <button className="nav-link" onClick={() => theme === 'dark' ? setTheme('light') : setTheme('dark')}>
+          <button className="nav-link color" onClick={() => theme === 'dark' ? setTheme('light') : setTheme('dark')}>
             <InvertColorsIcon />
           </button>
         </li>
