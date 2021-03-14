@@ -25,17 +25,12 @@ a{
 .button-icon{
   margin: 10px 0;
   width: 50px;
-  height: 50px;
+  min-height: 50px;
   border: none;
   border-radius: 20px;
   cursor: pointer;
+  @include bg-app-second;
   @media screen and (max-width: 540px) {
     margin: 5px 0;
-  }
-  &.projects{
-    background: $bg-projects-second;
-  }
-  &.lists{
-    background: $bg-lists-second;
   }
 }

@@ -3,6 +3,7 @@
   height: 100%;
   width: 250px;
   overflow: scroll;
+  @include bg-app-second;
   @media screen and (max-width: 768px){
     flex-direction: row;
     width: 100vw;
@@ -13,12 +14,6 @@
     flex-direction: row;
     width: 100vw;
     height: 200px;
-  }
-  &.projects{
-    background: $bg-projects-second;
-  }
-  &.lists{
-    background: $bg-lists-second;
   }
   &__header{
     @include center;

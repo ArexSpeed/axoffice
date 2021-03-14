@@ -27,6 +27,33 @@ const MainProjects = () => {
             <div className="main__section-item">
               <h5 className="main__section-item-title">Task 1</h5> <span><ArrowForwardIosIcon /></span>
             </div>
+            <div className="main__section-item">
+              <h5 className="main__section-item-title">Task 4</h5> <span><ArrowForwardIosIcon /></span>
+            </div>
+            <div className="main__section-item">
+              <h5 className="main__section-item-title">Task 5</h5> <span><ArrowForwardIosIcon /></span>
+            </div>
+            <div className="main__section-item">
+              <h5 className="main__section-item-title">Task 6</h5> <span><ArrowForwardIosIcon /></span>
+            </div>
+            <div className="main__section-item">
+              <h5 className="main__section-item-title">Task with long name to show how to scroll and show</h5> <span><ArrowForwardIosIcon /></span>
+            </div>
+            <div className="main__section-item">
+              <h5 className="main__section-item-title">Task 8</h5> <span><ArrowForwardIosIcon /></span>
+            </div>
+            <div className="main__section-item">
+              <h5 className="main__section-item-title">Task 9</h5> <span><ArrowForwardIosIcon /></span>
+            </div>
+            <div className="main__section-item">
+              <h5 className="main__section-item-title">Task 10</h5> <span><ArrowForwardIosIcon /></span>
+            </div>
+            <div className="main__section-item">
+              <h5 className="main__section-item-title">Task 11</h5> <span><ArrowForwardIosIcon /></span>
+            </div>
+            <div className="main__section-item">
+              <h5 className="main__section-item-title">Task 12</h5> <span><ArrowForwardIosIcon /></span>
+            </div>
           </div>
         </article>
         </div>

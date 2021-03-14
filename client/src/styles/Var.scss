@@ -1,9 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
+$bg-office: #859696;
+$bg-office-second: #a8bcbc;
 $bg-projects: #1ae7e7;
 $bg-projects-second: #70f8f8;
 $bg-lists: #ecdc4c;
 $bg-lists-second: #f0e585;
+$bg-budgets: #5fec76;
+$bg-budgets-second: #f0e585;
+$bg-calendars: #e77c1a;
+$bg-calendars-second: #f0e585;
 $font-family: 'Poppins', sans-serif;
 $bg-box: rgba(255,255,255,.75);
 @mixin center{
@@ -11,4 +17,38 @@ $bg-box: rgba(255,255,255,.75);
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+@mixin bg-app{
+  &.projects{
+    background: $bg-projects;
+  }
+  &.lists{
+    background: $bg-lists;
+  }
+  &.budgets{
+    background: $bg-budgets;
+  }
+  &.calendars{
+    background: $bg-calendars;
+  }
+  &.office{
+    background: $bg-office;
+  }
+}
+@mixin bg-app-second{
+  &.projects{
+    background: $bg-projects-second;
+  }
+  &.lists{
+    background: $bg-lists-second;
+  }
+  &.budgets{
+    background: $bg-budgets-second;
+  }
+  &.calendars{
+    background: $bg-calendars-second;
+  }
+  &.office{
+    background: $bg-office-second;
+  }
 }

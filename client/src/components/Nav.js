@@ -1,8 +1,9 @@
 import React from 'react'
 import {Link, useParams} from 'react-router-dom'
+import HomeIcon from '@material-ui/icons/Home';
 import ViewListIcon from '@material-ui/icons/ViewList';
 import AssignmentIcon from '@material-ui/icons/Assignment';
-import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
+import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 
 const Nav = ({app}) => {
@@ -10,6 +11,11 @@ const Nav = ({app}) => {
   return (
     <nav className={`nav ${app}`}>
       <ul className="nav-list">
+      <li className="nav-item">
+          <Link to="/" className="nav-link">
+            <HomeIcon />
+          </Link>
+        </li>
         <li className={`${app === 'projects' ? "nav-item projects" : "nav-item"}`}>
           <Link to="/projects" className="nav-link">
             <ViewListIcon />
@@ -22,7 +28,7 @@ const Nav = ({app}) => {
         </li>
         <li className="nav-item">
           <Link to="/budget" className="nav-link">
-            <AccountBalanceIcon />
+            <AttachMoneyIcon />
           </Link>
         </li>
         <li className="nav-item">

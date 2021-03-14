@@ -4,6 +4,7 @@
   @include center;
   height: 100vh;
   width: 70px;
+  @include bg-app;
   @media screen and (max-width: 768px){
     flex-direction: row;
     width: 100vw;
@@ -14,12 +15,7 @@
     width: 100vw;
     height: 50px;
   }
-  &.projects{
-    background: $bg-projects;
-  }
-  &.lists{
-    background: $bg-lists;
-  }
+  
   &-list{
     @include center;
     @media screen and (max-width: 768px){
