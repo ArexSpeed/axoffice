@@ -7,19 +7,45 @@
   &__header{
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     margin: 20px auto;
+
+    @media screen and (max-width: 540px){
+      margin: 5px auto;
+    }
   }
   &__title{
     margin-right: 20px;
+    @media screen and (max-width: 540px){
+      font-size: 26px;
+    }
+    &.projects{
+      border-bottom: 5px solid $bg-projects-second;
+    }
+    &.lists{
+      border-bottom: 5px solid $bg-lists-second;
+    }
+    &-button{
+      margin-right: 5px;
+    }
   }
   &__section{
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     margin-top: 50px;
+    overflow: scroll;
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+    @media screen and (max-width: 768px){
+      width: 100vw;
+      margin: 10px 5px;
+    }
+    &::-webkit-scrollbar {
+      display: none;
+    }
     &-title{
       margin: 10px 0;
     }
@@ -32,6 +58,10 @@
       border-radius: 20px;
       background: rgba(238,238,238,0.5);
       box-shadow: 2px 2px 5px rgba(0,0,0,.1);
+      @media screen and (max-width: 540px){
+        width: 300px;
+        height: 450px;
+      }
     }
     &-items{
       @include center;
@@ -46,24 +76,13 @@
       height: 50px;
       border-radius: 10px;
       background: #fff;
-      &-add{
-        margin: 10px 0;
-        width: 50px;
-        height: 50px;
-        border: none;
-        border-radius: 20px;
-        cursor: pointer;
-        &.projects{
-          background: $bg-projects-second;
-        }
-        &.lists{
-          background: $bg-lists-second;
-        }
-      }
       &-title{
         font-size: 20px;
         font-weight: 300;
         margin: 0 10px;
+        @media screen and (max-width: 540px){
+          font-size: 16px;
+        }
       }
     }
   }
