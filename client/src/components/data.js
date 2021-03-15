@@ -20,7 +20,7 @@ export const lists = [
       {
         id: '13',
         name: 'coffee',
-        stage: 'items'
+        stage: 'done'
       }
     ]
   },
