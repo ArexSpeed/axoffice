@@ -1,18 +1,39 @@
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useContext} from 'react'
+import { GlobalContext } from "../../GlobalProvider";
+import db from "../../firebase";
 import {Link, useHistory} from 'react-router-dom'
 import AddIcon from '@material-ui/icons/Add';
 import GroupIcon from '@material-ui/icons/Group';
 import {lists} from '../data';
 
 const SidebarLists = ({theme}) => {
+  const [{userInfo}] = useContext(GlobalContext)
   const [myLists, setMyLists] = useState([])
   const history = useHistory();
-  const uid = '150';
+
   useEffect(() => {
-    const userLists = lists.filter(list => list.users.find(user => user.id === uid))
-    console.log(userLists, 'userList')
-    setMyLists(userLists)
+    const unsubscribe = db.collection('lists').onSnapshot(snapshot => (
+      setMyLists(
+        snapshot.docs.map(doc => ({
+          id: doc.id, 
+          name: doc.data().name,
+          users: doc.data().users,
+          items: doc.data().items,
+        }))
+      )
+    ))
+
+    return () => {
+      unsubscribe();
+    };
   }, [])
+
+
+  // useEffect(() => {
+  //   const userLists = lists.filter(list => list.users.find(user => user.id === uid))
+  //   console.log(userLists, 'userList')
+  //   setMyLists(userLists)
+  // }, [])
 
   const showMyLists = myLists.map(list => (
     <Link to={`/lists/${list.id}`} className={`sidebar__box ${theme}`}>
@@ -25,19 +46,15 @@ const SidebarLists = ({theme}) => {
 
   const addList = () => {
     const idRand = Math.round(Math.random()*10000);
-    setMyLists(prev => [
-      ...prev,
-      {
-        id: idRand,
+    db.collection("lists").add({
         name: 'New List',
+        id: idRand,
         users: [{
-          id: '150',
-          name: 'Mick'
+          id: userInfo.uid,
+          name: userInfo.displayName
         }],
         items: []
-      },
-    ])
-    history.push(`/lists/${idRand}`)
+    });
   }
 
   return (

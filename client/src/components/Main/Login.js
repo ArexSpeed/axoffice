@@ -15,6 +15,29 @@ const Login = () => {
         type: actionTypes.SET_USER_INFO,
         payload: result.user
       });
+      db.collection('users').doc(result.user.uid).get()
+      .then((doc) => {
+        if (!doc.exists) {
+           return db.collection('users').doc(result.user.uid)
+             .set({
+                name: result.user.displayName,
+                theme: 'dark',
+                id: result.user.uid
+           });
+        } else {
+           return db.collection('users').onSnapshot(snapshot => (
+              snapshot.docs
+              .filter(doc => doc.data().name === result.user.displayName ?
+              dispatch({
+                type: actionTypes.SET_THEME,
+                theme: doc.data().theme
+              })
+                : null
+              )
+           ))
+
+        }
+      })
   })
 }
 
