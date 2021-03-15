@@ -1,8 +1,8 @@
 import {useState} from 'react'
 import Head from '../components/Head'
-import MainLists from '../components/MainLists'
+import MainLists from '../components/Lists/MainLists'
 import Nav from '../components/Nav'
-import SidebarLists from '../components/SidebarLists'
+import SidebarLists from '../components/Lists/SidebarLists'
 
 const Lists = () => {
   const [theme, setTheme] = useState('light')

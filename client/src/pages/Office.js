@@ -1,6 +1,6 @@
 import React from 'react'
 import Head from '../components/Head'
-import MainOffice from '../components/MainOffice'
+import MainOffice from '../components/Office/MainOffice'
 import Nav from '../components/Nav'
 
 

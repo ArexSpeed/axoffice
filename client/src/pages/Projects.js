@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import Head from '../components/Head'
 import Nav from '../components/Nav'
-import SidebarProjects from '../components/SidebarProjects'
-import MainProjects from '../components/MainProjects'
+import SidebarProjects from '../components/Projects/SidebarProjects'
+import MainProjects from '../components/Projects/MainProjects'
 
 const Projects = () => {
  const [theme, setTheme] = useState('light')
