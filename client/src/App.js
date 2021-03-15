@@ -1,16 +1,18 @@
+import {useContext} from 'react'
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom'
-
 import './styles/Style.scss';
 import Main from './pages/Main';
 import Office from './pages/Office';
 import Projects from './pages/Projects'
 import Lists from './pages/Lists'
+import { GlobalContext } from "./GlobalProvider";
 
 function App() {
-  const user = "User"
+  const [{userInfo}] = useContext(GlobalContext)
+  console.log(userInfo, "user")
   return (
     <div className="App">
-      {user ? 
+      {userInfo ? 
       (
         <div className="container">
         <Router>  
