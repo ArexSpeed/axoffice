@@ -27,10 +27,16 @@ export const lists = [
   {
     id: '2',
     name: 'Task',
-    users: [{
+    users: [
+      {
       id: '120',
       name: 'Arek'
-    }],
+      },
+      {
+        id: '150',
+        name: 'Mick'
+      },
+    ],
     items: [
       {
         id: '21',
@@ -49,7 +55,7 @@ export const lists = [
     name: 'To build',
     users: [{
       id: '150',
-      name: 'Arek'
+      name: 'Mick'
     }],
     items: [
       {
