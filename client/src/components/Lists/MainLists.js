@@ -5,12 +5,15 @@ import db from "../../firebase";
 import EditIcon from '@material-ui/icons/Edit';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import DeleteIcon from '@material-ui/icons/Delete';
+import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import AddIcon from '@material-ui/icons/Add';
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import DoneIcon from '@material-ui/icons/Done';
 import ItemTodo from './ItemTodo';
 import ItemDone from './ItemDone';
 import AddUser from './AddUser';
+import LeaveGroupBox from './LeaveGroupBox';
 
 
 const MainLists = ({theme}) => {
@@ -24,6 +27,8 @@ const MainLists = ({theme}) => {
   const [deleteBox, setDeleteBox] = useState(false)
   const [addItemBox, setAddItemBox] = useState(false)
   const [addUserBox, setAddUserBox] = useState(false)
+  const [groupBox, setGroupBox] = useState(false)
+  const [leaveGroupBox, setLeaveGroupBox] = useState(false)
 
     useEffect(() => {
       setItems([])
@@ -111,6 +116,8 @@ const MainLists = ({theme}) => {
          }
         
         <button className="main__title-button button-icon lists" onClick={() => setAddUserBox(!addUserBox)}><PersonAddIcon /></button>
+        <button className="main__title-button button-icon lists" onClick={() => setGroupBox(!groupBox)}><PeopleOutlineIcon /></button>
+        <button className="main__title-button button-icon lists" onClick={() => setLeaveGroupBox(!leaveGroupBox)}><ExitToAppIcon /></button>
         <button className="main__title-button button-icon lists" onClick={() => setDeleteBox(!deleteBox)}><DeleteIcon /></button>
         
       </header>
@@ -125,6 +132,18 @@ const MainLists = ({theme}) => {
       }
       {addUserBox && 
         <AddUser id={id} setAddUserBox={setAddUserBox}/>
+      }
+      {groupBox && 
+        (
+          <div className="main__actionBox lists">
+        {listDetail.users.map(user => <p>{user.name}</p>)}
+      
+        <button className="main__title-button button-icon lists" onClick={() => setGroupBox(false)}>OK</button>
+        </div>
+        ) 
+      }
+      {
+        leaveGroupBox && <LeaveGroupBox id={id} setLeaveGroupBox={setLeaveGroupBox} />
       }
       <section className="main__section">
         <div className="main__section-container">
