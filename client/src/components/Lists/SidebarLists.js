@@ -7,34 +7,14 @@ import SidebarBox from './SidebarBox';
 
 const SidebarLists = ({theme}) => {
   const [{userInfo}] = useContext(GlobalContext)
-  const [myLists, setMyLists] = useState([])
+  const [lists, setLists] = useState([])
+  const [userLists, setUserLists] = useState([])
   const history = useHistory();
   
   useEffect(() => {
-    // db.collection('lists').where("users", "array-contains", "name")
-    // .where("name", "==", userInfo.displayName)
-    // .get()
-    // .then(snapshot => (
-    //   setMyLists(
-    //     snapshot.docs.map(doc => ({
-    //       id: doc.id, 
-    //       name: doc.data().name,
-    //       users: doc.data().users,
-    //     }))
-    //   )
-    // ))
-    // .onSnapshot(snapshot => (
-    //   setMyLists(
-    //     snapshot.docs.map(doc => ({
-    //       id: doc.id, 
-    //       name: doc.data().name,
-    //       users: doc.data().users,
-    //     }))
-    //   )
-    // ))
 
-    db.collection('lists').onSnapshot(snapshot => (
-      setMyLists(
+   const unsubscribe = db.collection('lists').onSnapshot(snapshot => (
+      setLists(
         snapshot.docs.map(doc => ({
           id: doc.id, 
           name: doc.data().name,
@@ -42,15 +22,17 @@ const SidebarLists = ({theme}) => {
         }))
       )
     ))
-
+    return () => {
+      unsubscribe();
+    };
   }, [])
 
-
-  // useEffect(() => {
-  //   const userLists = lists.filter(list => list.users.find(user => user.id === uid))
-  //   console.log(userLists, 'userList')
-  //   setMyLists(userLists)
-  // }, [])
+  useEffect(() => {
+    setUserLists([])
+    lists.filter(list => 
+      list.users.find(name => name.name === userInfo.displayName) ? setUserLists(prev => [...prev,list]) : ''
+    )
+   }, [lists])
 
 
   const addList = () => {
@@ -68,7 +50,7 @@ const SidebarLists = ({theme}) => {
 
   return (
     <>
-    {myLists.length >=1 ?
+    {userLists.length >=1 ?
     (
       <section className={`sidebar lists ${theme}`}>
         <header className="sidebar__header">
@@ -79,7 +61,7 @@ const SidebarLists = ({theme}) => {
         </header>
         
         <section className="sidebar__boxes">
-          {myLists.map(list => (
+          {userLists.map(list => (
             <SidebarBox id={list.id} name={list.name} users={list.users} theme={theme} />
             ))}
         </section>

@@ -26,6 +26,7 @@ const MainLists = ({theme}) => {
 
     useEffect(() => {
       setItems([])
+      //filter list to find selected list by id
       async function fetchList(){
         await db.collection('lists').onSnapshot(snapshot => (
           snapshot.docs
