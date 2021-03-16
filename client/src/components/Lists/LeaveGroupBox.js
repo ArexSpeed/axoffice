@@ -24,7 +24,10 @@ const LeaveGroupBox = ({id, setLeaveGroupBox}) => {
   return (
     <div className="main__actionBox lists">
         <p>Do you want leave this group?</p>
+        <div>
         <button className="main__title-button button-icon lists" onClick={leaveGroup}>OK</button>
+        <button className="main__title-button button-icon lists" onClick={() => setLeaveGroupBox(false)}>NO</button>
+        </div>
         </div>
   )
 }

@@ -1,0 +1,24 @@
+.mobileIcon-container{
+  position: relative;
+}
+.mobile-hide{
+  @media screen and (max-width: 768px) {
+    display: none
+  }
+}
+.mobile-show{
+  display: none;
+  @media screen and (max-width: 768px) {
+    @include center;
+    transition: all 1s ease-in;
+    &:nth-child(2){
+      transition-delay: 1s;
+    }
+  }
+}
+.mobileIcon-box{
+  position: absolute;
+  top: 50px;
+  right: 0;
+  margin-top: 5px;
+}

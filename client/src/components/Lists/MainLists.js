@@ -4,6 +4,7 @@ import db from "../../firebase";
 
 import EditIcon from '@material-ui/icons/Edit';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
 import DeleteIcon from '@material-ui/icons/Delete';
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
@@ -29,6 +30,7 @@ const MainLists = ({theme}) => {
   const [addUserBox, setAddUserBox] = useState(false)
   const [groupBox, setGroupBox] = useState(false)
   const [leaveGroupBox, setLeaveGroupBox] = useState(false)
+  const [mobileIconBox, setMobileIconBox] = useState(false)
 
     useEffect(() => {
       setItems([])
@@ -116,10 +118,21 @@ const MainLists = ({theme}) => {
          }
         
         <button className="main__title-button button-icon lists" onClick={() => setAddUserBox(!addUserBox)}><PersonAddIcon /></button>
-        <button className="main__title-button button-icon lists" onClick={() => setGroupBox(!groupBox)}><PeopleOutlineIcon /></button>
-        <button className="main__title-button button-icon lists" onClick={() => setLeaveGroupBox(!leaveGroupBox)}><ExitToAppIcon /></button>
-        <button className="main__title-button button-icon lists" onClick={() => setDeleteBox(!deleteBox)}><DeleteIcon /></button>
+        <button className="main__title-button button-icon mobile-hide lists" onClick={() => setGroupBox(!groupBox)}><PeopleOutlineIcon /></button>
+        <button className="main__title-button button-icon mobile-hide lists" onClick={() => setLeaveGroupBox(!leaveGroupBox)}><ExitToAppIcon /></button>
+        <button className="main__title-button button-icon mobile-hide lists" onClick={() => setDeleteBox(!deleteBox)}><DeleteIcon /></button>
+        <div className="mobileIcon-container">
+        <button className="main__title-button button-icon mobile-show lists" onClick={() => setMobileIconBox(!mobileIconBox)}><MoreVertIcon /></button>
+        {
+          mobileIconBox &&
+          <div className="mobileIcon-box">
+            <button className="main__title-button button-icon mobile-show lists" onClick={() => {setGroupBox(!groupBox); setMobileIconBox(false)}}><PeopleOutlineIcon /></button>
+            <button className="main__title-button button-icon mobile-show lists" onClick={() => {setLeaveGroupBox(!leaveGroupBox); setMobileIconBox(false)}}><ExitToAppIcon /></button>
+            <button className="main__title-button button-icon mobile-show lists" onClick={() => {setDeleteBox(!deleteBox); setMobileIconBox(false)}}><DeleteIcon /></button>
         
+          </div>
+        }
+        </div>
       </header>
       {deleteBox && 
         <div className="main__actionBox lists">
