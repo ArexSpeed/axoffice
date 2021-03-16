@@ -32,6 +32,13 @@
       margin-right: 5px;
     }
   }
+  &__delete{
+    @include center;
+    width: 200px;
+    border-radius: 20px;
+    @include bg-app-second;
+    position: relative;
+  }
   &__section{
     display: flex;
     flex-direction: row;

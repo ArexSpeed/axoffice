@@ -1,18 +1,21 @@
 import {useState, useEffect} from 'react'
-import {useParams} from 'react-router-dom'
+import {useParams, useHistory} from 'react-router-dom'
 import db from "../../firebase";
 
 import EditIcon from '@material-ui/icons/Edit';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
+import DeleteIcon from '@material-ui/icons/Delete';
 import AddIcon from '@material-ui/icons/Add';
 import DoneIcon from '@material-ui/icons/Done';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 const MainLists = ({theme}) => {
   const {id} = useParams();
+  const history = useHistory();
   const [myList, setMyList] = useState([])
-  const [listName, setListName] = useState([])
+  const [listDetail, setListDetail] = useState([])
   const [editListName, setEditListName] = useState(false)
+  const [deleteBox, setDeleteBox] = useState(false)
   const [items, setItems] = useState([])
   const [stageTodo, setStageTodo] = useState([])
   const [stageDone, setStageDone] = useState([])
@@ -24,9 +27,9 @@ const MainLists = ({theme}) => {
           snapshot.docs
           .filter(doc => doc.id === id ?
           setMyList([{
+            id: doc.id,
             name: doc.data().name,
-            users: doc.data().users,
-            items: doc.data().items
+            users: doc.data().users
           }]
           )
           : '')
@@ -51,12 +54,13 @@ const MainLists = ({theme}) => {
     useEffect(() => {
       setStageTodo([])
       setStageDone([])
-      myList.map(list => setListName(list))
+      myList.map(list => setListDetail(list))
       console.log(myList, 'myList in second effect')
       items.filter(item => item.stage === 'todo' && setStageTodo(item))
       items.filter(item => item.stage === 'done' && setStageDone(item))
     }, [myList])
-    console.log(listName, 'listName')
+    console.log(listDetail, 'listName')
+    console.log(stageTodo, 'todo')
 
 
     const addItem = () => {
@@ -69,12 +73,18 @@ const MainLists = ({theme}) => {
 
     const updateListName = () => {
       setEditListName(false)
-      db.collection('lists').doc(id).update({name: listName.name})
+      db.collection('lists').doc(id).update({name: listDetail.name})
+    }
+
+    const deleteList = (id) => {
+      db.collection('lists').doc(id).delete()
+      setDeleteBox(false)
+      history.push('/lists')
     }
 
   return (
     <main className={`main ${theme}`}>
-      {myList ?
+      {id ?
       (
         <>
           <header className="main__header">
@@ -82,21 +92,32 @@ const MainLists = ({theme}) => {
            !editListName ?
            (
            <>
-           <h1 className={`main__title lists ${theme}`}>{listName.name}</h1> 
+           <h1 className={`main__title lists ${theme}`}>{listDetail.name}</h1> 
            <button className="main__title-button button-icon lists" onClick={() => setEditListName(true)}><EditIcon /></button> 
            </>
            )
            :
            (
             <>
-            <input className={`main__title lists ${theme}`} value={listName.name} onChange={(e) => setListName({...listName, name: e.target.value})} />
+            <input className={`main__title lists ${theme}`} value={listDetail.name} onChange={(e) => setListDetail({...listDetail, name: e.target.value})} />
             <button className="main__title-button button-icon lists" onClick={updateListName}><DoneIcon /></button> 
             </>
            )
          }
         
         <button className="main__title-button button-icon lists"><PersonAddIcon /></button>
+        <button className="main__title-button button-icon lists" onClick={() => setDeleteBox(!deleteBox)}><DeleteIcon /></button>
+        
       </header>
+      {deleteBox && 
+        <div className="main__delete lists">
+        <p>Are you sure?</p>
+        <div>
+        <button className="main__title-button button-icon lists" onClick={() => deleteList(id)}>OK</button>
+        <button className="main__title-button button-icon lists" onClick={() => setDeleteBox(false)}>NO</button>
+        </div>
+        </div>
+      }
       <section className="main__section">
         <div className="main__section-container">
         <h3 className={`main__section-title ${theme}`}>To Do</h3>
