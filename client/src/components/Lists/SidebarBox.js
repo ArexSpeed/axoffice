@@ -6,7 +6,6 @@ import GroupIcon from '@material-ui/icons/Group';
 
 const SidebarBox = ({id,name,users, theme}) => {
   const [items, setItems] = useState([])
-
   useEffect(() => {
     if(id){
       db.collection('lists').doc(id).collection('items').onSnapshot(snapshot => (

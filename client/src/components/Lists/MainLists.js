@@ -7,7 +7,8 @@ import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import DeleteIcon from '@material-ui/icons/Delete';
 import AddIcon from '@material-ui/icons/Add';
 import DoneIcon from '@material-ui/icons/Done';
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import ItemTodo from './ItemTodo';
+import ItemDone from './ItemDone';
 
 const MainLists = ({theme}) => {
   const {id} = useParams();
@@ -17,11 +18,9 @@ const MainLists = ({theme}) => {
   const [editListName, setEditListName] = useState(false)
   const [deleteBox, setDeleteBox] = useState(false)
   const [items, setItems] = useState([])
-  const [stageTodo, setStageTodo] = useState([])
-  const [stageDone, setStageDone] = useState([])
 
     useEffect(() => {
-
+      setItems([])
       async function fetchList(){
         await db.collection('lists').onSnapshot(snapshot => (
           snapshot.docs
@@ -36,8 +35,9 @@ const MainLists = ({theme}) => {
         ))
 
         await db.collection('lists').doc(id).collection('items').onSnapshot(snapshot => (
-          setItems(snapshot.docs.map(doc => doc.data()))
-        ))
+          snapshot.docs.map(doc => 
+            setItems(prev => [...prev,{id: doc.id, stage: doc.data().stage, name: doc.data().name}])
+        )))
         } 
         
           fetchList();
@@ -52,18 +52,19 @@ const MainLists = ({theme}) => {
     
    
     useEffect(() => {
-      setStageTodo([])
-      setStageDone([])
       myList.map(list => setListDetail(list))
+      // db.collection('lists').doc(id).collection('items').onSnapshot(snapshot => (
+      //   snapshot.docs.map(doc => 
+      //     setItems(prev => [...prev,{id: doc.id, stage: doc.data().stage, name: doc.data().name}])
+      // )))
       console.log(myList, 'myList in second effect')
-      items.filter(item => item.stage === 'todo' && setStageTodo(item))
-      items.filter(item => item.stage === 'done' && setStageDone(item))
+
     }, [myList])
     console.log(listDetail, 'listName')
-    console.log(stageTodo, 'todo')
 
 
     const addItem = () => {
+      setItems([])
       const idRand = Math.round(Math.random()*10000);
       const get = db.collection("lists").doc(id).collection('items').add({
           name: `Item ${idRand}`,
@@ -99,7 +100,7 @@ const MainLists = ({theme}) => {
            :
            (
             <>
-            <input className={`main__title lists ${theme}`} value={listDetail.name} onChange={(e) => setListDetail({...listDetail, name: e.target.value})} />
+            <input className={`main__title-input lists ${theme}`} value={listDetail.name} onChange={(e) => setListDetail({...listDetail, name: e.target.value})} />
             <button className="main__title-button button-icon lists" onClick={updateListName}><DoneIcon /></button> 
             </>
            )
@@ -120,15 +121,14 @@ const MainLists = ({theme}) => {
       }
       <section className="main__section">
         <div className="main__section-container">
-        <h3 className={`main__section-title ${theme}`}>To Do</h3>
+        <h3 className={`main__section-title ${theme}`}>Items</h3>
         <article className={`main__section-box ${theme}`}>
           <div className="main__section-items">
           <button className="button-icon lists"><AddIcon onClick={addItem}/></button>
-            {id && stageTodo.map(item => (
-      <div className={`main__section-item ${theme}`}>
-        <h5 className={`main__section-item-title ${theme}`}>{item.name}</h5> <DoneIcon />
-      </div>
-    ))}
+            {id && items.filter(item => item.stage === 'todo')
+            .map(item => (
+              <ItemTodo docId={id} itemId={item.id} name={item.name} stage={item.stage} theme={theme} setItems={setItems} />
+            ))}
           </div>
         </article>
         </div>
@@ -138,7 +138,10 @@ const MainLists = ({theme}) => {
         <article className={`main__section-box ${theme}`}>
           <div className="main__section-items">
             <button className="button-icon lists"><DoneIcon /></button>
-            {/* {showListDone} */}
+            {id && items.filter(item => item.stage === 'done')
+            .map(item => (
+              <ItemDone docId={id} itemId={item.id} name={item.name} stage={item.stage} theme={theme} setItems={setItems} />
+            ))}
           </div>
         </article>
         </div>
