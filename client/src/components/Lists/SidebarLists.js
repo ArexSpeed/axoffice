@@ -62,7 +62,7 @@ const SidebarLists = ({theme}) => {
         
         <section className="sidebar__boxes">
           {userLists.map(list => (
-            <SidebarBox id={list.id} name={list.name} users={list.users} theme={theme} />
+            <SidebarBox key={list.id} id={list.id} name={list.name} users={list.users} theme={theme} />
             ))}
         </section>
       </section>
