@@ -6,6 +6,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import DeleteIcon from '@material-ui/icons/Delete';
 import AddIcon from '@material-ui/icons/Add';
+import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import DoneIcon from '@material-ui/icons/Done';
 import ItemTodo from './ItemTodo';
 import ItemDone from './ItemDone';
@@ -18,6 +19,8 @@ const MainLists = ({theme}) => {
   const [editListName, setEditListName] = useState(false)
   const [deleteBox, setDeleteBox] = useState(false)
   const [items, setItems] = useState([])
+  const [addItemBox, setAddItemBox] = useState(false)
+  const [newItemName, setNewItemName] = useState('')
 
     useEffect(() => {
       setItems([])
@@ -43,9 +46,6 @@ const MainLists = ({theme}) => {
           fetchList();
       
       console.log(myList, 'myList')
-      //const selectedList = lists.filter(list => list.id === id)
-      // console.log(selectedList, 'selectedList')
-      // setMyList(selectedList)
     }, [id])
     console.log(myList, 'myList after')
     console.log(items, 'items after')
@@ -53,10 +53,7 @@ const MainLists = ({theme}) => {
    
     useEffect(() => {
       myList.map(list => setListDetail(list))
-      // db.collection('lists').doc(id).collection('items').onSnapshot(snapshot => (
-      //   snapshot.docs.map(doc => 
-      //     setItems(prev => [...prev,{id: doc.id, stage: doc.data().stage, name: doc.data().name}])
-      // )))
+
       console.log(myList, 'myList in second effect')
 
     }, [myList])
@@ -65,11 +62,12 @@ const MainLists = ({theme}) => {
 
     const addItem = () => {
       setItems([])
-      const idRand = Math.round(Math.random()*10000);
-      const get = db.collection("lists").doc(id).collection('items').add({
-          name: `Item ${idRand}`,
+      db.collection("lists").doc(id).collection('items').add({
+          name: newItemName,
           stage: 'todo',
       })
+      setNewItemName('')
+      setAddItemBox(false)
     }
 
     const updateListName = () => {
@@ -100,7 +98,9 @@ const MainLists = ({theme}) => {
            :
            (
             <>
+            <form onSubmit={updateListName}>
             <input className={`main__title-input lists ${theme}`} value={listDetail.name} onChange={(e) => setListDetail({...listDetail, name: e.target.value})} />
+            </form>
             <button className="main__title-button button-icon lists" onClick={updateListName}><DoneIcon /></button> 
             </>
            )
@@ -124,7 +124,19 @@ const MainLists = ({theme}) => {
         <h3 className={`main__section-title ${theme}`}>Items</h3>
         <article className={`main__section-box ${theme}`}>
           <div className="main__section-items">
-          <button className="button-icon lists"><AddIcon onClick={addItem}/></button>
+          <button className="button-icon lists" onClick={() => setAddItemBox(true)}><AddIcon /></button>
+          {addItemBox && 
+            <div className={`main__section-item ${theme}`}>
+              <form onSubmit={addItem}>
+            <input 
+              className={`main__section-item-title input ${theme}`} 
+              value={newItemName} 
+              onChange={(e) => setNewItemName(e.target.value)}
+              /> 
+              </form>
+            <SaveAltIcon style={{marginRight: '20px'}} onClick={addItem} />
+          </div>
+          }
             {id && items.filter(item => item.stage === 'todo')
             .map(item => (
               <ItemTodo docId={id} itemId={item.id} name={item.name} stage={item.stage} theme={theme} setItems={setItems} />
