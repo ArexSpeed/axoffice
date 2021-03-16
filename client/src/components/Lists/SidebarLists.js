@@ -9,8 +9,30 @@ const SidebarLists = ({theme}) => {
   const [{userInfo}] = useContext(GlobalContext)
   const [myLists, setMyLists] = useState([])
   const history = useHistory();
-
+  
   useEffect(() => {
+    // db.collection('lists').where("users", "array-contains", "name")
+    // .where("name", "==", userInfo.displayName)
+    // .get()
+    // .then(snapshot => (
+    //   setMyLists(
+    //     snapshot.docs.map(doc => ({
+    //       id: doc.id, 
+    //       name: doc.data().name,
+    //       users: doc.data().users,
+    //     }))
+    //   )
+    // ))
+    // .onSnapshot(snapshot => (
+    //   setMyLists(
+    //     snapshot.docs.map(doc => ({
+    //       id: doc.id, 
+    //       name: doc.data().name,
+    //       users: doc.data().users,
+    //     }))
+    //   )
+    // ))
+
     db.collection('lists').onSnapshot(snapshot => (
       setMyLists(
         snapshot.docs.map(doc => ({

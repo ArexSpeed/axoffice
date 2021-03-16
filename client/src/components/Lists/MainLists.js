@@ -10,6 +10,7 @@ import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import DoneIcon from '@material-ui/icons/Done';
 import ItemTodo from './ItemTodo';
 import ItemDone from './ItemDone';
+import AddUser from './AddUser';
 
 const MainLists = ({theme}) => {
   const {id} = useParams();
@@ -17,10 +18,11 @@ const MainLists = ({theme}) => {
   const [myList, setMyList] = useState([])
   const [listDetail, setListDetail] = useState([])
   const [editListName, setEditListName] = useState(false)
-  const [deleteBox, setDeleteBox] = useState(false)
   const [items, setItems] = useState([])
-  const [addItemBox, setAddItemBox] = useState(false)
   const [newItemName, setNewItemName] = useState('')
+  const [deleteBox, setDeleteBox] = useState(false)
+  const [addItemBox, setAddItemBox] = useState(false)
+  const [addUserBox, setAddUserBox] = useState(false)
 
     useEffect(() => {
       setItems([])
@@ -106,18 +108,21 @@ const MainLists = ({theme}) => {
            )
          }
         
-        <button className="main__title-button button-icon lists"><PersonAddIcon /></button>
+        <button className="main__title-button button-icon lists" onClick={() => setAddUserBox(!addUserBox)}><PersonAddIcon /></button>
         <button className="main__title-button button-icon lists" onClick={() => setDeleteBox(!deleteBox)}><DeleteIcon /></button>
         
       </header>
       {deleteBox && 
-        <div className="main__delete lists">
+        <div className="main__actionBox lists">
         <p>Are you sure?</p>
         <div>
         <button className="main__title-button button-icon lists" onClick={() => deleteList(id)}>OK</button>
         <button className="main__title-button button-icon lists" onClick={() => setDeleteBox(false)}>NO</button>
         </div>
         </div>
+      }
+      {addUserBox && 
+        <AddUser id={id} setAddUserBox={setAddUserBox}/>
       }
       <section className="main__section">
         <div className="main__section-container">

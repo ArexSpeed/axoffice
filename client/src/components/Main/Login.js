@@ -5,7 +5,7 @@ import { auth, provider} from "../../firebase";
 import { GlobalContext } from "../../GlobalProvider";
 
 const Login = () => {
-  const [{userInfo}, dispatch] = useContext(GlobalContext);
+  const [{userInfo, usersList}, dispatch] = useContext(GlobalContext);
   console.log(userInfo, 'user in login')
   const signIn = () => {
     auth
@@ -37,6 +37,16 @@ const Login = () => {
            ))
 
         }
+      }).then(() => {
+        db.collection('users').onSnapshot(snapshot => (
+          dispatch({
+            type: actionTypes.SET_USERS_LIST,
+            payload: ( snapshot.docs.map(doc => ({
+              id: doc.id,
+              name: doc.data().name
+            })))
+          })
+        ))
       })
   })
 }

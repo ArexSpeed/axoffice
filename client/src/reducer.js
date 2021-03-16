@@ -23,6 +23,11 @@ const reducer = (state, action) => {
         ...state,
         theme: action.theme
       };
+    case actionTypes.SET_USERS_LIST:
+      return{
+        ...state,
+        usersList: action.payload
+      }
 
     default:
       return state;
