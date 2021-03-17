@@ -184,17 +184,21 @@
       border-radius: 10px !important;
       font-family: $font-family !important;
       @include theme-bg;
+      &.userBox{
+        border: 2px solid $bg-projects-second;
+        //background: $bg-projects-second;
+      }
       &-title{
         font-size: 16px;
         font-weight: 300;
-        min-width: 150px !important;
+        min-width: 180px !important;
         margin: 0 10px;
         padding: 5px 0;
         font-family: $font-family !important;
         @include theme-color;
         @media screen and (max-width: 540px){
           font-size: 12px !important;
-          min-width: 100px !important;
+          min-width: 130px !important;
         }
         &.done{
           font-style: italic;
@@ -232,7 +236,12 @@
         flex-direction: column;
         justify-content: flex-start;
         min-width: 250px;
-       
+      }
+      &-buttons{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 10px;
       }
 
     }

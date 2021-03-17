@@ -52,7 +52,7 @@ const MainProjects = ({appName,theme}) => {
         : '')
       ))
 
-      await db.collection('projects').doc(id).collection('items').onSnapshot(snapshot => (
+      await db.collection('projects').doc(id).collection('items').orderBy("date", "asc").onSnapshot(snapshot => (
         snapshot.docs.map(doc => 
           setItems(prev => 
             [...prev,

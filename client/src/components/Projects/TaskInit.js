@@ -1,5 +1,8 @@
-import React from 'react'
+import {useState,useEffect,useContext} from 'react'
+import {GlobalContext} from '../../GlobalProvider';
 import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
+import CheckIcon from '@material-ui/icons/Check';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
@@ -11,8 +14,17 @@ import EventIcon from '@material-ui/icons/Event';
 import PersonIcon from '@material-ui/icons/Person';
 
 const TaskInit = ({theme, docId, taskId, title, desc, date, users, stage}) => {
+  const [{userInfo}] = useContext(GlobalContext)
+  const [userBox, setUserBox] = useState(false)
+  useEffect(() => {
+    if(users){
+      users.find(user => user.name === userInfo.displayName && setUserBox(true))
+    }
+  },[users])
+  
+  console.log(userBox, 'userBox')
   return (
-    <Accordion className={`main__section-accordion ${theme}`} style={{fontFamily: '"Poppins", sans-serif'}}>
+    <Accordion className={`${userBox ? `main__section-accordion userBox ${theme}` : `main__section-accordion ${theme}`} `} style={{fontFamily: '"Poppins", sans-serif'}}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-label="Expand"
@@ -23,11 +35,6 @@ const TaskInit = ({theme, docId, taskId, title, desc, date, users, stage}) => {
             onClick={(event) => event.stopPropagation()}
             onFocus={(event) => event.stopPropagation()}
             control={<Checkbox />}
-          />
-          <FormControlLabel
-            onClick={(event) => event.stopPropagation()}
-            onFocus={(event) => event.stopPropagation()}
-            control={<EditIcon style={{fontSize: '16px'}}/>}
           />
           <Typography className={`main__section-accordion-title ${theme}`}>
             {title}
@@ -45,6 +52,11 @@ const TaskInit = ({theme, docId, taskId, title, desc, date, users, stage}) => {
             {users && (users.map(user => <span>{user.name}, </span>))}
             
           </Typography>
+          <div className="main__section-accordion-buttons">
+          <CheckIcon style={{fontSize: '18px'}}/>
+          <EditIcon style={{fontSize: '18px'}}/>
+          <DeleteIcon style={{fontSize: '18px'}}/>
+          </div>
         </AccordionDetails>
       </Accordion>
   )
