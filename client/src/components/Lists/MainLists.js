@@ -12,6 +12,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import AddIcon from '@material-ui/icons/Add';
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import DoneIcon from '@material-ui/icons/Done';
+import ReplayIcon from '@material-ui/icons/Replay';
 import ItemTodo from './ItemTodo';
 import ItemDone from './ItemDone';
 import AddUser from './AddUser';
@@ -206,7 +207,69 @@ const MainLists = ({appName,theme}) => {
       )
       :
       (
-        <h2>Pusto tu</h2>
+        <>
+        <header className="main__header">
+          <h1 className={`main__title ${appName} ${theme}`}>AX Lists</h1> <button className={`main__title-button button-icon ${appName}`}><EditIcon /></button> <button className={`main__title-button button-icon ${appName}`}><PersonAddIcon /></button>
+        </header>
+        <section className="main__section">
+          <div className="main__section-container">
+            <h3 className={`main__section-title ${theme}`}>Init</h3>
+            <article className={`main__section-box ${theme}`}>
+              <div className="main__section-items">
+                <button className={`button-icon ${appName}`}><AddIcon /></button>
+                <div className={`main__section-item ${theme}`}>
+                  <span className={`main__section-item-title ${theme}`} >Task 1</span> 
+                  <div>
+                  <DoneIcon /> <EditIcon />
+                  </div>
+                </div>
+                <div className={`main__section-item ${theme}`}>
+                  <span className={`main__section-item-title ${theme}`} >Task 1</span> 
+                  <div>
+                  <DoneIcon /> <EditIcon />
+                  </div>
+                </div>
+                <div className={`main__section-item ${theme}`}>
+                  <span className={`main__section-item-title ${theme}`} >Task 1</span> 
+                  <div>
+                  <DoneIcon /> <EditIcon />
+                  </div>
+                </div>
+                
+
+              </div>
+            </article>
+          </div>
+
+          <div className="main__section-container">
+            <h3 className={`main__section-title ${theme}`}>Done</h3>
+            <article className={`main__section-box ${theme}`}>
+              <div className="main__section-items">
+              <button className={`button-icon ${appName}`}><DoneIcon /></button>
+              <div className={`main__section-item ${theme}`}>
+                <h5 className={`main__section-item-title done ${theme}`}>Task 4</h5> 
+                <div>
+                  <ReplayIcon /> <DeleteIcon />
+                </div>
+              </div>
+              <div className={`main__section-item ${theme}`}>
+                <h5 className={`main__section-item-title done ${theme}`}>Task 5</h5> 
+                <div>
+                  <ReplayIcon /> <DeleteIcon />
+                </div>
+              </div>
+              <div className={`main__section-item ${theme}`}>
+                <h5 className={`main__section-item-title done ${theme}`}>Task 6</h5> 
+                <div>
+                  <ReplayIcon /> <DeleteIcon />
+                </div>
+              </div>
+
+              </div>
+            </article>
+          </div>
+        </section>
+        </>
       )
     }
        

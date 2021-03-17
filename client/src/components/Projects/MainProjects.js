@@ -203,27 +203,19 @@ const MainProjects = ({appName,theme}) => {
       )
       :
       (
-        <>
+      <>
         <header className="main__header">
-        <h1 className={`main__title projects ${theme}`}>AX Office</h1> <button className="main__title-button button-icon projects"><EditIcon /></button> <button className="main__title-button button-icon projects"><PersonAddIcon /></button>
-      </header>
-      <section className="main__section">
+          <h1 className={`main__title ${appName} ${theme}`}>AX Lists</h1> <button className={`main__title-button button-icon ${appName}`}><EditIcon /></button> <button className={`main__title-button button-icon ${appName}`}><PersonAddIcon /></button>
+        </header>
+        <section className="main__section">
         <div className="main__section-container">
         <h3 className={`main__section-title ${theme}`}>Init</h3>
         <article className={`main__section-box ${theme}`}>
           <div className="main__section-items">
           <button className={`button-icon ${appName}`}><AddIcon /></button>
-            <TaskInit theme={theme} />
-            <TaskInit theme={theme} />
-            <div className={`main__section-item ${theme}`}>
-              <h5 className={`main__section-item-title ${theme}`}>Task 1</h5> <ArrowForwardIosIcon />
-            </div>
-            <div className={`main__section-item ${theme}`}>
-              <h5 className={`main__section-item-title ${theme}`}>Task 2</h5> <ArrowForwardIosIcon />
-            </div>
-            <div className={`main__section-item ${theme}`}>
-              <h5 className={`main__section-item-title ${theme}`}>Task 3</h5> <ArrowForwardIosIcon />
-            </div>
+            <TaskInit title="Task 1" desc="Add your task and add users and colaborate" date="10.03.2020" users={[{name: 'Joe Doe'}]} theme={theme}/>
+            <TaskInit title="Tell your friends" desc="Don't forget tells friend about this app" date="10.03.2020" users={[{name: 'Joe Doe'}]} theme={theme} />
+            
           </div>
         </article>
         </div>
@@ -233,15 +225,7 @@ const MainProjects = ({appName,theme}) => {
         <article className={`main__section-box ${theme}`}>
           <div className="main__section-items">
         <button className="button-icon projects"><TrendingUpIcon /></button>
-            <div className={`main__section-item ${theme}`}>
-              <h5 className={`main__section-item-title ${theme}`}>Task 1</h5> <ArrowForwardIosIcon />
-            </div>
-            <div className={`main__section-item ${theme}`}>
-              <h5 className={`main__section-item-title ${theme}`}>Task 2</h5> <ArrowForwardIosIcon />
-            </div>
-            <div className={`main__section-item ${theme}`}>
-              <h5 className={`main__section-item-title ${theme}`}>Task 3</h5> <ArrowForwardIosIcon />
-            </div>
+            
           </div>
         </article>
         </div>
@@ -251,15 +235,7 @@ const MainProjects = ({appName,theme}) => {
         <article className={`main__section-box ${theme}`}>
           <div className="main__section-items">
         <button className="button-icon projects"><DoneIcon /></button>
-            <div className={`main__section-item ${theme}`}>
-              <h5 className={`main__section-item-title ${theme}`}>Task 1</h5> <DoneIcon />
-            </div>
-            <div className={`main__section-item ${theme}`}>
-              <h5 className={`main__section-item-title ${theme}`}>Task 2</h5> <DoneIcon />
-            </div>
-            <div className={`main__section-item ${theme}`}>
-              <h5 className={`main__section-item-title ${theme}`}>Task 3</h5> <DoneIcon />
-            </div>
+            
           </div>
         </article>
         </div>
