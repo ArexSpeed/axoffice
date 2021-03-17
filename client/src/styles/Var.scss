@@ -54,6 +54,23 @@ $bg-box-dark: rgba(0,0,0,.75);
     background: $bg-office-second;
   }
 }
+@mixin bg-app-shadow{
+  &.projects{
+    box-shadow: 0 0 10px $bg-projects;
+  }
+  &.lists{
+    box-shadow: 0 0 10px $bg-lists;
+  }
+  &.budgets{
+    box-shadow: 0 0 10px $bg-budgets;
+  }
+  &.calendars{
+    box-shadow: 0 0 10px $bg-calendars;
+  }
+  &.office{
+    box-shadow: 0 0 10px $bg-office;
+  }
+}
 @mixin theme-bg{
   &.light{
     background: #ffffff;

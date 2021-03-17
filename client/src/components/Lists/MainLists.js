@@ -125,26 +125,22 @@ const MainLists = ({appName,theme}) => {
             )
           }
       
-         <button className={`main__title-button button-icon ${appName}`} onClick={() => setAddUserBox(!addUserBox)}><PersonAddIcon /></button>
-         <button className={`main__title-button button-icon mobile-hide ${appName}`} onClick={() => setGroupBox(!groupBox)}><PeopleOutlineIcon /></button>
-         <button className={`main__title-button button-icon mobile-hide ${appName}`} onClick={() => setLeaveGroupBox(!leaveGroupBox)}><ExitToAppIcon /></button>
-         <button className={`main__title-button button-icon mobile-hide ${appName}`} onClick={() => setDeleteBox(!deleteBox)}><DeleteIcon /></button>
-         <div className="mobileIcon-container">
-          <button className={`main__title-button button-icon mobile-show ${appName}`} onClick={() => setMobileIconBox(!mobileIconBox)}><MoreVertIcon /></button>
-          {
-            mobileIconBox &&
-            <div className="mobileIcon-box">
-              <button className={`main__title-button button-icon mobile-show ${appName}`} onClick={() => {setGroupBox(!groupBox); setMobileIconBox(false)}}><PeopleOutlineIcon /></button>
-              <button className={`main__title-button button-icon mobile-show lists`} onClick={() => {setLeaveGroupBox(!leaveGroupBox); setMobileIconBox(false)}}><ExitToAppIcon /></button>
-              <button className={`main__title-button button-icon mobile-show ${appName}`} onClick={() => {setDeleteBox(!deleteBox); setMobileIconBox(false)}}><DeleteIcon /></button>
-
-            </div>
-          }
+          <button className={`main__title-button button-icon ${appName}`} onClick={() => setAddUserBox(!addUserBox)}><PersonAddIcon /></button>
+          <div className="moreIcon-container">
+            <button className={`main__title-button button-icon ${appName}`} onClick={() => setMobileIconBox(!mobileIconBox)}><MoreVertIcon /></button>
+            {
+              mobileIconBox &&
+              <div className={`moreIcon-box ${theme}`}>
+                <button className={`main__title-button button-icon ${appName}`} onClick={() => {setGroupBox(!groupBox); setMobileIconBox(false)}}><PeopleOutlineIcon /></button>
+                <button className={`main__title-button button-icon ${appName}`} onClick={() => {setLeaveGroupBox(!leaveGroupBox); setMobileIconBox(false)}}><ExitToAppIcon /></button>
+                <button className={`main__title-button button-icon ${appName}`} onClick={() => {setDeleteBox(!deleteBox); setMobileIconBox(false)}}><DeleteIcon /></button>
+              </div>
+            }
          </div>
        </header>
        {deleteBox && 
          <div className={`main__actionBox ${appName}`}>
-         <p>Are you sure?</p>
+         <p style={{textAlign: 'center'}}>Do you want to remove this list?</p>
          <div>
          <button className={`main__title-button button-icon ${appName}`} onClick={() => deleteList(id)}>OK</button>
          <button className={`main__title-button button-icon ${appName}`} onClick={() => setDeleteBox(false)}>NO</button>

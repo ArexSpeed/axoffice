@@ -15,11 +15,11 @@ const LeaveGroupBox = ({id, appName, setLeaveGroupBox}) => {
   }, [])
 
   const leaveGroup = () => {
-    db.collection('lists').doc(id).update({
+    db.collection('projects').doc(id).update({
       users: firebase.firestore.FieldValue.arrayRemove(userLeave)
     })
     setLeaveGroupBox(false)
-    history.push('/lists')
+    history.push('/projects')
   }
   return (
     <div className={`main__actionBox ${appName}`}>

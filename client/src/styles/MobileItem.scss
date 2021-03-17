@@ -1,24 +1,14 @@
-.mobileIcon-container{
+@import 'Var';
+.moreIcon-container{
   position: relative;
+  z-index: 100;
 }
-.mobile-hide{
-  @media screen and (max-width: 768px) {
-    display: none
-  }
-}
-.mobile-show{
-  display: none;
-  @media screen and (max-width: 768px) {
-    @include center;
-    transition: all 1s ease-in;
-    &:nth-child(2){
-      transition-delay: 1s;
-    }
-  }
-}
-.mobileIcon-box{
+.moreIcon-box{
   position: absolute;
-  top: 50px;
-  right: 0;
+  top: 65px;
+  right: -5px;
   margin-top: 5px;
+  padding: 5px;
+  border-radius: 10px;
+  @include theme-bg;
 }

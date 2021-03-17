@@ -31,8 +31,13 @@ a{
   border: none;
   border-radius: 20px;
   cursor: pointer;
+  transition: all 0.3s ease-in;
   @include bg-app;
   @media screen and (max-width: 540px) {
     margin: 5px 0;
+  }
+  &:hover{
+    transition: all 0.3s ease-in;
+    @include bg-app-shadow;
   }
 }

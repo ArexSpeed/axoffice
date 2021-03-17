@@ -18,6 +18,7 @@ function App() {
         <Router>  
         <Switch>
           <Route exact path="/" component={Office} />
+          <Route path="/projects/:id" component={Projects} />
           <Route path="/projects" component={Projects} />
           <Route path="/lists/:id" component={Lists} />
           <Route path="/lists" component={Lists} />

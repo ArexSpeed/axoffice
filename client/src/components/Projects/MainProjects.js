@@ -15,13 +15,15 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
+import AddUser from './AddUser';
+import LeaveGroupBox from './LeaveGroupBox';
 
 
 const MainProjects = ({appName,theme}) => {
   const {id} = useParams();
   const history = useHistory();
   const [myProjects, setMyProjects] = useState([])
-  const [listDetail, setListDetail] = useState([])
+  const [projectDetail, setProjectDetail] = useState([])
   const [editListName, setEditListName] = useState(false)
   const [items, setItems] = useState([])
   const [newItemName, setNewItemName] = useState('')
@@ -67,7 +69,7 @@ const MainProjects = ({appName,theme}) => {
   }, [id])
 
   useEffect(() => {
-    myProjects.map(list => setListDetail(list))
+    myProjects.map(project => setProjectDetail(project))
   }, [myProjects])
 
   const addItem = () => {
@@ -83,7 +85,7 @@ const MainProjects = ({appName,theme}) => {
 
   const updateListName = () => {
     setEditListName(false)
-    db.collection('projects').doc(id).update({name: listDetail.name})
+    db.collection('projects').doc(id).update({name: projectDetail.name})
   }
 
   const deleteList = (id) => {
@@ -103,7 +105,7 @@ const MainProjects = ({appName,theme}) => {
            !editListName ?
            (
            <>
-           <h1 className={`main__title ${appName} ${theme}`}>{listDetail.name}</h1> 
+           <h1 className={`main__title ${appName} ${theme}`}>{projectDetail.name}</h1> 
            <button className={`main__title-button button-icon ${appName}`} onClick={() => setEditListName(true)}><EditIcon /></button> 
            </>
            )
@@ -111,33 +113,29 @@ const MainProjects = ({appName,theme}) => {
            (
             <>
             <form onSubmit={updateListName}>
-            <input className={`main__title-input ${appName} ${theme}`} value={listDetail.name} onChange={(e) => setListDetail({...listDetail, name: e.target.value})} />
+            <input className={`main__title-input ${appName} ${theme}`} value={projectDetail.name} onChange={(e) => setProjectDetail({...projectDetail, name: e.target.value})} />
             </form>
             <button className={`main__title-button button-icon ${appName}`} onClick={updateListName}><DoneIcon /></button> 
             </>
            )
          }
         
-        <button className={`main__title-button button-icon ${appName}`} onClick={() => setAddUserBox(!addUserBox)}><PersonAddIcon /></button>
-        <button className={`main__title-button button-icon mobile-hide ${appName}`} onClick={() => setGroupBox(!groupBox)}><PeopleOutlineIcon /></button>
-        <button className={`main__title-button button-icon mobile-hide ${appName}`} onClick={() => setLeaveGroupBox(!leaveGroupBox)}><ExitToAppIcon /></button>
-        <button className={`main__title-button button-icon mobile-hide ${appName}`} onClick={() => setDeleteBox(!deleteBox)}><DeleteIcon /></button>
-        <div className="mobileIcon-container">
-        <button className={`main__title-button button-icon mobile-show ${appName}`} onClick={() => setMobileIconBox(!mobileIconBox)}><MoreVertIcon /></button>
-        {
-          mobileIconBox &&
-          <div className="mobileIcon-box">
-            <button className={`main__title-button button-icon mobile-show ${appName}`} onClick={() => {setGroupBox(!groupBox); setMobileIconBox(false)}}><PeopleOutlineIcon /></button>
-            <button className={`main__title-button button-icon mobile-show ${appName}`} onClick={() => {setLeaveGroupBox(!leaveGroupBox); setMobileIconBox(false)}}><ExitToAppIcon /></button>
-            <button className={`main__title-button button-icon mobile-show ${appName}`} onClick={() => {setDeleteBox(!deleteBox); setMobileIconBox(false)}}><DeleteIcon /></button>
-        
-          </div>
-        }
+          <button className={`main__title-button button-icon ${appName}`} onClick={() => setAddUserBox(!addUserBox)}><PersonAddIcon /></button>
+          <div className="moreIcon-container">
+            <button className={`main__title-button button-icon ${appName}`} onClick={() => setMobileIconBox(!mobileIconBox)}><MoreVertIcon /></button>
+            {
+              mobileIconBox &&
+              <div className={`moreIcon-box ${theme}`}>
+                <button className={`main__title-button button-icon ${appName}`} onClick={() => {setGroupBox(!groupBox); setMobileIconBox(false)}}><PeopleOutlineIcon /></button>
+                <button className={`main__title-button button-icon ${appName}`} onClick={() => {setLeaveGroupBox(!leaveGroupBox); setMobileIconBox(false)}}><ExitToAppIcon /></button>
+                <button className={`main__title-button button-icon ${appName}`} onClick={() => {setDeleteBox(!deleteBox); setMobileIconBox(false)}}><DeleteIcon /></button>
+              </div>
+            }
         </div>
       </header>
       {deleteBox && 
         <div className={`main__actionBox ${appName}`}>
-        <p>Are you sure?</p>
+        <p style={{textAlign: 'center'}}>Do you want to remove this project?</p>
         <div>
         <button className={`main__title-button button-icon ${appName}`} onClick={() => deleteList(id)}>OK</button>
         <button className={`main__title-button button-icon ${appName}`} onClick={() => setDeleteBox(false)}>NO</button>
@@ -145,19 +143,20 @@ const MainProjects = ({appName,theme}) => {
         </div>
       }
       {addUserBox && 
-       <p>Add user</p>
+       <AddUser id={id} appName={appName} setAddUserBox={setAddUserBox}/>
       }
       {groupBox && 
         (
           <div className={`main__actionBox ${appName}`}>
-        {listDetail.users.map(user => <p>{user.name}</p>)}
+            <p style={{fontStyle: 'italic'}}>Users in project</p>
+        {projectDetail.users.map(user => <p>{user.name}</p>)}
       
         <button className={`main__title-button button-icon ${appName}`} onClick={() => setGroupBox(false)}>OK</button>
         </div>
         ) 
       }
       {
-        leaveGroupBox && <p>Leave Box</p>
+        leaveGroupBox && <LeaveGroupBox id={id} appName={appName} setLeaveGroupBox={setLeaveGroupBox} />
       }
       <section className="main__section">
         <div className="main__section-container">
