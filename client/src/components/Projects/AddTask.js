@@ -4,7 +4,7 @@ import db from "../../firebase";
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import CancelIcon from '@material-ui/icons/Cancel';
 
-const AddTask = ({appName,theme,id, users, setAddItemBox}) => {
+const AddTask = ({appName,theme,id, users, setAddItemBox, setItems}) => {
   const [newTaskTitle, setNewTaskTitle] = useState('')
   const [newTaskDesc, setNewTaskDesc] = useState('')
   const [usersInTask, setUsersInTask] = useState([])
@@ -39,6 +39,7 @@ const AddTask = ({appName,theme,id, users, setAddItemBox}) => {
   setNewTaskDesc('')
   setUsersInTask([])
   setTaskDate('')
+  setItems([])
   setAddItemBox(false)
     
   }

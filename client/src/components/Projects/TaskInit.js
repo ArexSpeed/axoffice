@@ -10,7 +10,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import EventIcon from '@material-ui/icons/Event';
 import PersonIcon from '@material-ui/icons/Person';
 
-const ItemInit = ({theme}) => {
+const TaskInit = ({theme, docId, taskId, title, desc, date, users, stage}) => {
   return (
     <Accordion className={`main__section-accordion ${theme}`} style={{fontFamily: '"Poppins", sans-serif'}}>
         <AccordionSummary
@@ -27,26 +27,27 @@ const ItemInit = ({theme}) => {
           <FormControlLabel
             onClick={(event) => event.stopPropagation()}
             onFocus={(event) => event.stopPropagation()}
-            control={<EditIcon />}
+            control={<EditIcon style={{fontSize: '16px'}}/>}
           />
           <Typography className={`main__section-accordion-title ${theme}`}>
-            Multitasking with long name
+            {title}
           </Typography>
         </AccordionSummary>
         <AccordionDetails className="main__section-accordion-details">
           <Typography className={`main__section-accordion-subtitle ${theme}`}>
-            The click event of the nested action will propagate up and expand the accordion unless
-            you explicitly stop it.
+            {desc}
           </Typography>
           <Typography className={`main__section-accordion-subtitle ${theme}`}>
-            <EventIcon /> 20.03.2020
+            <EventIcon /> {date}
           </Typography>
           <Typography className={`main__section-accordion-subtitle ${theme}`}>
-            <PersonIcon /> Arek Cichocki, Mikeal Mechel, Anders Kilkber, Tonny Tanberg, Max Svensson
+            <PersonIcon /> 
+            {users && (users.map(user => <span>{user.name}, </span>))}
+            
           </Typography>
         </AccordionDetails>
       </Accordion>
   )
 }
 
-export default ItemInit
+export default TaskInit

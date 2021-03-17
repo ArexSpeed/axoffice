@@ -2,7 +2,6 @@ import {useState, useEffect} from 'react'
 import {useParams, useHistory} from 'react-router-dom'
 import firebase from 'firebase';
 import db from "../../firebase";
-import ItemInit from './ItemInit';
 
 import EditIcon from '@material-ui/icons/Edit';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
@@ -18,6 +17,7 @@ import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import AddUser from './AddUser';
 import LeaveGroupBox from './LeaveGroupBox';
 import AddTask from './AddTask';
+import TaskInit from './TaskInit';
 
 
 const MainProjects = ({appName,theme}) => {
@@ -52,13 +52,13 @@ const MainProjects = ({appName,theme}) => {
         : '')
       ))
 
-      await db.collection('projects').doc(id).collection('items').orderBy("name", "asc").onSnapshot(snapshot => (
+      await db.collection('projects').doc(id).collection('items').onSnapshot(snapshot => (
         snapshot.docs.map(doc => 
           setItems(prev => 
             [...prev,
               {id: doc.id, 
                stage: doc.data().stage, 
-               name: doc.data().name, 
+               title: doc.data().title, 
                desc: doc.data().desc,
                date: doc.data().date,
                users: doc.data().users,
@@ -68,21 +68,11 @@ const MainProjects = ({appName,theme}) => {
       } 
         fetchList();
   }, [id])
-
+  console.log(items, 'item in project')
   useEffect(() => {
     myProjects.map(project => setProjectDetail(project))
   }, [myProjects])
 
-  const addItem = () => {
-    setItems([])
-    db.collection("projects").doc(id).collection('items').add({
-        name: newItemName,
-        stage: 'todo',
-        timestamp: new Date()
-    })
-    setNewItemName('')
-    setAddItemBox(false)
-  }
 
   const updateListName = () => {
     setEditListName(false)
@@ -166,13 +156,14 @@ const MainProjects = ({appName,theme}) => {
             <div className="main__section-items">
             <button className={`button-icon ${appName}`} onClick={() => setAddItemBox(!addItemBox)}><AddIcon /></button>
             {addItemBox && 
-              <AddTask appName={appName} theme={theme} id={id} users={projectDetail.users} setAddItemBox={setAddItemBox}/>
+              <AddTask appName={appName} theme={theme} id={id} users={projectDetail.users} setItems={setItems} setAddItemBox={setAddItemBox}/>
             }
-            <ItemInit theme={theme} />
-              {/* {id && items.filter(item => item.stage === 'todo')
-              .map(item => (
-                <ItemTodo docId={id} itemId={item.id} name={item.name} stage={item.stage} theme={theme} setItems={setItems} />
-              ))} */}
+              {
+                id && items.filter(item => item.stage === 'init')
+                          .map(item => (
+                            <TaskInit docId={id} taskId={item.id} title={item.title} desc={item.desc} date={item.date} users={item.users} stage={item.stage} theme={theme} setItems={setItems} />
+                          ))
+              }
             </div>
           </article>
         </div>
@@ -183,7 +174,7 @@ const MainProjects = ({appName,theme}) => {
             <div className="main__section-items">
             <button className={`button-icon ${appName}`} onClick={() => setAddItemBox(true)}><TrendingUpIcon /></button>
             
-            <ItemInit theme={theme} />
+            <TaskInit theme={theme} />
               {/* {id && items.filter(item => item.stage === 'todo')
               .map(item => (
                 <ItemTodo docId={id} itemId={item.id} name={item.name} stage={item.stage} theme={theme} setItems={setItems} />
@@ -198,7 +189,7 @@ const MainProjects = ({appName,theme}) => {
             <div className="main__section-items">
             <button className={`button-icon ${appName}`} onClick={() => setAddItemBox(true)}><DoneIcon /></button>
             
-            <ItemInit theme={theme} />
+            <TaskInit theme={theme} />
               {/* {id && items.filter(item => item.stage === 'todo')
               .map(item => (
                 <ItemTodo docId={id} itemId={item.id} name={item.name} stage={item.stage} theme={theme} setItems={setItems} />
@@ -222,8 +213,8 @@ const MainProjects = ({appName,theme}) => {
         <article className={`main__section-box ${theme}`}>
           <div className="main__section-items">
           <button className={`button-icon ${appName}`}><AddIcon /></button>
-            <ItemInit theme={theme} />
-            <ItemInit theme={theme} />
+            <TaskInit theme={theme} />
+            <TaskInit theme={theme} />
             <div className={`main__section-item ${theme}`}>
               <h5 className={`main__section-item-title ${theme}`}>Task 1</h5> <ArrowForwardIosIcon />
             </div>
