@@ -41,3 +41,20 @@ a{
     @include bg-app-shadow;
   }
 }
+.button-icon-second{
+  margin: 10px 0;
+  width: 50px;
+  min-height: 50px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+  @include bg-app-second;
+  @media screen and (max-width: 540px) {
+    margin: 5px 0;
+  }
+  &:hover{
+    transition: all 0.3s ease-in;
+    @include bg-app-shadow;
+  }
+}

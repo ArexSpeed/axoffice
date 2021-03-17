@@ -17,6 +17,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import AddUser from './AddUser';
 import LeaveGroupBox from './LeaveGroupBox';
+import AddTask from './AddTask';
 
 
 const MainProjects = ({appName,theme}) => {
@@ -163,18 +164,9 @@ const MainProjects = ({appName,theme}) => {
           <h3 className={`main__section-title ${theme}`}>Init</h3>
           <article className={`main__section-box ${theme}`}>
             <div className="main__section-items">
-            <button className={`button-icon ${appName}`} onClick={() => setAddItemBox(true)}><AddIcon /></button>
+            <button className={`button-icon ${appName}`} onClick={() => setAddItemBox(!addItemBox)}><AddIcon /></button>
             {addItemBox && 
-              <div className={`main__section-item ${theme}`}>
-                <form onSubmit={addItem}>
-              <input 
-                className={`main__section-item-title input ${theme}`} 
-                value={newItemName} 
-                onChange={(e) => setNewItemName(e.target.value)}
-                /> 
-                </form>
-              <SaveAltIcon style={{marginRight: '20px'}} onClick={addItem} />
-            </div>
+              <AddTask appName={appName} theme={theme} id={id} users={projectDetail.users} setAddItemBox={setAddItemBox}/>
             }
             <ItemInit theme={theme} />
               {/* {id && items.filter(item => item.stage === 'todo')
@@ -190,18 +182,7 @@ const MainProjects = ({appName,theme}) => {
           <article className={`main__section-box ${theme}`}>
             <div className="main__section-items">
             <button className={`button-icon ${appName}`} onClick={() => setAddItemBox(true)}><TrendingUpIcon /></button>
-            {addItemBox && 
-              <div className={`main__section-item ${theme}`}>
-                <form onSubmit={addItem}>
-              <input 
-                className={`main__section-item-title input ${theme}`} 
-                value={newItemName} 
-                onChange={(e) => setNewItemName(e.target.value)}
-                /> 
-                </form>
-              <SaveAltIcon style={{marginRight: '20px'}} onClick={addItem} />
-            </div>
-            }
+            
             <ItemInit theme={theme} />
               {/* {id && items.filter(item => item.stage === 'todo')
               .map(item => (
@@ -216,18 +197,7 @@ const MainProjects = ({appName,theme}) => {
           <article className={`main__section-box ${theme}`}>
             <div className="main__section-items">
             <button className={`button-icon ${appName}`} onClick={() => setAddItemBox(true)}><DoneIcon /></button>
-            {addItemBox && 
-              <div className={`main__section-item ${theme}`}>
-                <form onSubmit={addItem}>
-              <input 
-                className={`main__section-item-title input ${theme}`} 
-                value={newItemName} 
-                onChange={(e) => setNewItemName(e.target.value)}
-                /> 
-                </form>
-              <SaveAltIcon style={{marginRight: '20px'}} onClick={addItem} />
-            </div>
-            }
+            
             <ItemInit theme={theme} />
               {/* {id && items.filter(item => item.stage === 'todo')
               .map(item => (

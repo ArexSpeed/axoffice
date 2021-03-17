@@ -2,13 +2,13 @@
 
 $bg-office: #859696;
 $bg-office-second: #a8bcbc;
-$bg-projects: rgba(23, 207, 207, 0.75);
-$bg-projects-second: rgba(23, 207, 207, 0.5);
+$bg-projects: rgba(95, 236, 118, 0.75);
+$bg-projects-second: rgba(95, 236, 118, 0.5);
 $bg-lists: rgba(236, 220, 75,0.75);
 $bg-lists-second: rgba(236, 220, 75,0.5);
 //$bg-lists-second: rgba(240, 229, 133, 0.75);
-$bg-budgets: #5fec76;
-$bg-budgets-second: #f0e585;
+$bg-budgets: rgba(23, 207, 207, 0.75);
+$bg-budgets-second: rgba(23, 207, 207, 0.5);
 $bg-calendars: #e77c1a;
 $bg-calendars-second: #f0e585;
 $font-family: 'Poppins', sans-serif;
@@ -77,6 +77,14 @@ $bg-box-dark: rgba(0,0,0,.75);
   }
   &.dark{
     background: #111111;
+  }
+}
+@mixin theme-bg-second{
+  &.light{
+    background: #dddddd;
+  }
+  &.dark{
+    background: #333333;
   }
 }
 @mixin theme-color{
