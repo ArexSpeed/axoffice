@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react'
 import {useParams, useHistory} from 'react-router-dom'
+import firebase from 'firebase';
 import db from "../../firebase";
 
 import EditIcon from '@material-ui/icons/Edit';
@@ -48,9 +49,15 @@ const MainLists = ({theme}) => {
           : '')
         ))
 
-        await db.collection('lists').doc(id).collection('items').onSnapshot(snapshot => (
+        await db.collection('lists').doc(id).collection('items').orderBy("name", "asc").onSnapshot(snapshot => (
           snapshot.docs.map(doc => 
-            setItems(prev => [...prev,{id: doc.id, stage: doc.data().stage, name: doc.data().name}])
+            setItems(prev => 
+              [...prev,
+                {id: doc.id, 
+                 stage: doc.data().stage, 
+                 name: doc.data().name, 
+                 timestamp: doc.data().timestamp
+              }])
         )))
         } 
         
@@ -76,6 +83,7 @@ const MainLists = ({theme}) => {
       db.collection("lists").doc(id).collection('items').add({
           name: newItemName,
           stage: 'todo',
+          timestamp: new Date()
       })
       setNewItemName('')
       setAddItemBox(false)

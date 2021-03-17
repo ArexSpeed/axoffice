@@ -1,5 +1,6 @@
 import {useState, useEffect, useContext} from 'react'
 import { GlobalContext } from "../../GlobalProvider";
+import firebase from 'firebase'
 import db from "../../firebase";
 import {Link, useHistory} from 'react-router-dom'
 import AddIcon from '@material-ui/icons/Add';
@@ -19,6 +20,7 @@ const SidebarLists = ({theme}) => {
           id: doc.id, 
           name: doc.data().name,
           users: doc.data().users,
+          timestamp: doc.data().timestamp,
         }))
       )
     ))
@@ -44,7 +46,8 @@ const SidebarLists = ({theme}) => {
           id: userInfo.uid,
           name: userInfo.displayName
         }],
-        timestamp: Date.now()
+        timestamp: new Date(),
+        timestampf: firebase.firestore.FieldValue.serverTimestamp()
     });
   }
 
@@ -61,7 +64,8 @@ const SidebarLists = ({theme}) => {
         </header>
         
         <section className="sidebar__boxes">
-          {userLists.map(list => (
+          {userLists.sort((a,b) => b.timestamp - a.timestamp)
+          .map(list => (
             <SidebarBox key={list.id} id={list.id} name={list.name} users={list.users} theme={theme} />
             ))}
         </section>
