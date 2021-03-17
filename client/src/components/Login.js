@@ -1,8 +1,8 @@
 import React, {useContext} from 'react'
-import db from "../../firebase";
-import { actionTypes } from "../../reducer";
-import { auth, provider} from "../../firebase";
-import { GlobalContext } from "../../GlobalProvider";
+import db from "../firebase";
+import { actionTypes } from "../reducer";
+import { auth, provider} from "../firebase";
+import { GlobalContext } from "../GlobalProvider";
 
 const Login = () => {
   const [{userInfo, usersList}, dispatch] = useContext(GlobalContext);

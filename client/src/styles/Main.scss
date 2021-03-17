@@ -172,5 +172,66 @@
       }
 
     }
+    // Main Project accordion
+    &-accordion{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      margin: 5px;
+      width: 90%;
+      height: auto;
+      border-radius: 10px !important;
+      font-family: $font-family !important;
+      @include theme-bg;
+      &-title{
+        font-size: 16px;
+        font-weight: 300;
+        margin: 0 10px;
+        padding: 5px 0;
+        font-family: $font-family !important;
+        @include theme-color;
+        @media screen and (max-width: 540px){
+          font-size: 12px !important;
+        }
+        &.done{
+          font-style: italic;
+        }
+        &.input{
+          border: none;
+          background: transparent;
+          font-family: $font-family;
+        }
+      }
+      &-subtitle{
+        font-size: 12px !important;
+        font-weight: 100;
+        margin: 0 10px;
+        padding: 5px 0;
+        text-align: left;
+        font-family: $font-family !important;
+        @include theme-color;
+        @media screen and (max-width: 540px){
+          font-size: 10px !important;
+        }
+      }
+      &.dark > .MuiSvgIcon-root,
+      &.dark > div .MuiSvgIcon-root{
+        color: #ffffff;
+        margin-right: 5px;
+      }
+      &.light > .MuiSvgIcon-root,
+      &.light > div .MuiSvgIcon-root{
+        color: #000000;
+        margin-right: 5px;
+      }
+      &-details{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+       
+      }
+
+    }
   }
 }

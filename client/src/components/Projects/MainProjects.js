@@ -5,6 +5,7 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import AddIcon from '@material-ui/icons/Add';
 import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 import DoneIcon from '@material-ui/icons/Done';
+import ItemInit from './ItemInit';
 
 const MainProjects = ({theme}) => {
 
@@ -19,6 +20,8 @@ const MainProjects = ({theme}) => {
         <article className={`main__section-box ${theme}`}>
           <div className="main__section-items">
           <button className="button-icon projects"><AddIcon /></button>
+            <ItemInit theme={theme} />
+            <ItemInit theme={theme} />
             <div className={`main__section-item ${theme}`}>
               <h5 className={`main__section-item-title ${theme}`}>Task 1</h5> <ArrowForwardIosIcon />
             </div>
