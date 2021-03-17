@@ -184,6 +184,9 @@
       border-radius: 10px !important;
       font-family: $font-family !important;
       @include theme-bg;
+      &.finished{
+        @include theme-bg-second;
+      }
       &.userBox{
         border: 2px solid $bg-projects-second;
         //background: $bg-projects-second;

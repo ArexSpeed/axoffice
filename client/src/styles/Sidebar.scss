@@ -1,7 +1,7 @@
 @import 'Var';
 .sidebar{
   height: 100%;
-  width: 250px;
+  min-width: 250px;
   overflow: scroll;
   @include bg-app-second;
   @media screen and (max-width: 768px){

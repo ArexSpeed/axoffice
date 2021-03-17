@@ -18,6 +18,8 @@ import AddUser from './AddUser';
 import LeaveGroupBox from './LeaveGroupBox';
 import AddTask from './AddTask';
 import TaskInit from './TaskInit';
+import TaskProgress from './TaskProgress';
+import TaskFinished from './TaskFinished';
 
 
 const MainProjects = ({appName,theme}) => {
@@ -173,12 +175,13 @@ const MainProjects = ({appName,theme}) => {
           <article className={`main__section-box ${theme}`}>
             <div className="main__section-items">
             <button className={`button-icon ${appName}`} onClick={() => setAddItemBox(true)}><TrendingUpIcon /></button>
+            {
+                id && items.filter(item => item.stage === 'progress')
+                          .map(item => (
+                            <TaskProgress docId={id} taskId={item.id} title={item.title} desc={item.desc} date={item.date} users={item.users} stage={item.stage} theme={theme} setItems={setItems} />
+                          ))
+              }
             
-            <TaskInit theme={theme} />
-              {/* {id && items.filter(item => item.stage === 'todo')
-              .map(item => (
-                <ItemTodo docId={id} itemId={item.id} name={item.name} stage={item.stage} theme={theme} setItems={setItems} />
-              ))} */}
             </div>
           </article>
         </div>
@@ -188,12 +191,12 @@ const MainProjects = ({appName,theme}) => {
           <article className={`main__section-box ${theme}`}>
             <div className="main__section-items">
             <button className={`button-icon ${appName}`} onClick={() => setAddItemBox(true)}><DoneIcon /></button>
-            
-            <TaskInit theme={theme} />
-              {/* {id && items.filter(item => item.stage === 'todo')
-              .map(item => (
-                <ItemTodo docId={id} itemId={item.id} name={item.name} stage={item.stage} theme={theme} setItems={setItems} />
-              ))} */}
+            {
+                id && items.filter(item => item.stage === 'finish')
+                          .map(item => (
+                            <TaskFinished docId={id} taskId={item.id} title={item.title} desc={item.desc} date={item.date} users={item.users} stage={item.stage} theme={theme} setItems={setItems} />
+                          ))
+              }
             </div>
           </article>
         </div>
