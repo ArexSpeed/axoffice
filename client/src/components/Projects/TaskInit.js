@@ -1,5 +1,6 @@
 import {useState,useEffect,useContext} from 'react'
 import {GlobalContext} from '../../GlobalProvider';
+import db from '../../firebase';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import CheckIcon from '@material-ui/icons/Check';
@@ -13,7 +14,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import EventIcon from '@material-ui/icons/Event';
 import PersonIcon from '@material-ui/icons/Person';
 
-const TaskInit = ({theme, docId, taskId, title, desc, date, users, stage}) => {
+const TaskInit = ({theme, docId, taskId, title, desc, date, users, stage, setItems}) => {
   const [{userInfo}] = useContext(GlobalContext)
   const [userBox, setUserBox] = useState(false)
   useEffect(() => {
@@ -21,6 +22,17 @@ const TaskInit = ({theme, docId, taskId, title, desc, date, users, stage}) => {
       users.find(user => user.name === userInfo.displayName && setUserBox(true))
     }
   },[users])
+
+  const changeStage = () => { 
+    db.collection('projects').doc(docId).collection('items').doc(taskId).update({
+      stage: 'progress'
+    })
+    setItems([])
+  }
+  const deleteTask = () => {
+    db.collection('projects').doc(docId).collection('items').doc(taskId).delete()
+    setItems([])
+  }
   
   console.log(userBox, 'userBox')
   return (
@@ -32,7 +44,7 @@ const TaskInit = ({theme, docId, taskId, title, desc, date, users, stage}) => {
         >
           <FormControlLabel
             aria-label="Acknowledge"
-            onClick={(event) => event.stopPropagation()}
+            onClick={changeStage}
             onFocus={(event) => event.stopPropagation()}
             control={<Checkbox />}
           />
@@ -53,9 +65,15 @@ const TaskInit = ({theme, docId, taskId, title, desc, date, users, stage}) => {
             
           </Typography>
           <div className="main__section-accordion-buttons">
-          <CheckIcon style={{fontSize: '18px'}}/>
+          <CheckIcon 
+            style={{fontSize: '18px'}}
+            onClick={changeStage}
+          />
           <EditIcon style={{fontSize: '18px'}}/>
-          <DeleteIcon style={{fontSize: '18px'}}/>
+          <DeleteIcon 
+            style={{fontSize: '18px'}}
+            onClick={deleteTask}
+          />
           </div>
         </AccordionDetails>
       </Accordion>

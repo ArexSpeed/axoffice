@@ -5,7 +5,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import db from "../../firebase";
 
 const ItemDone = ({docId,itemId, name, stage, theme, setItems}) => {
-  const changeState = () => { 
+  const changeStage = () => { 
     db.collection('lists').doc(docId).collection('items').doc(itemId).update({
       stage: 'todo'
     })
@@ -19,7 +19,7 @@ const ItemDone = ({docId,itemId, name, stage, theme, setItems}) => {
       <div className={`main__section-item ${theme}`}>
         <h5 className={`main__section-item-title done ${theme}`}>{name}</h5> 
         <div>
-        <ReplayIcon onClick={changeState} />
+        <ReplayIcon onClick={changeStage} />
         <DeleteIcon onClick={deleteItem} />
         </div>
       </div>
