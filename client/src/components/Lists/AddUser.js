@@ -6,7 +6,7 @@ import { GlobalContext } from "../../GlobalProvider";
 
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 
-const AddUser = ({id, setAddUserBox}) => {
+const AddUser = ({id,appName, setAddUserBox}) => {
   const [{usersList}, dispatch] = useContext(GlobalContext);
   const [searchUser, setSearchUser] = useState('')
   const [foundUser, setFoundUser] = useState([])
@@ -23,17 +23,17 @@ const AddUser = ({id, setAddUserBox}) => {
     setAddUserBox(false)
   }
   return (
-    <div className="main__actionBox lists">
-        <div className="main__actionBox-search lists">
+    <div className={`main__actionBox ${appName}`}>
+        <div className={`main__actionBox-search ${appName}`}>
           <SearchOutlinedIcon />
-          <input className="main__actionBox-search input lists" type="text" placeholder="Find user" value={searchUser} onChange={(e) => setSearchUser(e.target.value)} />
+          <input className={`main__actionBox-search input ${appName}`} type="text" placeholder="Find user" value={searchUser} onChange={(e) => setSearchUser(e.target.value)} />
       </div>
       {searchUser && 
       (
         <>
         <p>{foundUser.name}</p>
         <div>
-        <button className="main__title-button button-icon lists" onClick={addUser}><AddIcon /></button>
+        <button className={`main__title-button button-icon ${appName}`} onClick={addUser}><AddIcon /></button>
         </div>
         </>
       )

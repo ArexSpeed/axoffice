@@ -4,7 +4,7 @@ import firebase from 'firebase'
 import db from "../../firebase";
 import { GlobalContext } from "../../GlobalProvider";
 
-const LeaveGroupBox = ({id, setLeaveGroupBox}) => {
+const LeaveGroupBox = ({id, appName, setLeaveGroupBox}) => {
   const [{userInfo,usersList}, dispatch] = useContext(GlobalContext);
   const [userLeave, setUserLeave] = useState([])
   const history = useHistory();
@@ -22,11 +22,11 @@ const LeaveGroupBox = ({id, setLeaveGroupBox}) => {
     history.push('/lists')
   }
   return (
-    <div className="main__actionBox lists">
+    <div className={`main__actionBox ${appName}`}>
         <p>Do you want leave this group?</p>
         <div>
-        <button className="main__title-button button-icon lists" onClick={leaveGroup}>OK</button>
-        <button className="main__title-button button-icon lists" onClick={() => setLeaveGroupBox(false)}>NO</button>
+        <button className={`main__title-button button-icon ${appName}`} onClick={leaveGroup}>OK</button>
+        <button className={`main__title-button button-icon ${appName}`} onClick={() => setLeaveGroupBox(false)}>NO</button>
         </div>
         </div>
   )

@@ -9,7 +9,7 @@ const Office = () => {
     <>
       <Head title="AX Office"/>
       <div className="container">
-      <Nav app="office" />
+      <Nav appName="office" />
       <MainOffice />
       </div>
     </>

@@ -16,7 +16,7 @@
     height: 50px;
   }
   &__user{
-    width: 100%;
+    max-width: 70px;
     margin: 2px;
     @include center;
     position: absolute;

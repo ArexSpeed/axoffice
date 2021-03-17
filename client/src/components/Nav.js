@@ -10,7 +10,7 @@ import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import InvertColorsIcon from '@material-ui/icons/InvertColors';
 
-const Nav = ({app}) => {
+const Nav = ({appName}) => {
   const [{userInfo, theme}, dispatch] = useContext(GlobalContext);
   console.log(userInfo)
   const changeTheme = () => {
@@ -31,7 +31,7 @@ const Nav = ({app}) => {
   };
 
   return (
-    <nav className={`nav ${app}`}>
+    <nav className={`nav ${appName}`}>
       <div className="nav__user">
         <img src={userInfo.photoURL} alt="L" />
         <p className="nav__user-name">{userInfo.displayName}</p>
@@ -42,22 +42,22 @@ const Nav = ({app}) => {
             <HomeIcon />
           </Link>
         </li>
-        <li className={`${app === 'projects' ? `nav-item active ${theme}` : `nav-item ${theme}`}`}>
+        <li className={`${appName === 'projects' ? `nav-item active ${theme}` : `nav-item ${theme}`}`}>
           <Link to="/projects" className="nav-link">
             <ViewListIcon />
           </Link>
         </li>
-        <li className={`${app === 'lists' ? `nav-item active ${theme}` : `nav-item ${theme}`}`}>
+        <li className={`${appName === 'lists' ? `nav-item active ${theme}` : `nav-item ${theme}`}`}>
           <Link to="/lists" className="nav-link">
             <AssignmentIcon />
           </Link>
         </li>
-        <li className={`${app === 'budget' ? `nav-item active ${theme}` : `nav-item ${theme}`}`}>
+        <li className={`${appName === 'budget' ? `nav-item active ${theme}` : `nav-item ${theme}`}`}>
           <Link to="/budget" className="nav-link">
             <AttachMoneyIcon />
           </Link>
         </li>
-        <li className={`${app === 'calendar' ? `nav-item active ${theme}` : `nav-item ${theme}`}`}>
+        <li className={`${appName === 'calendar' ? `nav-item active ${theme}` : `nav-item ${theme}`}`}>
           <Link to="/calendar" className="nav-link">
             <CalendarTodayIcon />
           </Link>

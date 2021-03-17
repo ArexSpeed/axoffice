@@ -18,7 +18,7 @@ import AddUser from './AddUser';
 import LeaveGroupBox from './LeaveGroupBox';
 
 
-const MainLists = ({theme}) => {
+const MainLists = ({appName,theme}) => {
   const {id} = useParams();
   const history = useHistory();
   const [myList, setMyList] = useState([])
@@ -105,108 +105,108 @@ const MainLists = ({theme}) => {
       {id ?
       (
         <>
-          <header className="main__header">
-         {
-           !editListName ?
-           (
-           <>
-           <h1 className={`main__title lists ${theme}`}>{listDetail.name}</h1> 
-           <button className="main__title-button button-icon lists" onClick={() => setEditListName(true)}><EditIcon /></button> 
-           </>
-           )
-           :
-           (
+        <header className="main__header">
+          {
+            !editListName ?
+            (
             <>
-            <form onSubmit={updateListName}>
-            <input className={`main__title-input lists ${theme}`} value={listDetail.name} onChange={(e) => setListDetail({...listDetail, name: e.target.value})} />
-            </form>
-            <button className="main__title-button button-icon lists" onClick={updateListName}><DoneIcon /></button> 
+            <h1 className={`main__title ${appName} ${theme}`}>{listDetail.name}</h1> 
+            <button className={`main__title-button button-icon ${appName}`} onClick={() => setEditListName(true)}><EditIcon /></button> 
             </>
-           )
-         }
-        
-        <button className="main__title-button button-icon lists" onClick={() => setAddUserBox(!addUserBox)}><PersonAddIcon /></button>
-        <button className="main__title-button button-icon mobile-hide lists" onClick={() => setGroupBox(!groupBox)}><PeopleOutlineIcon /></button>
-        <button className="main__title-button button-icon mobile-hide lists" onClick={() => setLeaveGroupBox(!leaveGroupBox)}><ExitToAppIcon /></button>
-        <button className="main__title-button button-icon mobile-hide lists" onClick={() => setDeleteBox(!deleteBox)}><DeleteIcon /></button>
-        <div className="mobileIcon-container">
-        <button className="main__title-button button-icon mobile-show lists" onClick={() => setMobileIconBox(!mobileIconBox)}><MoreVertIcon /></button>
-        {
-          mobileIconBox &&
-          <div className="mobileIcon-box">
-            <button className="main__title-button button-icon mobile-show lists" onClick={() => {setGroupBox(!groupBox); setMobileIconBox(false)}}><PeopleOutlineIcon /></button>
-            <button className="main__title-button button-icon mobile-show lists" onClick={() => {setLeaveGroupBox(!leaveGroupBox); setMobileIconBox(false)}}><ExitToAppIcon /></button>
-            <button className="main__title-button button-icon mobile-show lists" onClick={() => {setDeleteBox(!deleteBox); setMobileIconBox(false)}}><DeleteIcon /></button>
-        
-          </div>
-        }
-        </div>
-      </header>
-      {deleteBox && 
-        <div className="main__actionBox lists">
-        <p>Are you sure?</p>
-        <div>
-        <button className="main__title-button button-icon lists" onClick={() => deleteList(id)}>OK</button>
-        <button className="main__title-button button-icon lists" onClick={() => setDeleteBox(false)}>NO</button>
-        </div>
-        </div>
-      }
-      {addUserBox && 
-        <AddUser id={id} setAddUserBox={setAddUserBox}/>
-      }
-      {groupBox && 
-        (
-          <div className="main__actionBox lists">
-        {listDetail.users.map(user => <p>{user.name}</p>)}
-      
-        <button className="main__title-button button-icon lists" onClick={() => setGroupBox(false)}>OK</button>
-        </div>
-        ) 
-      }
-      {
-        leaveGroupBox && <LeaveGroupBox id={id} setLeaveGroupBox={setLeaveGroupBox} />
-      }
-      <section className="main__section">
-        <div className="main__section-container">
-        <h3 className={`main__section-title ${theme}`}>Items</h3>
-        <article className={`main__section-box ${theme}`}>
-          <div className="main__section-items">
-          <button className="button-icon lists" onClick={() => setAddItemBox(true)}><AddIcon /></button>
-          {addItemBox && 
-            <div className={`main__section-item ${theme}`}>
-              <form onSubmit={addItem}>
-            <input 
-              className={`main__section-item-title input ${theme}`} 
-              value={newItemName} 
-              onChange={(e) => setNewItemName(e.target.value)}
-              /> 
-              </form>
-            <SaveAltIcon style={{marginRight: '20px'}} onClick={addItem} />
-          </div>
+            )
+            :
+            (
+             <>
+             <form onSubmit={updateListName}>
+             <input className={`main__title-input ${appName} ${theme}`} value={listDetail.name} onChange={(e) => setListDetail({...listDetail, name: e.target.value})} />
+             </form>
+             <button className={`main__title-button button-icon ${appName}`} onClick={updateListName}><DoneIcon /></button> 
+             </>
+            )
           }
-            {id && items.filter(item => item.stage === 'todo')
-            .map(item => (
-              <ItemTodo docId={id} itemId={item.id} name={item.name} stage={item.stage} theme={theme} setItems={setItems} />
-            ))}
-          </div>
-        </article>
-        </div>
+      
+         <button className={`main__title-button button-icon ${appName}`} onClick={() => setAddUserBox(!addUserBox)}><PersonAddIcon /></button>
+         <button className={`main__title-button button-icon mobile-hide ${appName}`} onClick={() => setGroupBox(!groupBox)}><PeopleOutlineIcon /></button>
+         <button className={`main__title-button button-icon mobile-hide ${appName}`} onClick={() => setLeaveGroupBox(!leaveGroupBox)}><ExitToAppIcon /></button>
+         <button className={`main__title-button button-icon mobile-hide ${appName}`} onClick={() => setDeleteBox(!deleteBox)}><DeleteIcon /></button>
+         <div className="mobileIcon-container">
+          <button className={`main__title-button button-icon mobile-show ${appName}`} onClick={() => setMobileIconBox(!mobileIconBox)}><MoreVertIcon /></button>
+          {
+            mobileIconBox &&
+            <div className="mobileIcon-box">
+              <button className={`main__title-button button-icon mobile-show ${appName}`} onClick={() => {setGroupBox(!groupBox); setMobileIconBox(false)}}><PeopleOutlineIcon /></button>
+              <button className={`main__title-button button-icon mobile-show lists`} onClick={() => {setLeaveGroupBox(!leaveGroupBox); setMobileIconBox(false)}}><ExitToAppIcon /></button>
+              <button className={`main__title-button button-icon mobile-show ${appName}`} onClick={() => {setDeleteBox(!deleteBox); setMobileIconBox(false)}}><DeleteIcon /></button>
 
-        <div className="main__section-container">
-        <h3 className={`main__section-title ${theme}`}>Done</h3>
-        <article className={`main__section-box ${theme}`}>
-          <div className="main__section-items">
-            <button className="button-icon lists"><DoneIcon /></button>
-            {id && items.filter(item => item.stage === 'done')
-            .map(item => (
+            </div>
+          }
+         </div>
+       </header>
+       {deleteBox && 
+         <div className={`main__actionBox ${appName}`}>
+         <p>Are you sure?</p>
+         <div>
+         <button className={`main__title-button button-icon ${appName}`} onClick={() => deleteList(id)}>OK</button>
+         <button className={`main__title-button button-icon ${appName}`} onClick={() => setDeleteBox(false)}>NO</button>
+         </div>
+         </div>
+       }
+       {addUserBox && 
+         <AddUser id={id} appName={appName} setAddUserBox={setAddUserBox}/>
+       }
+       {groupBox && 
+         (
+           <div className={`main__actionBox ${appName}`}>
+         {listDetail.users.map(user => <p>{user.name}</p>)}
+
+         <button className={`main__title-button button-icon ${appName}`} onClick={() => setGroupBox(false)}>OK</button>
+         </div>
+         ) 
+        }
+        {
+          leaveGroupBox && <LeaveGroupBox id={id} appName={appName} setLeaveGroupBox={setLeaveGroupBox} />
+        }
+        <section className="main__section">
+          <div className="main__section-container">
+          <h3 className={`main__section-title ${theme}`}>Items</h3>
+          <article className={`main__section-box ${theme}`}>
+            <div className="main__section-items">
+           <button className={`button-icon ${appName}`} onClick={() => setAddItemBox(true)}><AddIcon /></button>
+            {addItemBox && 
+              <div className={`main__section-item ${theme}`}>
+               <form onSubmit={addItem}>
+             <input 
+               className={`main__section-item-title input ${theme}`} 
+               value={newItemName} 
+               onChange={(e) => setNewItemName(e.target.value)}
+               /> 
+               </form>
+             <SaveAltIcon style={{marginRight: '20px'}} onClick={addItem} />
+            </div>
+           }
+             {id && items.filter(item => item.stage === 'todo')
+             .map(item => (
+               <ItemTodo docId={id} itemId={item.id} name={item.name} stage={item.stage} theme={theme} setItems={setItems} />
+              ))}
+           </div>
+          </article>
+          </div>
+
+          <div className="main__section-container">
+          <h3 className={`main__section-title ${theme}`}>Done</h3>
+          <article className={`main__section-box ${theme}`}>
+            <div className="main__section-items">
+              <button className={`button-icon ${appName}`}><DoneIcon /></button>
+              {id && items.filter(item => item.stage === 'done')
+              .map(item => (
               <ItemDone docId={id} itemId={item.id} name={item.name} stage={item.stage} theme={theme} setItems={setItems} />
-            ))}
+              ))}
+            </div>
+            </article>
           </div>
-        </article>
-        </div>
 
-      </section>
-        </>
+        </section>
+      </>
       )
       :
       (

@@ -11,9 +11,9 @@ const Projects = () => {
     <>
       <Head title="AX Office Project" />
       <div className={`container ${theme}`}>
-      <Nav app='projects' theme={theme} />
-      <SidebarProjects theme={theme} />
-      <MainProjects theme={theme} />
+      <Nav appName='projects' theme={theme} />
+      <SidebarProjects appName='projects' theme={theme} />
+      <MainProjects appName='projects' theme={theme} />
       </div>
     </>
   )

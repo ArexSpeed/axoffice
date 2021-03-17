@@ -12,9 +12,9 @@ const Lists = () => {
     <>
     <Head title='AX Office Lists' />
     <div className={`container ${theme}`}>
-      <Nav app='lists' theme={theme} />
-      <SidebarLists theme={theme} />
-      <MainLists theme={theme}/>
+      <Nav appName='lists' theme={theme} />
+      <SidebarLists appName='lists' theme={theme} />
+      <MainLists appName='lists' theme={theme}/>
       </div>
     </>
   )
