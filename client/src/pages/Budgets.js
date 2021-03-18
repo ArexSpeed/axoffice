@@ -10,7 +10,7 @@ const Budgets = () => {
   const [{theme}] = useContext(GlobalContext)
   return (
     <>
-    <Head title='AX Office Lists' />
+    <Head title='AX Office Budgets' />
     <div className={`container ${theme}`}>
       <Nav appName='budgets' theme={theme} />
       <SidebarBudgets appName='budgets' theme={theme} />

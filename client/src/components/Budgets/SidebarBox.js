@@ -13,6 +13,8 @@ const SidebarBox = ({id,name,users, theme}) => {
       ))
     }
   }, [id])
+
+  console.log(items, 'items budget')
   return (
     <>
     <Link to={`/budgets/${id}`} className={`sidebar__box ${theme}`}>

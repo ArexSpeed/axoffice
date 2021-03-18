@@ -1,0 +1,77 @@
+@import 'Var';
+.mainBudget__summary{
+  &-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    margin: 20px auto;
+  }
+  &-box{
+    width: 150px;
+    height: 80px;
+    border: none;
+    border-radius: 10px;
+    
+    &.income{
+      background: $background-green;
+    }
+    &.expense{
+      background: $background-red;
+    }
+    &-title{
+      font-size: 18px;
+      text-align: right;
+      color: rgba(0,0,0,.5);
+    }
+    &-number{
+      font-size: 40px;
+      margin-left: 20px;
+      color: $color-green;
+      color: rgba(0,0,0,.5);
+      -webkit-text-stroke: 1px black; /* width and color */
+      //text-shadow: 10px 10px 0 rgba(0,0,0,.5);
+    }
+    &-mini{
+      @include center;
+      width: 50px;
+      height: 30px;
+      border: none;
+      &.income{
+        background: $background-green;
+        border-radius: 5px 0 0 5px;
+      }
+      &.expense{
+        background: $background-red;
+        border-radius: 0 5px 5px 0;
+      }
+      &-number{
+        font-size: 14px;
+        color: #111111;
+      }
+    }
+  }
+  &-center{
+    min-width: 150px;
+    min-height: 80px;
+    @include center;
+    font-size: 40px;
+    border-radius: 10px;
+    &.income{
+      color: $color-green;
+      border: 2px solid $color-green;
+      box-shadow: 0 0 10px $color-green;
+    }
+  }
+  &-categories{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin: 15px;
+    font-size: 20px;
+    justify-content: space-between;
+    align-items: center;
+    @include theme-color;
+  }
+}

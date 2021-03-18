@@ -40,6 +40,11 @@ a{
     transition: all 0.3s ease-in;
     @include bg-app-shadow;
   }
+  &.button-small{
+    width: 25px;
+    min-height: 25px;
+    border-radius: 5px;
+  }
 }
 .button-icon-second{
   margin: 10px 0;

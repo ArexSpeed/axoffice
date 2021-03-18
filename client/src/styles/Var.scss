@@ -14,6 +14,10 @@ $bg-calendars-second: #f0e585;
 $font-family: 'Poppins', sans-serif;
 $bg-box: rgba(255,255,255,.75);
 $bg-box-dark: rgba(0,0,0,.75);
+$color-red: #f44336;
+$color-green: #7be495;
+$background-green: linear-gradient(45deg, #7be495, #209e3f 50%);
+$background-red: linear-gradient(45deg, #fa5c51, #f44336 50%);
 @mixin center{
   display: flex;
   flex-direction: column;
