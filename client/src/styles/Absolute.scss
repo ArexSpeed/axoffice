@@ -1,9 +1,9 @@
 @import "Var";
 .formBox{
   &__container{
-    position: relative;
-    z-index: 50;
-    width: 350px;
+     position: relative;
+     z-index: 50;
+     width: 350px;
     @include theme-color;
     @media screen and (max-width: 540px){
       width: 300px;

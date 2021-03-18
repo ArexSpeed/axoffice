@@ -20,6 +20,7 @@ import AddTask from './AddTask';
 import TaskInit from './TaskInit';
 import TaskProgress from './TaskProgress';
 import TaskFinished from './TaskFinished';
+import EditTask from './EditTask';
 
 
 const MainProjects = ({appName,theme}) => {
@@ -32,6 +33,8 @@ const MainProjects = ({appName,theme}) => {
   const [newItemName, setNewItemName] = useState('')
   const [deleteBox, setDeleteBox] = useState(false)
   const [addItemBox, setAddItemBox] = useState(false)
+  const [editItemBox, setEditItemBox] = useState(false)
+  const [editData, setEditData] = useState({})
   const [addUserBox, setAddUserBox] = useState(false)
   const [groupBox, setGroupBox] = useState(false)
   const [leaveGroupBox, setLeaveGroupBox] = useState(false)
@@ -160,12 +163,15 @@ const MainProjects = ({appName,theme}) => {
             {addItemBox && 
               <AddTask appName={appName} theme={theme} id={id} users={projectDetail.users} setItems={setItems} setAddItemBox={setAddItemBox}/>
             }
-              {
-                id && items.filter(item => item.stage === 'init')
-                          .map(item => (
-                            <TaskInit docId={id} taskId={item.id} title={item.title} desc={item.desc} date={item.date} users={item.users} stage={item.stage} theme={theme} setItems={setItems} />
-                          ))
-              }
+            {editItemBox && 
+              <EditTask appName={appName} theme={theme} id={id} editData={editData} setItems={setItems} setEditItemBox={setEditItemBox}/>
+            }
+            {
+              id && items.filter(item => item.stage === 'init')
+                        .map(item => (
+                          <TaskInit docId={id} taskId={item.id} title={item.title} desc={item.desc} date={item.date} users={item.users} stage={item.stage} theme={theme} setItems={setItems} setEditItemBox={setEditItemBox} setEditData={setEditData} />
+                        ))
+            }
             </div>
           </article>
         </div>
