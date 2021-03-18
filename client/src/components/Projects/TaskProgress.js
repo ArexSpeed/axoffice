@@ -14,7 +14,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import EventIcon from '@material-ui/icons/Event';
 import PersonIcon from '@material-ui/icons/Person';
 
-const TaskProgress = ({theme, docId, taskId, title, desc, date, users, stage, setItems}) => {
+const TaskProgress = ({theme, docId, taskId, title, desc, date, users, stage, setItems,setEditItemBox, setEditData}) => {
   const [{userInfo}] = useContext(GlobalContext)
   const [userBox, setUserBox] = useState(false)
   useEffect(() => {
@@ -28,6 +28,18 @@ const TaskProgress = ({theme, docId, taskId, title, desc, date, users, stage, se
       stage: 'finish'
     })
     setItems([])
+  }
+  const editTask = () => {
+    setEditData({
+      docId,
+      taskId,
+      title,
+      desc,
+      date,
+      users,
+      stage,
+    })
+    setEditItemBox(true)
   }
   const deleteTask = () => {
     db.collection('projects').doc(docId).collection('items').doc(taskId).delete()
@@ -70,7 +82,10 @@ const TaskProgress = ({theme, docId, taskId, title, desc, date, users, stage, se
             style={{fontSize: '18px'}}
             onClick={changeStage}
           />
-          <EditIcon style={{fontSize: '18px'}}/>
+          <EditIcon 
+            style={{fontSize: '18px'}}
+            onClick={editTask}  
+          />
           <DeleteIcon 
             style={{fontSize: '18px'}}
             onClick={deleteTask}

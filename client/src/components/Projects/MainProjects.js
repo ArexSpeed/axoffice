@@ -34,6 +34,7 @@ const MainProjects = ({appName,theme}) => {
   const [deleteBox, setDeleteBox] = useState(false)
   const [addItemBox, setAddItemBox] = useState(false)
   const [editItemBox, setEditItemBox] = useState(false)
+  const [editItemBoxProgress, setEditItemBoxProgress] = useState(false)
   const [editData, setEditData] = useState({})
   const [addUserBox, setAddUserBox] = useState(false)
   const [groupBox, setGroupBox] = useState(false)
@@ -164,7 +165,7 @@ const MainProjects = ({appName,theme}) => {
               <AddTask appName={appName} theme={theme} id={id} users={projectDetail.users} setItems={setItems} setAddItemBox={setAddItemBox}/>
             }
             {editItemBox && 
-              <EditTask appName={appName} theme={theme} id={id} editData={editData} setItems={setItems} setEditItemBox={setEditItemBox}/>
+              <EditTask appName={appName} theme={theme} id={id} users={projectDetail.users} editData={editData} setItems={setItems} setEditItemBox={setEditItemBox}/>
             }
             {
               id && items.filter(item => item.stage === 'init')
@@ -181,10 +182,13 @@ const MainProjects = ({appName,theme}) => {
           <article className={`main__section-box ${theme}`}>
             <div className="main__section-items">
             <button className={`button-icon ${appName}`} onClick={() => setAddItemBox(true)}><TrendingUpIcon /></button>
+            {editItemBoxProgress && 
+              <EditTask appName={appName} theme={theme} id={id} users={projectDetail.users} editData={editData} setItems={setItems} setEditItemBox={setEditItemBoxProgress}/>
+            }
             {
                 id && items.filter(item => item.stage === 'progress')
                           .map(item => (
-                            <TaskProgress docId={id} taskId={item.id} title={item.title} desc={item.desc} date={item.date} users={item.users} stage={item.stage} theme={theme} setItems={setItems} />
+                            <TaskProgress docId={id} taskId={item.id} title={item.title} desc={item.desc} date={item.date} users={item.users} stage={item.stage} theme={theme} setItems={setItems} setEditItemBox={setEditItemBoxProgress} setEditData={setEditData} />
                           ))
               }
             

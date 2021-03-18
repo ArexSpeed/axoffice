@@ -4,17 +4,30 @@ import db from "../../firebase";
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import CancelIcon from '@material-ui/icons/Cancel';
 
-const EditTask = ({appName,theme,id, editData, setItems, setEditItemBox}) => {
+const EditTask = ({appName,theme,id,users, editData, setItems, setEditItemBox}) => {
   const taskId = editData.taskId
   const [editTitle, setEditTitle] = useState(editData.title)
   const [editDesc, setEditDesc] = useState(editData.desc)
   const [editDate, setEditDate] = useState(editData.date)
+  const [editUsers, setEditUsers] = useState(editData.users)
+  const [usersInTask, setUsersInTask] = useState([])
  
 
   // const deleteUserFromTask = (user) => {
   //   const deleting = usersInTask.filter(usr => usr.id !== user.id)
   //   setUsersInTask(deleting)
   // }
+
+  // const showUsersInTask = (  
+  //   editUsers.map((user, i) => (
+  //     <>
+  //     <span key={i}>
+  //       <input type="checkbox" id={user.name} className="formBox__addUsers-input" checked onChange={(e) => e.target.checked ? setUsersInTask(prev => [...prev, user]) : deleteUserFromTask(user)} />
+  //       <label key={i} htmlFor={user.name} className={`formBox__addUsers-label ${appName} ${theme}`}><span>{user.name}</span></label> 
+  //       </span>
+  //     </>
+  //   )) 
+  // )
 
   // const showUsersToAdd = (  
   //   users.map((user, i) => (
@@ -71,7 +84,8 @@ const EditTask = ({appName,theme,id, editData, setItems, setEditItemBox}) => {
                      />
                 <label htmlFor="users" className="formBox__label">Users</label>
                 <div className="formBox__addUsers">
-                  {/* {showUsersToAdd} */}
+                  {/* {showUsersInTask}
+                  {showUsersToAdd} */}
                 </div>
                 <div className="formBox__buttons">
                   <button className={`button-icon ${appName}`}>
