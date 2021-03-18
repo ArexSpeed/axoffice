@@ -32,15 +32,15 @@ const MainOffice = () => {
         </div>
         <div>
         <li className="office-item budgets">
-          <Link to="/budget" className="office-link">
+          <Link to="/budgets" className="office-link">
             <AttachMoneyIcon />
-            <span>Budget</span>
+            <span>Budgets</span>
           </Link>
         </li>
         <li className="office-item calendars">
-          <Link to="/calendar" className="office-link">
+          <Link to="/calendars" className="office-link">
             <CalendarTodayIcon />
-            <span>Calendar</span>
+            <span>Calendars</span>
           </Link>
         </li>
         </div>

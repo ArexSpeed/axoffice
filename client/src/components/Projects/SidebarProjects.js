@@ -6,7 +6,7 @@ import {Link, useHistory} from 'react-router-dom'
 import AddIcon from '@material-ui/icons/Add';
 import SidebarBox from './SidebarBox';
 
-const SidebarProjects = ({theme}) => {
+const SidebarProjects = ({appName, theme}) => {
   const [{userInfo}] = useContext(GlobalContext)
   const [projects, setProjects] = useState([])
   const [userProjects, setUserProjects] = useState([])
@@ -53,7 +53,7 @@ const SidebarProjects = ({theme}) => {
     <>
     {userProjects.length >=1 ?
     (
-      <section className={`sidebar projects ${theme}`}>
+      <section className={`sidebar ${appName} ${theme}`}>
         <header className="sidebar__header">
           <h2 className="sidebar__title">
             My Projects
@@ -71,7 +71,7 @@ const SidebarProjects = ({theme}) => {
     )
     :
     (
-      <section className={`sidebar projects ${theme}`}>
+      <section className={`sidebar ${appName} ${theme}`}>
         <header className="sidebar__header">
           <h2 className="sidebar__title">
             My Projects

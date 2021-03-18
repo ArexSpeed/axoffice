@@ -52,13 +52,13 @@ const Nav = ({appName}) => {
             <AssignmentIcon />
           </Link>
         </li>
-        <li className={`${appName === 'budget' ? `nav-item active ${theme}` : `nav-item ${theme}`}`}>
-          <Link to="/budget" className="nav-link">
+        <li className={`${appName === 'budgets' ? `nav-item active ${theme}` : `nav-item ${theme}`}`}>
+          <Link to="/budgets" className="nav-link">
             <AttachMoneyIcon />
           </Link>
         </li>
-        <li className={`${appName === 'calendar' ? `nav-item active ${theme}` : `nav-item ${theme}`}`}>
-          <Link to="/calendar" className="nav-link">
+        <li className={`${appName === 'calendars' ? `nav-item active ${theme}` : `nav-item ${theme}`}`}>
+          <Link to="/calendars" className="nav-link">
             <CalendarTodayIcon />
           </Link>
         </li>

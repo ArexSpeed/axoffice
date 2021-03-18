@@ -6,16 +6,15 @@ import {Link, useHistory} from 'react-router-dom'
 import AddIcon from '@material-ui/icons/Add';
 import SidebarBox from './SidebarBox';
 
-const SidebarLists = ({appName,theme}) => {
+const SidebarBudgets = ({appName,theme}) => {
   const [{userInfo}] = useContext(GlobalContext)
-  const [lists, setLists] = useState([])
-  const [userLists, setUserLists] = useState([])
-  const history = useHistory();
+  const [budgets, setBudgets] = useState([])
+  const [userBudgets, setUserBudgets] = useState([])
   
   useEffect(() => {
 
-   const unsubscribe = db.collection('lists').onSnapshot(snapshot => (
-      setLists(
+   const unsubscribe = db.collection('budgets').onSnapshot(snapshot => (
+      setBudgets(
         snapshot.docs.map(doc => ({
           id: doc.id, 
           name: doc.data().name,
@@ -30,18 +29,16 @@ const SidebarLists = ({appName,theme}) => {
   }, [])
 
   useEffect(() => {
-    setUserLists([])
-    lists.filter(list => 
-      list.users.find(name => name.name === userInfo.displayName) ? setUserLists(prev => [...prev,list]) : ''
+    setUserBudgets([])
+    budgets.filter(budget => 
+      budget.users.find(name => name.name === userInfo.displayName) ? setUserBudgets(prev => [...prev,budget]) : ''
     )
-   }, [lists])
+   }, [budgets])
 
+   const addBudget = () => {
 
-  const addList = () => {
-    const idRand = Math.round(Math.random()*10000);
-    db.collection("lists").add({
-        name: 'New List',
-        id: idRand,
+    db.collection("budgets").add({
+        name: 'New Budget',
         users: [{
           id: userInfo.uid,
           name: userInfo.displayName
@@ -51,20 +48,20 @@ const SidebarLists = ({appName,theme}) => {
     });
   }
 
-  return (
+   return (
     <>
-    {userLists.length >=1 ?
+    {userBudgets.length >=1 ?
     (
       <section className={`sidebar ${appName} ${theme}`}>
         <header className="sidebar__header">
           <h2 className="sidebar__title">
-            My Lists
+            My Budgets
           </h2>
-          <button className={`sidebar__add ${theme}`} onClick={addList}><AddIcon /></button>
+          <button className={`sidebar__add ${theme}`} onClick={addBudget}><AddIcon /></button>
         </header>
         
         <section className="sidebar__boxes">
-          {userLists.sort((a,b) => b.timestamp - a.timestamp)
+          {userBudgets.sort((a,b) => b.timestamp - a.timestamp)
           .map(list => (
             <SidebarBox key={list.id} id={list.id} name={list.name} users={list.users} theme={theme} />
             ))}
@@ -76,14 +73,14 @@ const SidebarLists = ({appName,theme}) => {
       <section className={`sidebar ${appName} ${theme}`}>
         <header className="sidebar__header">
           <h2 className="sidebar__title">
-            My Lists
+            My Budgets
           </h2>
-          <button className={`sidebar__add ${theme}`} onClick={addList}><AddIcon /></button>
+          <button className={`sidebar__add ${theme}`} onClick={addBudget}><AddIcon /></button>
         </header>
         
         <section className="sidebar__boxes">
          
-        <p>Add your first list</p>
+        <p>Add your first budget</p>
         </section>
       </section>
     )  
@@ -93,4 +90,4 @@ const SidebarLists = ({appName,theme}) => {
   )
 }
 
-export default SidebarLists
+export default SidebarBudgets
