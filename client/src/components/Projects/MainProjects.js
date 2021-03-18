@@ -1,5 +1,6 @@
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useContext} from 'react'
 import {useParams, useHistory} from 'react-router-dom'
+import {GlobalContext} from '../../GlobalProvider';
 import firebase from 'firebase';
 import db from "../../firebase";
 
@@ -21,9 +22,11 @@ import TaskInit from './TaskInit';
 import TaskProgress from './TaskProgress';
 import TaskFinished from './TaskFinished';
 import EditTask from './EditTask';
+import TaskEmpty from './TaskEmpty';
 
 
 const MainProjects = ({appName,theme}) => {
+  const [{userInfo}] = useContext(GlobalContext)
   const {id} = useParams();
   const history = useHistory();
   const [myProjects, setMyProjects] = useState([])
@@ -226,8 +229,8 @@ const MainProjects = ({appName,theme}) => {
         <article className={`main__section-box ${theme}`}>
           <div className="main__section-items">
           <button className={`button-icon ${appName}`}><AddIcon /></button>
-            <TaskInit title="Task 1" desc="Add your task and add users and colaborate" date="10.03.2020" users={[{name: 'Joe Doe'}]} theme={theme}/>
-            <TaskInit title="Tell your friends" desc="Don't forget tells friend about this app" date="10.03.2020" users={[{name: 'Joe Doe'}]} theme={theme} />
+            <TaskEmpty title="My task" desc="Your tasks in group are always highlight, you can easly find your task in group project" date="10.03.2020" users={[{name: userInfo.displayName,}]} theme={theme}/>
+            <TaskEmpty title="Tell your friends" desc="Don't forget tells friend about this app" date="10.03.2020" users={[{name: 'Joe Doe'}]} theme={theme} />
             
           </div>
         </article>
