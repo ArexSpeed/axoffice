@@ -91,6 +91,22 @@ $background-red: linear-gradient(45deg, #fa5c51, #f44336 50%);
     background: #333333;
   }
 }
+@mixin theme-bg-filter{
+  &.dark{
+    background: linear-gradient(45deg, rgba(0,0,0,0.75) 0%, rgba(18,18,18,.75) 33%, rgba(18,18,18,.75) 68%, rgba(0,0,0,.75) 100%);
+    backdrop-filter: blur( 3px );
+    -webkit-backdrop-filter: blur( 3px );
+    box-shadow: inset -2px 0px 2px 0 rgba(0,0,0, 0.2),
+    2px 0px 2px 0 rgba(0,0,0, 0.2);
+  }
+  &.light{
+    background: #ffffff;
+    backdrop-filter: blur( 3px );
+    -webkit-backdrop-filter: blur( 3px );
+    box-shadow: inset -2px 0px 2px 0 rgba(255,255,255, 0.8),
+    2px 0px 2px 0 rgba(255,255,255, 0.8);
+  }
+}
 @mixin theme-color{
   &.light{
     color: #000000;
