@@ -9,6 +9,7 @@ import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import DoneIcon from '@material-ui/icons/Done';
 import ReplayIcon from '@material-ui/icons/Replay';
 import Header from '../Header/Header';
+import HeaderEmpty from '../Header/HeaderEmpty';
 
 
 const MainBudgets = ({appName, theme}) => {
@@ -70,9 +71,8 @@ const MainBudgets = ({appName, theme}) => {
       :
       (
         <>
-        <header className="main__header">
-          <h1 className={`main__title ${appName} ${theme}`}>AX Budgets</h1> <button className={`main__title-button button-icon ${appName}`}><EditIcon /></button> <button className={`main__title-button button-icon ${appName}`}><PersonAddIcon /></button>
-        </header>
+        <HeaderEmpty appName={appName} theme={theme} title='AX Budgets'/>
+        
         <section className="main__section">
           <div className="main__section-container">
             <h3 className={`main__section-title ${theme}`}>Summary</h3>
