@@ -24,6 +24,7 @@ const MainBudgets = ({appName, theme}) => {
   const [items, setItems] = useState([])
   const [newItemName, setNewItemName] = useState('')
   const [addItemBox, setAddItemBox] = useState(false)
+  const [addExpenseBox, setAddExpenseBox] = useState(false)
   const [editItemBox, setEditItemBox] = useState(false)
   const [editItemBoxProgress, setEditItemBoxProgress] = useState(false)
   const [editData, setEditData] = useState({})
@@ -95,7 +96,7 @@ const MainBudgets = ({appName, theme}) => {
                 </div>
 
                 <div className="mainBudget__summary-categories">
-                <p className={`mainBudget__summary-categories-title ${theme}`}>Categories <button className={`button-icon button-small ${appName}`}><AddIcon /></button></p> 
+                <p className={`mainBudget__summary-categories-title ${theme}`}>Categories:</p> 
                   <div className={`main__section-item ${theme}`}>
                     <span className={`main__section-item-title ${theme}`} >Category 1</span> 
                     <div style={{display: 'flex', flexDirection:'row'}}>
@@ -138,6 +139,7 @@ const MainBudgets = ({appName, theme}) => {
                           price={item.price} 
                           date={item.date} 
                           category={item.category} 
+                          stage={item.stage}
                           theme={theme} 
                           setItems={setItems} 
                           setEditItemBox={setEditItemBox} 
@@ -153,7 +155,29 @@ const MainBudgets = ({appName, theme}) => {
           <h3 className={`main__section-title ${theme}`}>Expense</h3>
           <article className={`main__section-box ${theme}`}>
             <div className="main__section-items">
-              <button className={`button-icon red`} onClick={() => setAddItemBox(!addItemBox)}><TrendingDownIcon /></button>
+              <button className={`button-icon red`} onClick={() => setAddExpenseBox(!addExpenseBox)}><TrendingDownIcon /></button>
+              {addExpenseBox && 
+              <AddIncome appName={appName} theme={theme} id={id} stage="expense" setItems={setItems} setAddItemBox={setAddExpenseBox}/>
+              }
+              {
+              id && 
+              items.filter(item => item.stage === 'expense')
+                   .map(item => (
+                        <IncomeItem 
+                          docId={id} 
+                          taskId={item.id} 
+                          name={item.name} 
+                          price={item.price} 
+                          date={item.date} 
+                          category={item.category} 
+                          stage={item.stage}
+                          theme={theme} 
+                          setItems={setItems} 
+                          setEditItemBox={setEditItemBox} 
+                          setEditData={setEditData} 
+                        />
+                        ))
+            }
             {/* {addItemBox && 
               <AddTask appName={appName} theme={theme} id={id} users={projectDetail.users} setItems={setItems} setAddItemBox={setAddItemBox}/>
             }

@@ -1,5 +1,7 @@
 @import 'Var';
-.mainBudget__summary{
+.mainBudget{
+
+&__summary{
   &-header{
     display: flex;
     flex-direction: row;
@@ -87,4 +89,60 @@
       @include theme-color;
     }
   }
+}
+&__item{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 5px;
+  width: 90%;
+  height: auto;
+  border-radius: 10px;
+  @include theme-bg-filter;
+  &-up{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &-down{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &-title{
+    font-size: 20px;
+    font-weight: 300;
+    margin: 0 10px;
+    padding: 5px 0;
+    @include theme-color;
+    @media screen and (max-width: 540px){
+      font-size: 16px;
+    }
+    &.done{
+      font-style: italic;
+    }
+    &.input{
+      border: none;
+      background: transparent;
+      font-family: $font-family;
+    }
+  }
+  &.dark > .MuiSvgIcon-root,
+  &.dark > div .MuiSvgIcon-root{
+    color: #ffffff;
+    margin-right: 5px;
+  }
+  &.light > .MuiSvgIcon-root,
+  &.light > div .MuiSvgIcon-root{
+    color: #000000;
+    margin-right: 5px;
+  }
+  &-subtitle{
+    font-size: 12px;
+    margin: 0 10px;
+    @include theme-color-second;
+  }
+}
 }

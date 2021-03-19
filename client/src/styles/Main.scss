@@ -107,6 +107,11 @@
         color: #000000;
         margin-right: 5px;
       }
+      &-subtitle{
+        font-size: 12px;
+        margin: 0 10px;
+        @include theme-color-second;
+      }
 
     }
     // Main Project accordion
