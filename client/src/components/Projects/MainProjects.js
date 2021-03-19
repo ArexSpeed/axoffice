@@ -4,9 +4,6 @@ import {GlobalContext} from '../../GlobalProvider';
 import firebase from 'firebase';
 import db from "../../firebase";
 
-import EditIcon from '@material-ui/icons/Edit';
-import PersonAddIcon from '@material-ui/icons/PersonAdd';
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import AddIcon from '@material-ui/icons/Add';
 import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 import DoneIcon from '@material-ui/icons/Done';
@@ -107,7 +104,7 @@ const MainProjects = ({appName,theme}) => {
           <h3 className={`main__section-title ${theme}`}>In Progress</h3>
           <article className={`main__section-box ${theme}`}>
             <div className="main__section-items">
-            <button className={`button-icon ${appName}`} onClick={() => setAddItemBox(true)}><TrendingUpIcon /></button>
+            <button className={`button-icon ${appName}`}><TrendingUpIcon /></button>
             {editItemBoxProgress && 
               <EditTask appName={appName} theme={theme} id={id} users={projectDetail.users} editData={editData} setItems={setItems} setEditItemBox={setEditItemBoxProgress}/>
             }
@@ -126,7 +123,7 @@ const MainProjects = ({appName,theme}) => {
           <h3 className={`main__section-title ${theme}`}>Finished</h3>
           <article className={`main__section-box ${theme}`}>
             <div className="main__section-items">
-            <button className={`button-icon ${appName}`} onClick={() => setAddItemBox(true)}><DoneIcon /></button>
+            <button className={`button-icon ${appName}`}><DoneIcon /></button>
             {
                 id && items.filter(item => item.stage === 'finish')
                           .map(item => (

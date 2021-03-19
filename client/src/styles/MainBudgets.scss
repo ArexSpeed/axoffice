@@ -15,10 +15,10 @@
     border-radius: 10px;
     
     &.income{
-      background: $background-green;
+      background: $bg-green;
     }
     &.expense{
-      background: $background-red;
+      background: $bg-red;
     }
     &-title{
       font-size: 18px;
@@ -39,11 +39,11 @@
       height: 30px;
       border: none;
       &.income{
-        background: $background-green;
+        background: $bg-green;
         border-radius: 5px 0 0 5px;
       }
       &.expense{
-        background: $background-red;
+        background: $bg-red;
         border-radius: 0 5px 5px 0;
       }
       &-number{
@@ -71,12 +71,20 @@
   }
   &-categories{
     display: flex;
-    flex-direction: row;
-    width: 90%;
-    margin: 15px;
-    font-size: 20px;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
-    @include theme-color;
+    width: 100%;
+    height: 100%;
+    &-title{
+      display: flex;
+      flex-direction: row;
+      width: 90%;
+      margin: 15px;
+      font-size: 20px;
+      justify-content: space-between;
+      align-items: center;
+      @include theme-color;
+    }
   }
 }

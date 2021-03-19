@@ -58,7 +58,7 @@ const EditTask = ({appName,theme,id,users, editData, setItems, setEditItemBox}) 
     <>
       <div className={`formBox__container ${theme}`}>
         <div className={`formBox__form ${theme}`}>
-            <label htmlForm="title" className="formBox__label">Title</label>
+            <label htmlFor="title" className="formBox__label">Title</label>
              <input 
                type="text"
                className={`formBox__input ${theme}`} 

@@ -14,15 +14,15 @@ import LeaveGroupBox from './LeaveGroupBox';
 const Header = ({appName, theme, collectionDetail, setCollectionDetail}) => {
   const {id} = useParams()
   const history = useHistory();
-  const [editBudgetName, setEditBudgetName] = useState(false)
+  const [editCollectionName, setEditCollectionName] = useState(false)
   const [deleteBox, setDeleteBox] = useState(false)
   const [addUserBox, setAddUserBox] = useState(false)
   const [groupBox, setGroupBox] = useState(false)
   const [leaveGroupBox, setLeaveGroupBox] = useState(false)
   const [moreIconBox, setMoreIconBox] = useState(false)
 
-  const updateBudgetName = () => {
-    setEditBudgetName(false)
+  const updateCollectionName = () => {
+    setEditCollectionName(false)
     db.collection(appName).doc(id).update({name: collectionDetail.name})
   }
 
@@ -36,20 +36,20 @@ const Header = ({appName, theme, collectionDetail, setCollectionDetail}) => {
     <>
     <header className="header">
         {
-         !editBudgetName ?
+         !editCollectionName ?
          (
          <>
          <h1 className={`header__title ${appName} ${theme}`}>{collectionDetail.name}</h1> 
-         <button className={`header__button button-icon ${appName}`} onClick={() => setEditBudgetName(true)}><EditIcon /></button> 
+         <button className={`header__button button-icon ${appName}`} onClick={() => setEditCollectionName(true)}><EditIcon /></button> 
          </>
          )
          :
          (
           <>
-          <form onSubmit={updateBudgetName}>
+          <form onSubmit={updateCollectionName}>
           <input className={`header__input ${appName} ${theme}`} value={collectionDetail.name} onChange={(e) => setCollectionDetail({...collectionDetail, name: e.target.value})} />
           </form>
-          <button className={`header__button button-icon ${appName}`} onClick={updateBudgetName}><DoneIcon /></button> 
+          <button className={`header__button button-icon ${appName}`} onClick={updateCollectionName}><DoneIcon /></button> 
           </>
          )
        }
