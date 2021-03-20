@@ -14,6 +14,7 @@ import Header from '../Header/Header';
 import HeaderEmpty from '../Header/HeaderEmpty';
 import AddIncome from './AddIncome';
 import IncomeItem from './IncomeItem';
+import Categories from './Categories';
 
 
 const MainBudgets = ({appName, theme}) => {
@@ -21,6 +22,7 @@ const MainBudgets = ({appName, theme}) => {
   const history = useHistory();
   const [myBudgets, setMyBudgets] = useState([])
   const [budgetDetail, setBudgetDetail] = useState([])
+  const [categories, setCategories] = useState([])
   const [incomeSum, setIncomeSum] = useState(0)
   const [expenseSum, setExpenseSum] = useState(0)
   const [items, setItems] = useState([])
@@ -44,7 +46,8 @@ const MainBudgets = ({appName, theme}) => {
         setMyBudgets([{
           id: doc.id,
           name: doc.data().name,
-          users: doc.data().users
+          users: doc.data().users,
+          categories: doc.data().categories
         }]
         )
         : '')
@@ -71,6 +74,8 @@ const MainBudgets = ({appName, theme}) => {
 
   useEffect(() => {
     myBudgets.map(budget => setBudgetDetail(budget))
+    myBudgets.map(budget => setCategories(budget.categories))
+
   }, [myBudgets])
 
   useEffect(() => {
@@ -124,20 +129,11 @@ const MainBudgets = ({appName, theme}) => {
 
                 <div className="mainBudget__summary-categories">
                 <p className={`mainBudget__summary-categories-title ${theme}`}>Categories:</p> 
-                  <div className={`main__section-item ${theme}`}>
-                    <span className={`main__section-item-title ${theme}`} >Category 1</span> 
-                    <div style={{display: 'flex', flexDirection:'row'}}>
-                    <div className="mainBudget__summary-box-mini income">
-                    <span className="mainBudget__summary-box-number-mini">200</span>
-                    </div>
-                    <div className="mainBudget__summary-box-mini expense">
-                    <span className="mainBudget__summary-box-number-mini">200</span>
-                    </div>
-                    </div>
-                    <div>
-                    <EditIcon />
-                    </div>
-                  </div>
+                {categories && (
+                  categories.map(category => <Categories theme={theme} categoryName={category} items={items} />)
+                  
+                )}
+
                 </div>
 
               </div>

@@ -43,6 +43,7 @@ const SidebarBudgets = ({appName,theme}) => {
           id: userInfo.uid,
           name: userInfo.displayName
         }],
+        categories: [],
         timestamp: new Date(),
         timestampf: firebase.firestore.FieldValue.serverTimestamp()
     });

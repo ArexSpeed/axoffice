@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import db from "../../firebase";
-
+import firebase from 'firebase';
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import CancelIcon from '@material-ui/icons/Cancel';
 
@@ -21,6 +21,12 @@ const AddIncome = ({appName,theme,id, stage, setAddItemBox, setItems}) => {
       date,
       timestamp: new Date()
   })
+
+  if(category){
+    db.collection("budgets").doc(id).update({
+      categories: firebase.firestore.FieldValue.arrayUnion(selectedCategory)
+    })
+  }
     setItemName('')
     setPrice('')
     setCategory('')
