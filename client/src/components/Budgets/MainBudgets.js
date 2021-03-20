@@ -53,7 +53,7 @@ const MainBudgets = ({appName, theme}) => {
         : '')
       ))
 
-      await db.collection('budgets').doc(id).collection('items').orderBy("name", "asc").onSnapshot(snapshot => (
+      await db.collection('budgets').doc(id).collection('items').orderBy("date", "desc").onSnapshot(snapshot => (
         snapshot.docs.map(doc => 
           setItems(prev => 
             [...prev,
@@ -146,7 +146,7 @@ const MainBudgets = ({appName, theme}) => {
             <div className="main__section-items">
               <button className={`button-icon green`} onClick={() => setAddItemBox(!addItemBox)}><TrendingUpIcon /></button>
             {addItemBox && 
-              <AddIncome appName={appName} theme={theme} id={id} stage="income" setItems={setItems} setAddItemBox={setAddItemBox}/>
+              <AddIncome appName={appName} theme={theme} id={id} stage="income" categories={categories} setItems={setItems} setAddItemBox={setAddItemBox}/>
             }
             {/* {editItemBox && 
               <EditTask appName={appName} theme={theme} id={id} users={projectDetail.users} editData={editData} setItems={setItems} setEditItemBox={setEditItemBox}/>
@@ -180,7 +180,7 @@ const MainBudgets = ({appName, theme}) => {
             <div className="main__section-items">
               <button className={`button-icon red`} onClick={() => setAddExpenseBox(!addExpenseBox)}><TrendingDownIcon /></button>
               {addExpenseBox && 
-              <AddIncome appName={appName} theme={theme} id={id} stage="expense" setItems={setItems} setAddItemBox={setAddExpenseBox}/>
+              <AddIncome appName={appName} theme={theme} id={id} stage="expense" categories={categories} setItems={setItems} setAddItemBox={setAddExpenseBox}/>
               }
               {
               id && 

@@ -4,14 +4,25 @@ import firebase from 'firebase';
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import CancelIcon from '@material-ui/icons/Cancel';
 
-const AddIncome = ({appName,theme,id, stage, setAddItemBox, setItems}) => {
+const AddIncome = ({appName,theme,id, stage, categories, setAddItemBox, setItems}) => {
   const [itemName, setItemName] = useState('')
   const [price, setPrice] = useState('')
   const [category, setCategory] = useState('')
   const [date, setDate] = useState('')
 
   const selectedCategory = category;
-    
+  
+  const showCategories = (  
+    categories.map((category, i) => (
+      <>
+      <div key={i} style={{marginTop: '10px'}}>
+        <input type="radio" name="category" id={category} className="formBox__addUsers-input" onClick={() => setCategory(category)} />
+        <label key={i} htmlFor={category} className={`formBox__addUsers-label ${appName} ${theme}`}><span>{category}</span></label> 
+        </div>
+      </>
+    )) 
+  )
+
   const addItem = () => {
     db.collection("budgets").doc(id).collection('items').add({
       name: itemName,
@@ -62,7 +73,7 @@ const AddIncome = ({appName,theme,id, stage, setAddItemBox, setItems}) => {
                   className={`formBox__input date ${theme}`} 
                   id="date" 
                   name="trip-start"
-                    value={date}
+                  value={date}
                   onChange={(e) => setDate(e.target.value)}
                      />
             <label htmlFor="category" className="formBox__label">Category</label>
@@ -74,7 +85,7 @@ const AddIncome = ({appName,theme,id, stage, setAddItemBox, setItems}) => {
                onChange={(e) => setCategory(e.target.value)}
                /> 
                 <div className="formBox__addUsers">
-                  {/* {showUsersToAdd} */}
+                  {showCategories}
                 </div>
                 <div className="formBox__buttons">
                   <button className={`button-icon ${appName}`} onClick={addItem}>
