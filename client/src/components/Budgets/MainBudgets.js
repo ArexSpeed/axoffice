@@ -15,6 +15,7 @@ import HeaderEmpty from '../Header/HeaderEmpty';
 import AddIncome from './AddIncome';
 import IncomeItem from './IncomeItem';
 import Categories from './Categories';
+import EditItem from './EditItem';
 
 
 const MainBudgets = ({appName, theme}) => {
@@ -30,7 +31,7 @@ const MainBudgets = ({appName, theme}) => {
   const [addItemBox, setAddItemBox] = useState(false)
   const [addExpenseBox, setAddExpenseBox] = useState(false)
   const [editItemBox, setEditItemBox] = useState(false)
-  const [editItemBoxProgress, setEditItemBoxProgress] = useState(false)
+  const [editExpenseBox, setEditExpenseBox] = useState(false)
   const [editData, setEditData] = useState({})
 
 
@@ -148,6 +149,9 @@ const MainBudgets = ({appName, theme}) => {
             {addItemBox && 
               <AddIncome appName={appName} theme={theme} id={id} stage="income" categories={categories} setItems={setItems} setAddItemBox={setAddItemBox}/>
             }
+            {editItemBox && 
+              <EditItem appName={appName} theme={theme} id={id} editData={editData} setItems={setItems} setEditItemBox={setEditItemBox}/>
+            }
             {/* {editItemBox && 
               <EditTask appName={appName} theme={theme} id={id} users={projectDetail.users} editData={editData} setItems={setItems} setEditItemBox={setEditItemBox}/>
             } */}
@@ -157,7 +161,7 @@ const MainBudgets = ({appName, theme}) => {
                    .map(item => (
                         <IncomeItem 
                           docId={id} 
-                          taskId={item.id} 
+                          itemId={item.id} 
                           name={item.name} 
                           price={item.price} 
                           date={item.date} 
@@ -182,6 +186,9 @@ const MainBudgets = ({appName, theme}) => {
               {addExpenseBox && 
               <AddIncome appName={appName} theme={theme} id={id} stage="expense" categories={categories} setItems={setItems} setAddItemBox={setAddExpenseBox}/>
               }
+              {editExpenseBox && 
+              <EditItem appName={appName} theme={theme} id={id} editData={editData} setItems={setItems} setEditItemBox={setEditExpenseBox}/>
+              }
               {
               id && 
               items.filter(item => item.stage === 'expense')
@@ -196,7 +203,7 @@ const MainBudgets = ({appName, theme}) => {
                           stage={item.stage}
                           theme={theme} 
                           setItems={setItems} 
-                          setEditItemBox={setEditItemBox} 
+                          setEditItemBox={setEditExpenseBox} 
                           setEditData={setEditData} 
                         />
                         ))

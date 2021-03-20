@@ -109,9 +109,10 @@ const MainProjects = ({appName,theme}) => {
               <EditTask appName={appName} theme={theme} id={id} users={projectDetail.users} editData={editData} setItems={setItems} setEditItemBox={setEditItemBoxProgress}/>
             }
             {
-                id && items.filter(item => item.stage === 'progress')
-                          .map(item => (
-                            <TaskProgress docId={id} taskId={item.id} title={item.title} desc={item.desc} date={item.date} users={item.users} stage={item.stage} theme={theme} setItems={setItems} setEditItemBox={setEditItemBoxProgress} setEditData={setEditData} />
+                id && 
+                items.filter(item => item.stage === 'progress')
+                      .map(item => (
+                           <TaskProgress docId={id} taskId={item.id} title={item.title} desc={item.desc} date={item.date} users={item.users} stage={item.stage} theme={theme} setItems={setItems} setEditItemBox={setEditItemBoxProgress} setEditData={setEditData} />
                           ))
               }
             

@@ -9,8 +9,6 @@ const AddIncome = ({appName,theme,id, stage, categories, setAddItemBox, setItems
   const [price, setPrice] = useState('')
   const [category, setCategory] = useState('')
   const [date, setDate] = useState('')
-
-  const selectedCategory = category;
   
   const showCategories = (  
     categories.map((category, i) => (
@@ -28,14 +26,14 @@ const AddIncome = ({appName,theme,id, stage, categories, setAddItemBox, setItems
       name: itemName,
       price,
       stage,
-      category: selectedCategory,
+      category,
       date,
       timestamp: new Date()
   })
 
   if(category){
     db.collection("budgets").doc(id).update({
-      categories: firebase.firestore.FieldValue.arrayUnion(selectedCategory)
+      categories: firebase.firestore.FieldValue.arrayUnion(category)
     })
   }
     setItemName('')

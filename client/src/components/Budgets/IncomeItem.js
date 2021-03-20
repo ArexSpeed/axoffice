@@ -2,7 +2,20 @@ import React from 'react'
 import EditIcon from '@material-ui/icons/Edit';
 
 
-const IncomeItem = ({docId,taskId,name,price,date,category,stage,theme, setItems, setEditItemBox,setEditData}) => {
+const IncomeItem = ({docId,itemId,name,price,date,category,stage,theme, setItems, setEditItemBox,setEditData}) => {
+
+  const editItem = () => {
+    setEditData({
+      docId,
+      itemId,
+      name,
+      price,
+      date,
+      category,
+      stage,
+    })
+    setEditItemBox(true)
+  }
 
   return (
     <div className={`mainBudget__item ${theme}`}>
@@ -12,7 +25,7 @@ const IncomeItem = ({docId,taskId,name,price,date,category,stage,theme, setItems
           <div className={`mainBudget__summary-box-mini ${stage}`} style={{borderRadius: '5px'}}>
             <span className="mainBudget__summary-box-number-mini">{price}</span>
           </div>
-          <EditIcon />
+          <EditIcon onClick={editItem}/>
         </div>
       </div>
       <div className="mainBudget__item-down">
