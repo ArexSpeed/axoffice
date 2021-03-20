@@ -21,6 +21,8 @@ const MainBudgets = ({appName, theme}) => {
   const history = useHistory();
   const [myBudgets, setMyBudgets] = useState([])
   const [budgetDetail, setBudgetDetail] = useState([])
+  const [incomeSum, setIncomeSum] = useState(0)
+  const [expenseSum, setExpenseSum] = useState(0)
   const [items, setItems] = useState([])
   const [newItemName, setNewItemName] = useState('')
   const [addItemBox, setAddItemBox] = useState(false)
@@ -32,6 +34,8 @@ const MainBudgets = ({appName, theme}) => {
 
   useEffect(() => {
     setItems([])
+    setIncomeSum([])
+    setExpenseSum([])
     //filter list to find selected list by id
     async function fetchList(){
       await db.collection('budgets').onSnapshot(snapshot => (
@@ -63,9 +67,20 @@ const MainBudgets = ({appName, theme}) => {
         fetchList();
   }, [id])
 
+
+
   useEffect(() => {
-    myBudgets.map(project => setBudgetDetail(project))
+    myBudgets.map(budget => setBudgetDetail(budget))
   }, [myBudgets])
+
+  useEffect(() => {
+    setIncomeSum(0)
+    setExpenseSum(0)
+    items.filter(item => item.stage === 'income' &&
+    setIncomeSum(prev => prev + Number(item.price)) )
+    items.filter(item => item.stage === 'expense' &&
+    setExpenseSum(prev => Number(prev) + Number(item.price)) )
+  },[items])
 
 
   return (
@@ -82,18 +97,30 @@ const MainBudgets = ({appName, theme}) => {
               <div className="main__section-items">
                 <div className="mainBudget__summary-header">
                   <div className="mainBudget__summary-box income">
-                    <p className="mainBudget__summary-box-number income">200</p>
-                    <p className="mainBudget__summary-box-title income">Income</p>
+                    <p className="mainBudget__summary-box-number">{incomeSum}</p>
+                    <p className="mainBudget__summary-box-title">Income</p>
                   </div>
                   <div className="mainBudget__summary-box expense">
-                    <p className="mainBudget__summary-box-number income">200</p>
-                    <p className="mainBudget__summary-box-title income">Expense</p>
+                    <p className="mainBudget__summary-box-number">{expenseSum}</p>
+                    <p className="mainBudget__summary-box-title">Expense</p>
                   </div>
                 </div>
 
+                {incomeSum - expenseSum >= 0 
+                ?
+                (
                 <div className={`mainBudget__summary-center income ${theme}`}>
-                  +1300
+                  +{incomeSum - expenseSum}
                 </div>
+                )
+                :
+                (
+                <div className={`mainBudget__summary-center expense ${theme}`}>
+                  {incomeSum - expenseSum}
+                </div>
+                )
+                }
+                
 
                 <div className="mainBudget__summary-categories">
                 <p className={`mainBudget__summary-categories-title ${theme}`}>Categories:</p> 

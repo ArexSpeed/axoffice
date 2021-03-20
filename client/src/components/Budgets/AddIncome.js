@@ -71,8 +71,8 @@ const AddIncome = ({appName,theme,id, stage, setAddItemBox, setItems}) => {
                   {/* {showUsersToAdd} */}
                 </div>
                 <div className="formBox__buttons">
-                  <button className={`button-icon ${appName}`}>
-                  <SaveAltIcon onClick={addItem} />
+                  <button className={`button-icon ${appName}`} onClick={addItem}>
+                  <SaveAltIcon />
                   </button>
 
                   <button className={`button-icon-second ${appName}`} onClick={() => setAddItemBox(false)}>
