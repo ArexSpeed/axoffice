@@ -30,9 +30,9 @@ const MainBudgets = ({appName, theme}) => {
   const [newItemName, setNewItemName] = useState('')
   const [addItemBox, setAddItemBox] = useState(false)
   const [addExpenseBox, setAddExpenseBox] = useState(false)
-  const [editItemBox, setEditItemBox] = useState(false)
+  const [editIncomeBox, setEditIncomeBox] = useState(false)
   const [editExpenseBox, setEditExpenseBox] = useState(false)
-  const [editData, setEditData] = useState({})
+  const [editIncomeData, setEditIncomeData] = useState({})
   const [editExpenseData, setEditExpenseData] = useState({})
 
 
@@ -150,12 +150,10 @@ const MainBudgets = ({appName, theme}) => {
             {addItemBox && 
               <AddIncome appName={appName} theme={theme} id={id} stage="income" categories={categories} setItems={setItems} setAddItemBox={setAddItemBox}/>
             }
-            {editItemBox && 
-              <EditItem appName={appName} theme={theme} id={id} editData={editData} setItems={setItems} setEditItemBox={setEditItemBox}/>
+            {editIncomeBox && 
+              <EditItem appName={appName} theme={theme} id={id} editData={editIncomeData} setItems={setItems} setEditItemBox={setEditIncomeBox}/>
             }
-            {/* {editItemBox && 
-              <EditTask appName={appName} theme={theme} id={id} users={projectDetail.users} editData={editData} setItems={setItems} setEditItemBox={setEditItemBox}/>
-            } */}
+
             {
               id && 
               items.filter(item => item.stage === 'income')
@@ -170,8 +168,8 @@ const MainBudgets = ({appName, theme}) => {
                           stage={item.stage}
                           theme={theme} 
                           setItems={setItems} 
-                          setEditItemBox={setEditItemBox} 
-                          setEditData={setEditData} 
+                          setEditItemBox={setEditIncomeBox} 
+                          setEditData={setEditIncomeData} 
                         />
                         ))
             }
@@ -209,18 +207,7 @@ const MainBudgets = ({appName, theme}) => {
                         />
                         ))
             }
-            {/* {addItemBox && 
-              <AddTask appName={appName} theme={theme} id={id} users={projectDetail.users} setItems={setItems} setAddItemBox={setAddItemBox}/>
-            }
-            {editItemBox && 
-              <EditTask appName={appName} theme={theme} id={id} users={projectDetail.users} editData={editData} setItems={setItems} setEditItemBox={setEditItemBox}/>
-            }
-            {
-              id && items.filter(item => item.stage === 'init')
-                        .map(item => (
-                          <TaskInit docId={id} taskId={item.id} title={item.title} desc={item.desc} date={item.date} users={item.users} stage={item.stage} theme={theme} setItems={setItems} setEditItemBox={setEditItemBox} setEditData={setEditData} />
-                        ))
-            } */}
+
             </div>
           </article>
         </div>
@@ -240,80 +227,91 @@ const MainBudgets = ({appName, theme}) => {
               <div className="main__section-items">
                 <div className="mainBudget__summary-header">
                 <div className="mainBudget__summary-box income">
-                  <p className="mainBudget__summary-box-number income">200</p>
+                  <p className="mainBudget__summary-box-number income">1000</p>
                   <p className="mainBudget__summary-box-title income">Income</p>
                 </div>
                 <div className="mainBudget__summary-box expense">
-                  <p className="mainBudget__summary-box-number income">200</p>
+                  <p className="mainBudget__summary-box-number income">500</p>
                   <p className="mainBudget__summary-box-title income">Expense</p>
                 </div>
               </div>
 
               <div className={`mainBudget__summary-center income ${theme}`}>
-                +1300
+                +500
               </div>
 
-              <div className="main__section-items">
-                <p className={`mainBudget__summary-categories ${theme}`}>Categories <button className={`button-icon button-small ${appName}`}><AddIcon /></button></p> 
+              <div className="mainBudget__summary-categories">
+                <p className={`mainBudget__summary-categories-title ${theme}`}>Categories:</p> 
                 <div className={`main__section-item ${theme}`}>
                   <span className={`main__section-item-title ${theme}`} >Category 1</span> 
-                  <div style={{display: 'flex', flexDirection:'row'}}>
+                  <div style={{display: 'flex', flexDirection:'row', marginRight: '10px'}}>
                   <div className="mainBudget__summary-box-mini income">
-                  <span className="mainBudget__summary-box-number-mini">200</span>
+                  <span className="mainBudget__summary-box-number-mini">1000</span>
                   </div>
                   <div className="mainBudget__summary-box-mini expense">
-                  <span className="mainBudget__summary-box-number-mini">200</span>
+                  <span className="mainBudget__summary-box-number-mini">500</span>
                   </div>
-                  </div>
-                  <div>
-                  <EditIcon />
                   </div>
                 </div>
-                <div className={`main__section-item ${theme}`}>
-                  <span className={`main__section-item-title ${theme}`} >Category with long name for item</span> 
-                  <div className="mainBudget__summary-box-mini income">
-                  <span className="mainBudget__summary-box-number-mini">200</span>
-                  </div>
-                  <div className="mainBudget__summary-box-mini expense">
-                  <span className="mainBudget__summary-box-number-mini">200</span>
-                  </div>
-                  <div>
-                   <EditIcon />
-                  </div>
+
                 </div>
-              </div>
 
               </div>
             </article>
           </div>
 
           <div className="main__section-container">
-            <h3 className={`main__section-title ${theme}`}>Done</h3>
-            <article className={`main__section-box ${theme}`}>
-              <div className="main__section-items">
-              <button className={`button-icon ${appName}`}><DoneIcon /></button>
-              <div className={`main__section-item ${theme}`}>
-                <h5 className={`main__section-item-title done ${theme}`}>Task 4</h5> 
-                <div>
-                  <ReplayIcon /> <DeleteIcon />
+          <h3 className={`main__section-title ${theme}`}>Income</h3>
+          <article className={`main__section-box ${theme}`}>
+            <div className="main__section-items">
+              <button className={`button-icon green`}><TrendingUpIcon /></button>
+            
+              <div className={`mainBudget__item ${theme}`}>
+                  <div className="mainBudget__item-up">
+                    <p className={`mainBudget__item-title ${theme}`}>Income</p>
+                    <div style={{ display: "flex", flexDirection: "row" }}>
+                      <div className={`mainBudget__summary-box-mini income`} style={{borderRadius: '5px'}}>
+                        <span className="mainBudget__summary-box-number-mini">1000</span>
+                      </div>
+                      <EditIcon />
+          
+                    </div>
+                  </div>
+                  <div className="mainBudget__item-down">
+                    <p className={`mainBudget__item-subtitle ${theme}`}>Category 1</p>
+                    <p className={`mainBudget__item-subtitle ${theme}`}>2021-03-20</p>
+                  </div>
                 </div>
-              </div>
-              <div className={`main__section-item ${theme}`}>
-                <h5 className={`main__section-item-title done ${theme}`}>Task 5</h5> 
-                <div>
-                  <ReplayIcon /> <DeleteIcon />
-                </div>
-              </div>
-              <div className={`main__section-item ${theme}`}>
-                <h5 className={`main__section-item-title done ${theme}`}>Task 6</h5> 
-                <div>
-                  <ReplayIcon /> <DeleteIcon />
-                </div>
-              </div>
-
               </div>
             </article>
-          </div>
+           </div>
+
+           <div className="main__section-container">
+          <h3 className={`main__section-title ${theme}`}>Expense</h3>
+          <article className={`main__section-box ${theme}`}>
+            <div className="main__section-items">
+              <button className={`button-icon red`}><TrendingDownIcon /></button>
+            
+              <div className={`mainBudget__item ${theme}`}>
+                  <div className="mainBudget__item-up">
+                    <p className={`mainBudget__item-title ${theme}`}>Expense</p>
+                    <div style={{ display: "flex", flexDirection: "row" }}>
+                      <div className={`mainBudget__summary-box-mini expense`} style={{borderRadius: '5px'}}>
+                        <span className="mainBudget__summary-box-number-mini">500</span>
+                      </div>
+                      <EditIcon />
+          
+                    </div>
+                  </div>
+                  <div className="mainBudget__item-down">
+                    <p className={`mainBudget__item-subtitle ${theme}`}>Category 1</p>
+                    <p className={`mainBudget__item-subtitle ${theme}`}>2021-03-20</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+           </div>
+
         </section>
         </>
       )
