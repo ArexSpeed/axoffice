@@ -16,6 +16,18 @@ const IncomeItem = ({docId,itemId,name,price,date,category,stage,theme, setItems
     })
     setEditItemBox(true)
   }
+  const editExpenseItem = () => {
+    setEditData({
+      docId,
+      itemId,
+      name,
+      price,
+      date,
+      category,
+      stage,
+    })
+    setEditItemBox(true)
+  }
 
   return (
     <div className={`mainBudget__item ${theme}`}>
@@ -25,7 +37,11 @@ const IncomeItem = ({docId,itemId,name,price,date,category,stage,theme, setItems
           <div className={`mainBudget__summary-box-mini ${stage}`} style={{borderRadius: '5px'}}>
             <span className="mainBudget__summary-box-number-mini">{price}</span>
           </div>
-          <EditIcon onClick={editItem}/>
+          {stage === 'income' ? 
+          (<EditIcon onClick={editItem}/>)
+          : ( <EditIcon onClick={editExpenseItem}/>)
+          }
+          
         </div>
       </div>
       <div className="mainBudget__item-down">

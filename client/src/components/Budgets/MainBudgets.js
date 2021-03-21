@@ -33,6 +33,7 @@ const MainBudgets = ({appName, theme}) => {
   const [editItemBox, setEditItemBox] = useState(false)
   const [editExpenseBox, setEditExpenseBox] = useState(false)
   const [editData, setEditData] = useState({})
+  const [editExpenseData, setEditExpenseData] = useState({})
 
 
   useEffect(() => {
@@ -187,7 +188,7 @@ const MainBudgets = ({appName, theme}) => {
               <AddIncome appName={appName} theme={theme} id={id} stage="expense" categories={categories} setItems={setItems} setAddItemBox={setAddExpenseBox}/>
               }
               {editExpenseBox && 
-              <EditItem appName={appName} theme={theme} id={id} editData={editData} setItems={setItems} setEditItemBox={setEditExpenseBox}/>
+              <EditItem appName={appName} theme={theme} id={id} editData={editExpenseData} setItems={setItems} setEditItemBox={setEditExpenseBox}/>
               }
               {
               id && 
@@ -195,7 +196,7 @@ const MainBudgets = ({appName, theme}) => {
                    .map(item => (
                         <IncomeItem 
                           docId={id} 
-                          taskId={item.id} 
+                          itemId={item.id} 
                           name={item.name} 
                           price={item.price} 
                           date={item.date} 
@@ -204,7 +205,7 @@ const MainBudgets = ({appName, theme}) => {
                           theme={theme} 
                           setItems={setItems} 
                           setEditItemBox={setEditExpenseBox} 
-                          setEditData={setEditData} 
+                          setEditData={setEditExpenseData} 
                         />
                         ))
             }
