@@ -9,6 +9,8 @@ $bg-lists-second: rgba(236, 220, 75,0.5);
 //$bg-lists-second: rgba(240, 229, 133, 0.75);
 $bg-budgets: rgba(23, 207, 207, 0.75);
 $bg-budgets-second: rgba(23, 207, 207, 0.5);
+$bg-folders: rgba(97, 44, 241, 0.75);
+$bg-folders-second: rgba(97, 44, 241, 0.5);
 $bg-calendars: #e77c1a;
 $bg-calendars-second: #f0e585;
 $font-family: 'Poppins', sans-serif;
@@ -34,6 +36,9 @@ $bg-red: linear-gradient(45deg, #fa5c51, #f44336 50%);
   &.budgets{
     background: $bg-budgets;
   }
+  &.folders{
+    background: $bg-folders;
+  }
   &.calendars{
     background: $bg-calendars;
   }
@@ -57,6 +62,9 @@ $bg-red: linear-gradient(45deg, #fa5c51, #f44336 50%);
   &.budgets{
     background: $bg-budgets-second;
   }
+  &.folders{
+    background: $bg-folders-second;
+  }
   &.calendars{
     background: $bg-calendars-second;
   }
@@ -73,6 +81,9 @@ $bg-red: linear-gradient(45deg, #fa5c51, #f44336 50%);
   }
   &.budgets{
     box-shadow: 0 0 10px $bg-budgets;
+  }
+  &.folders{
+    box-shadow: 0 0 10px $bg-folders;
   }
   &.calendars{
     box-shadow: 0 0 10px $bg-calendars;

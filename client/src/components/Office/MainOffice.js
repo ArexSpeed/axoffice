@@ -4,6 +4,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import ViewListIcon from '@material-ui/icons/ViewList';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import FolderIcon from '@material-ui/icons/Folder';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import { GlobalContext } from "../../GlobalProvider";
 
@@ -37,10 +38,10 @@ const MainOffice = () => {
             <span>Budgets</span>
           </Link>
         </li>
-        <li className="office-item calendars">
-          <Link to="/calendars" className="office-link">
+        <li className="office-item folders">
+          <Link to="/folders" className="office-link">
             <CalendarTodayIcon />
-            <span>Calendars</span>
+            <span>Folders</span>
           </Link>
         </li>
         </div>

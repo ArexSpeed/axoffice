@@ -7,6 +7,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import ViewListIcon from '@material-ui/icons/ViewList';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import FolderIcon from '@material-ui/icons/Folder';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import InvertColorsIcon from '@material-ui/icons/InvertColors';
 
@@ -57,9 +58,9 @@ const Nav = ({appName}) => {
             <AttachMoneyIcon />
           </Link>
         </li>
-        <li className={`${appName === 'calendars' ? `nav-item active ${theme}` : `nav-item ${theme}`}`}>
-          <Link to="/calendars" className="nav-link">
-            <CalendarTodayIcon />
+        <li className={`${appName === 'folders' ? `nav-item active ${theme}` : `nav-item ${theme}`}`}>
+          <Link to="/folders" className="nav-link">
+            <FolderIcon />
           </Link>
         </li>
         <li className="nav-item">
