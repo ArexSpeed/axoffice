@@ -12,6 +12,8 @@ import DoneIcon from '@material-ui/icons/Done';
 import Header from '../Header/Header';
 import HeaderEmpty from '../Header/HeaderEmpty';
 import AddFolder from './AddFolder';
+import FolderItem from './FolderItem';
+import FolderEmpty from './FolderEmpty';
 
 const MainFolders = ({appName,theme}) => {
   const {id} = useParams();
@@ -19,7 +21,6 @@ const MainFolders = ({appName,theme}) => {
   const [myFolder, setMyFolder] = useState([])
   const [folderDetail, setFolderDetail] = useState([])
   const [items, setItems] = useState([])
-  const [newItemName, setNewItemName] = useState('')
   const [addItemBox, setAddItemBox] = useState(false)
 
   useEffect(() => {
@@ -74,7 +75,21 @@ const MainFolders = ({appName,theme}) => {
               addItemBox && <AddFolder appName={appName} theme={theme} id={id} setAddItemBox={setAddItemBox} setItems={setItems}/>
             }
 
-            <div className="mainFolders__items"></div>
+            <div className="mainFolders__items">
+            {
+              id && 
+              items.map(item => (
+                        <FolderItem
+                          docId={id} 
+                          itemId={item.id} 
+                          name={item.name} 
+                          url={item.url} 
+                          theme={theme} 
+                          setItems={setItems} 
+                        />
+                        ))
+            }
+            </div>
             
           </div>
         </div>
@@ -92,70 +107,7 @@ const MainFolders = ({appName,theme}) => {
             </button>
 
           <div className="mainFolders__items">
-            <div className={`mainFolders__item ${theme}`}>
-              <img src="" alt="I" />
-              <p className={`mainBudget__item-title ${theme}`}>Title</p>
-              <div>
-              <LaunchIcon />
-              <EditIcon />
-              </div>
-            </div>
-            <div className={`mainFolders__item ${theme}`}>
-              <img src="" alt="I" />
-              <p className={`mainBudget__item-title ${theme}`}>Title 2</p>
-              <div>
-              <LaunchIcon />
-              <EditIcon />
-              </div>
-            </div>
-            <div className={`mainFolders__item ${theme}`}>
-              <img src="" alt="I" />
-              <p className={`mainBudget__item-title ${theme}`}>Title 3</p>
-              <div>
-              <LaunchIcon />
-              <EditIcon />
-              </div>
-            </div>
-            <div className={`mainFolders__item ${theme}`}>
-              <img src="" alt="I" />
-              <p className={`mainBudget__item-title ${theme}`}>Very logn title with ame</p>
-              <div>
-              <LaunchIcon />
-              <EditIcon />
-              </div>
-            </div>
-            <div className={`mainFolders__item ${theme}`}>
-              <img src="" alt="I" />
-              <p className={`mainBudget__item-title ${theme}`}>Title 5</p>
-              <div>
-              <LaunchIcon />
-              <EditIcon />
-              </div>
-            </div>
-            <div className={`mainFolders__item ${theme}`}>
-              <img src="" alt="I" />
-              <p className={`mainBudget__item-title ${theme}`}>Title 6</p>
-              <div>
-              <LaunchIcon />
-              <EditIcon />
-              </div>
-            </div>
-            <div className={`mainFolders__item ${theme}`}>
-              <img src="https://material-ui.com/favicon.ico" alt="I" />
-              <p className={`mainBudget__item-title ${theme}`}>Title 7</p>
-              <div>
-              <LaunchIcon />
-              <EditIcon />
-              </div>
-            </div>
-            <div className={`mainFolders__item ${theme}`}>
-              <img className={`mainFolders__item-img`} src="" alt="I" />
-              <p className={`mainBudget__item-title ${theme}`}>Title 8</p>
-              <div>
-              <LaunchIcon />
-              <EditIcon />
-              </div>
-            </div>
+            <FolderEmpty name='Google' url="https://www.google.com/" theme={theme}/>
             
           </div>
           </div>
