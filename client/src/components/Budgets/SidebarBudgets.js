@@ -36,7 +36,6 @@ const SidebarBudgets = ({appName,theme}) => {
    }, [budgets])
 
    const addBudget = () => {
-
     db.collection("budgets").add({
         name: 'New Budget',
         users: [{

@@ -1,0 +1,42 @@
+@import 'Var';
+.mainFolders{
+  &__containers{
+    display: flex;
+    flex-direction: column;
+  }
+ 
+  &__items{
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 0px;
+    overflow: scroll;
+    width: 100%;
+    height: 500px;
+    padding-bottom: 50px;
+  }
+  &__item{
+    min-width: 250px;
+    height: 50px;
+    margin: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    border: none;
+    border-radius: 10px;
+    @include theme-bg-second;
+    &.dark > .MuiSvgIcon-root,
+    &.dark > div .MuiSvgIcon-root{
+    color: #ffffff;
+    margin-right: 5px;
+    }
+    &.light > .MuiSvgIcon-root,
+    &.light > div .MuiSvgIcon-root{
+    color: #000000;
+    margin-right: 5px;
+    }
+    &-img{
+      max-height: 32px;
+    }
+  }
+}
