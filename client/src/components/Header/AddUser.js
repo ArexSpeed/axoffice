@@ -23,10 +23,10 @@ const AddUser = ({id,appName, setAddUserBox}) => {
     setAddUserBox(false)
   }
   return (
-    <div className={`main__actionBox ${appName}`}>
-        <div className={`main__actionBox-search ${appName}`}>
+    <div className={`header__actionBox ${appName}`}>
+        <div className={`header__actionBox-search ${appName}`}>
           <SearchOutlinedIcon />
-          <input className={`main__actionBox-search input ${appName}`} type="text" placeholder="Find user" value={searchUser} onChange={(e) => setSearchUser(e.target.value)} />
+          <input className={`header__actionBox-search input ${appName}`} type="text" placeholder="Find user" value={searchUser} onChange={(e) => setSearchUser(e.target.value)} />
       </div>
       {searchUser && 
       (
@@ -34,6 +34,7 @@ const AddUser = ({id,appName, setAddUserBox}) => {
         <p>{foundUser.name}</p>
         <div>
         <button className={`main__title-button button-icon ${appName}`} onClick={addUser}><AddIcon /></button>
+        <button className={`main__title-button button-icon ${appName}`} onClick={() => setAddUserBox(false)}>NO</button>
         </div>
         </>
       )

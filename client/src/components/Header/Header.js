@@ -82,7 +82,7 @@ const Header = ({appName, theme, collectionDetail, setCollectionDetail}) => {
       {groupBox && 
         (
           <div className={`header__actionBox ${appName}`}>
-            <p style={{fontStyle: 'italic'}}>Users in budget</p>
+            <p style={{fontStyle: 'italic'}}>Users in this {appName.slice(0,appName.length-1)}</p>
         {collectionDetail.users.map(user => <p>{user.name}</p>)}
       
         <button className={`header__button button-icon ${appName}`} onClick={() => setGroupBox(false)}>OK</button>

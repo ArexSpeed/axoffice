@@ -22,7 +22,7 @@ const LeaveGroupBox = ({id, appName, setLeaveGroupBox}) => {
     history.push(`/${appName}`)
   }
   return (
-    <div className={`main__actionBox ${appName}`}>
+    <div className={`header__actionBox ${appName}`}>
         <p style={{textAlign: 'center'}}>Do you want to leave this group?</p>
         <div>
         <button className={`main__title-button button-icon ${appName}`} onClick={leaveGroup}>OK</button>
