@@ -25,8 +25,8 @@ const LeaveGroupBox = ({id, appName, setLeaveGroupBox}) => {
     <div className={`header__actionBox ${appName}`}>
         <p style={{textAlign: 'center'}}>Do you want to leave this group?</p>
         <div>
-        <button className={`main__title-button button-icon ${appName}`} onClick={leaveGroup}>OK</button>
-        <button className={`main__title-button button-icon ${appName}`} onClick={() => setLeaveGroupBox(false)}>NO</button>
+        <button className={`header__button button-icon ${appName}`} onClick={leaveGroup}>OK</button>
+        <button className={`header__button button-icon ${appName}`} onClick={() => setLeaveGroupBox(false)}>NO</button>
         </div>
         </div>
   )

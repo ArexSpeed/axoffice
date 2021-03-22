@@ -151,7 +151,7 @@ const MainBudgets = ({appName, theme}) => {
               <AddIncome appName={appName} theme={theme} id={id} stage="income" categories={categories} setItems={setItems} setAddItemBox={setAddItemBox}/>
             }
             {editIncomeBox && 
-              <EditItem appName={appName} theme={theme} id={id} editData={editIncomeData} setItems={setItems} setEditItemBox={setEditIncomeBox}/>
+              <EditItem appName={appName} theme={theme} id={id} categories={categories} editData={editIncomeData} setItems={setItems} setEditItemBox={setEditIncomeBox}/>
             }
 
             {
@@ -186,7 +186,7 @@ const MainBudgets = ({appName, theme}) => {
               <AddIncome appName={appName} theme={theme} id={id} stage="expense" categories={categories} setItems={setItems} setAddItemBox={setAddExpenseBox}/>
               }
               {editExpenseBox && 
-              <EditItem appName={appName} theme={theme} id={id} editData={editExpenseData} setItems={setItems} setEditItemBox={setEditExpenseBox}/>
+              <EditItem appName={appName} theme={theme} id={id} categories={categories} editData={editExpenseData} setItems={setItems} setEditItemBox={setEditExpenseBox}/>
               }
               {
               id && 

@@ -32,9 +32,9 @@ const AddUser = ({id,appName, setAddUserBox}) => {
       (
         <>
         <p>{foundUser.name}</p>
-        <div>
-        <button className={`main__title-button button-icon ${appName}`} onClick={addUser}><AddIcon /></button>
-        <button className={`main__title-button button-icon ${appName}`} onClick={() => setAddUserBox(false)}>NO</button>
+        <div className="header__buttons">
+        <button className={`header__button button-icon ${appName}`} onClick={addUser}><AddIcon /></button>
+        <button className={`header__button button-icon ${appName}`} onClick={() => setAddUserBox(false)}>NO</button>
         </div>
         </>
       )

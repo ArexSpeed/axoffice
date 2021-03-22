@@ -5,13 +5,24 @@ import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import CancelIcon from '@material-ui/icons/Cancel';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-const EditItem = ({appName,theme,id,editData, setItems, setEditItemBox}) => {
+const EditItem = ({appName,theme,id,categories,editData, setItems, setEditItemBox}) => {
   const itemId = editData.itemId;
   const [name, setName] = useState(editData.name)
   const [price, setPrice] = useState(editData.price)
   const [category, setCategory] = useState(editData.category)
   const [date, setDate] = useState(editData.date)
  
+  const showCategories = (  
+    categories.map((category, i) => (
+      <>
+      <div key={i} style={{marginTop: '10px'}}>
+        <input type="radio" name="category" id={category} className="formBox__addUsers-input" onClick={() => setCategory(category)} />
+        <label key={i} htmlFor={category} className={`formBox__addUsers-label ${appName} ${theme}`}><span>{category}</span></label> 
+        </div>
+      </>
+    )) 
+  )
+
   const editItem = () => {
     db.collection("budgets").doc(id).collection('items').doc(itemId).update({
       name,
@@ -80,7 +91,9 @@ const EditItem = ({appName,theme,id,editData, setItems, setEditItemBox}) => {
               id="category"
               onChange={(e) => setCategory(e.target.value)}
               /> 
-               
+                <div className="formBox__addUsers">
+                  {showCategories}
+                </div>
                <div className="formBox__buttons">
                  <button className={`button-icon ${appName}`} onClick={editItem}>
                  <SaveAltIcon />

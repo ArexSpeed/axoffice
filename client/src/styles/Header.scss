@@ -24,6 +24,12 @@
         border-bottom: 5px solid $bg-lists;
       }
     }
+    &__buttons{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-around;
+    }
       &__button{
         margin-right: 5px;
       }
