@@ -1,11 +1,10 @@
 import React from 'react'
-import Login from '../components/Login'
+import MainSite from '../components/Main/MainSite'
 
 const Main = () => {
   return (
     <div>
-      Main site
-      <Login />
+      <MainSite />
     </div>
   )
 }

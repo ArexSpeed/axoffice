@@ -52,17 +52,9 @@ const Login = () => {
 }
 
   return (
-      <div className="">
-      <div className="login__container">
-        <div className="login__text">
-          <h1>Sign in to Chat</h1>
-        </div>
-
         <button type="submit" onClick={signIn} className="login__button">
-          SignIn with Google
+          Login
         </button>
-      </div>
-    </div>
   )
 }
 

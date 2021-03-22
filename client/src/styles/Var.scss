@@ -92,6 +92,32 @@ $bg-red: linear-gradient(45deg, #fa5c51, #f44336 50%);
     box-shadow: 0 0 10px $bg-office;
   }
 }
+@mixin color-app{
+  &.projects{
+    color: $bg-projects;
+  }
+  &.lists{
+    color: $bg-lists;
+  }
+  &.budgets{
+    color: $bg-budgets;
+  }
+  &.folders{
+    color: $bg-folders;
+  }
+  &.calendars{
+    color: $bg-calendars;
+  }
+  &.office{
+    color: $bg-office;
+  }
+  &.green{
+    color: $bg-green;
+  }
+  &.red{
+    color: $bg-red;
+  }
+}
 @mixin theme-bg{
   &.light{
     background: #ffffff;
