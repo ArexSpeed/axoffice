@@ -1,4 +1,5 @@
 import React from 'react'
+import AppsSection from './AppsSection'
 import Hero from './Hero'
 import Nav from './Nav'
 
@@ -7,6 +8,7 @@ const MainSite = () => {
     <div className="mainSite">
       <Nav />
       <Hero />
+      <AppsSection />
     </div>
   )
 }

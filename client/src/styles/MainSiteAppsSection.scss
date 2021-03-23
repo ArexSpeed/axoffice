@@ -1,0 +1,79 @@
+@import 'Var';
+.appsSection{
+  @include center;
+  margin-top: 150px;
+  &__title{
+    font-size: 50px;
+    @media screen and (max-width: 768px){
+      font-size: 40px;
+    }
+    @media screen and (max-width: 540px){
+      font-size: 30px
+    }
+  }
+  &__apps{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    &-button{
+      margin: 15px;
+      @include center;
+    }
+  }
+  &__sections{
+    @include center;
+  }
+  &__article{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    @media screen and (max-width: 768px){
+      @include center;
+    }
+    &-left{
+      flex: 1;
+      @include center;
+      position: relative;
+      &-square{
+        position: absolute;
+        top: 0;
+        left: -20px;
+        width: 300px;
+        height: 300px;
+        clip-path: polygon(100% 0, 0 0, 0 50%);
+        z-index: -1;
+        @include bg-app-second;
+      }
+      &-title{
+        font-size: 30px;
+        font-weight: bold;
+        @media screen and (max-width: 540px){
+          font-size: 24px;
+        }
+      }
+      &-desc{
+        font-size: 20px;
+        white-space: pre-line;
+        @media screen and (max-width: 540px){
+          font-size: 16px;
+        }
+      }
+    }
+    &-right{
+      flex: 1;
+      @media screen and (max-width: 768px){
+       margin-top: 30px;
+      }
+      &-img{
+        max-height: 300px;
+        transform: skew(10deg, 5deg);
+        @media screen and (max-width: 540px){
+          max-height: 200px;
+         }
+      }
+    }
+  }
+}
