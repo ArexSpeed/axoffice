@@ -47,6 +47,7 @@
           background: inherit;
           border-radius: 38% 62% 63% 37%/ 41% 44% 56% 59%;
           z-index: -1;
+          transition: 0.25s all ease-in-out;
           animation: anim 2s infinite;
           @keyframes anim{
             0% {
@@ -64,13 +65,55 @@
       &-desc{
         font-size: 50px;
         font-weight: bold;
+        align-items: center;
+        transition: 0.25s all ease-in-out;
         @include color-app;
+      }
+      &-button{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        width: 150px;
+        height: 50px;
+        border-radius: 50px;
+        margin: auto;
+        font-size: 16px;
+        font-weight: 800;
+        transition: 0.25s all ease-in-out;
+        cursor: pointer;
+        @include bg-app-second;
+        &-arrow{
+          margin: 5px;
+          animation: arrowanim 2s infinite;
+          @keyframes arrowanim{
+            0% {
+              transform: translateY(-5px);
+            }
+            100%{
+              transform: translateY(5px);
+            }
+          }
+        }
       }
     }
     &-right{
       flex: 1;
       &-img{
         max-width: 70%;
+        transition: 0.25s all ease-in-out;
+      }
+      &-square{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 900px;
+        height: 900px;
+        clip-path: polygon(100% 60%, 0 100%, 100% 100%);
+        z-index: -1;
+        transition: 0.25s all ease-in-out;
+        @include bg-app-second;
       }
     }
   }
