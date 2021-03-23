@@ -8,7 +8,7 @@ import officelists from '../../images/officelists.svg'
 import officeprojects from '../../images/officeprojects.svg'
 import officefolders from '../../images/officefolders.svg'
 
-const Hero = () => {
+const Hero = ({theme}) => {
   const [name, setName] = useState('lists')
   const [icon, setIcon] = useState(<AssignmentIcon />)
   const [image, setImage] = useState(officelists)
@@ -55,7 +55,7 @@ const Hero = () => {
 
   return (
     <div className="mainSite__hero">
-      <section className={`mainSite__hero-left ${name}`}>
+      <section className={`mainSite__hero-left ${name} ${theme}`}>
         <div className={`mainSite__hero-left-div ${name}`}></div>
         <p className="mainSite__hero-left-title">AX Office</p>
         <p className="mainSite__hero-left-desc">

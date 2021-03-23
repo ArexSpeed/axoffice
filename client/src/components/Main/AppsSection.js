@@ -2,17 +2,20 @@ import {useState,useEffect, useCallback} from 'react'
 import Article from './Article';
 import AOS from "aos";
 import "aos/dist/aos.css";
+import ReactCompareImage from 'react-compare-image';
 import ViewListIcon from '@material-ui/icons/ViewList';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import FolderIcon from '@material-ui/icons/Folder';
 import GroupIcon from '@material-ui/icons/Group';
 import DevicesIcon from '@material-ui/icons/Devices';
+import InvertColorsIcon from '@material-ui/icons/InvertColors';
 import img from '../../images/exampleapp.svg';
 import groupImg from '../../images/group.svg';
 import devicesImg from '../../images/devices.svg';
 
-const AppsSection = () => {
+const AppsSection = ({theme, setTheme}) => {
+  const [position, setPosition] = useState(null)
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -20,8 +23,17 @@ const AppsSection = () => {
     AOS.refresh();
   }, []);
 
+  useEffect(() => {
+    if(position >=0.5){
+      setTheme('light')
+    }
+    else{
+      setTheme('dark')
+    }
+  }, [position])
+
   return (
-    <main className="appsSection">
+    <main className={`appsSection ${theme}`}>
       <h2 className="appsSection__title">Explore our apps</h2>
       <div className="appsSection__apps">
         <div className="appsSection__apps-button">
@@ -106,6 +118,18 @@ const AppsSection = () => {
             <img className="appsSection__article-right-img" src={devicesImg} alt="" />
           </div>
       </article>
+      </section>
+      <section className="appsSection__sections">
+        <h2 className="appsSection__title">Work like you want</h2>
+        <button className={`appsSection__button-color ${theme}`}><InvertColorsIcon /></button>
+        <h3 className="appsSection__subtitle">Switch between light and dark theme and feel comfortable durning your work.</h3>
+        <div className="appsSection__themeSwitcher">
+        <ReactCompareImage
+          leftImage={groupImg}
+          rightImage={devicesImg}
+          onSliderPositionChange={setPosition}
+        />
+        </div>
       </section>
     </main>
   )

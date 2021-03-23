@@ -2,6 +2,7 @@
 .appsSection{
   @include center;
   margin-top: 150px;
+  @include theme-color;
   &__title{
     font-size: 50px;
     @media screen and (max-width: 768px){
@@ -81,5 +82,29 @@
          }
       }
     }
+  }
+  &__button-color{
+    margin: 10px 0;
+    width: 50px;
+    min-height: 50px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+    &.dark{
+      background: $bg-box;
+    }
+    &.light{
+      background: $bg-box-dark;
+    }
+  }
+  &__themeSwitcher{
+    width: 640px;
+    @media screen and (max-width: 768px){
+      width: 480px;
+     }
+     @media screen and (max-width: 540px){
+      width: 320px;
+     }
   }
 }
