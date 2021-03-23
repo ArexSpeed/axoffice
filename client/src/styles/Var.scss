@@ -18,8 +18,10 @@ $bg-box: rgba(255,255,255,.75);
 $bg-box-dark: rgba(0,0,0,.75);
 $color-red: #f44336;
 $color-green: #7be495;
+$color-blue: #00B0FF;
 $bg-green: linear-gradient(45deg, #7be495, #209e3f 50%);
 $bg-red: linear-gradient(45deg, #fa5c51, #f44336 50%);
+$bg-blue: linear-gradient(45deg, #00B0FF, #0383be 50%);
 @mixin center{
   display: flex;
   flex-direction: column;
@@ -50,6 +52,9 @@ $bg-red: linear-gradient(45deg, #fa5c51, #f44336 50%);
   }
   &.red{
     background: $bg-red;
+  }
+  &.blue{
+    background: $bg-blue;
   }
 }
 @mixin bg-app-second{
@@ -116,6 +121,9 @@ $bg-red: linear-gradient(45deg, #fa5c51, #f44336 50%);
   }
   &.red{
     color: $bg-red;
+  }
+  &.blue{
+    color: $bg-blue;
   }
 }
 @mixin theme-bg{

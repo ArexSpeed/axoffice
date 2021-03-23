@@ -6,7 +6,11 @@ import ViewListIcon from '@material-ui/icons/ViewList';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import FolderIcon from '@material-ui/icons/Folder';
+import GroupIcon from '@material-ui/icons/Group';
+import DevicesIcon from '@material-ui/icons/Devices';
 import img from '../../images/exampleapp.svg';
+import groupImg from '../../images/group.svg';
+import devicesImg from '../../images/devices.svg';
 
 const AppsSection = () => {
   useEffect(() => {
@@ -66,6 +70,42 @@ const AppsSection = () => {
             img={img}
         />
         
+      </section>
+      <section className="appsSection__sections">
+        <h2 className="appsSection__title">Stay connect all time with your friends, from any devices</h2>
+        <article className="appsSection__article reverse">
+          <div className="appsSection__article-left" data-aos="fade-left">
+              <div className="appsSection__article-left-title">
+                <div className={`appsSection__article-left-square `}></div>
+                <button className={`button-icon green`}><GroupIcon /></button>
+                <span className="appsSection__apps-button-name"> Collaboration</span>
+              </div>
+              <p className="appsSection__article-left-desc">
+                Add your friends to your projetcs and keep focus on your tasks together <br />
+                You don't have to send link to your projects, tasks or folders and send it by mail, <br />
+                just add your friends, employees or other compans and give them quick access to your files
+              </p>
+          </div>
+          <div className="appsSection__article-right" data-aos="fade-right">
+            <img className="appsSection__article-right-img" src={groupImg} alt="" />
+          </div>
+      </article>
+      <article className="appsSection__article">
+          <div className="appsSection__article-left" data-aos="fade-right">
+              <div className="appsSection__article-left-title">
+                <div className={`appsSection__article-left-square `}></div>
+                <button className={`button-icon blue`}><DevicesIcon /></button>
+                <span className="appsSection__apps-button-name"> Responsive</span>
+              </div>
+              <p className="appsSection__article-left-desc">
+                Use apps without downloading in one time from desktop and mobile <br />
+                Work like you want, AX Office is created for all devices and browsers.
+              </p>
+          </div>
+          <div className="appsSection__article-right" data-aos="fade-left">
+            <img className="appsSection__article-right-img" src={devicesImg} alt="" />
+          </div>
+      </article>
       </section>
     </main>
   )

@@ -30,6 +30,12 @@
     justify-content: center;
     align-items: center;
     margin: 20px;
+    &.reverse{
+      flex-direction: row-reverse;
+      @media screen and (max-width: 768px){
+        @include center;
+      }
+    }
     @media screen and (max-width: 768px){
       @include center;
     }
@@ -69,7 +75,7 @@
       }
       &-img{
         max-height: 300px;
-        transform: skew(10deg, 5deg);
+        //transform: skew(10deg, 5deg);
         @media screen and (max-width: 540px){
           max-height: 200px;
          }
