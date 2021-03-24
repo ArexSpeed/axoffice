@@ -74,22 +74,22 @@ const AppsSection = ({theme, setTheme}) => {
       <section className="appsSection__sections">
         <Article appName='lists' title='Lists' logo={<AssignmentIcon />} 
         desc={`Keep all your lists in one place. You can use this app for your todo list or shopping list. \n
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis nisi ducimus, eveniet nostrum dolorem id omnis officiis earum inventore perspiciatis.
+              Create your lists for own tasks or for your friends or family, add people to the group and share access to the list.
             `}
             img={theme === 'light' ? listslight : listsdark}
             imgMobile={theme === 'light' ? listsmobilelight : listsmobiledark}
         />
         <Article appName='projects' title='Projects' logo={<ViewListIcon />} 
-        desc={`Keep all your lists in one place. You can use this app for your todo list or shopping list. \n
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis nisi ducimus, eveniet nostrum dolorem id omnis officiis earum inventore perspiciatis.
-            `}
+        desc={`Combine your home and work projects in one place. Add the date and keep track of how long it takes you to complete the task.  \n
+              Distribute tasks across the team easily by adding a project and adding people to it. With each task, add the people responsible for it and they will have it displayed in their app.
+             `}
             img={theme === 'light' ? projectslight : projectsdark}
             imgMobile={theme === 'light' ? projectsmobilelight : projectsmobiledark}
         />
         <Article appName='budgets' title='Budgets' logo={<AttachMoneyIcon />} 
-        desc={`Keep all your lists in one place. You can use this app for your todo list or shopping list. \n
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis nisi ducimus, eveniet nostrum dolorem id omnis officiis earum inventore perspiciatis.
-            `}
+        desc={`Budgets allows you to keep an eye on your finances you can create your budget by month or category or as you wish. \n
+               Easily add your income or loss and the app will show you the total amount of your money by category.
+              `}
             img={theme === 'light' ? budgetslight : budgetsdark}
             imgMobile={theme === 'light' ? budgetsmobilelight : budgetsmobiledark}
         />
