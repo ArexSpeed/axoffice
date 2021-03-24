@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Article = ({appName, title, logo, desc, img}) => {
+const Article = ({appName, title, logo, desc, img, imgMobile}) => {
   return (
     <article className="appsSection__article">
           <div className="appsSection__article-left" data-aos="fade-right">
@@ -15,6 +15,7 @@ const Article = ({appName, title, logo, desc, img}) => {
           </div>
           <div className="appsSection__article-right" data-aos="fade-left">
             <img className="appsSection__article-right-img" src={img} alt="" />
+            <img className="appsSection__article-right-img-mobile" src={imgMobile} alt="" />
           </div>
       </article>
   )

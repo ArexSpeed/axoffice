@@ -78,6 +78,13 @@
         max-height: 300px;
         //transform: skew(10deg, 5deg);
         @media screen and (max-width: 540px){
+          display: none;
+         }
+      }
+      &-img-mobile{
+        display: none;
+        @media screen and (max-width: 540px){
+          display: flex;
           max-height: 200px;
          }
       }
@@ -100,6 +107,7 @@
   }
   &__themeSwitcher{
     width: 640px;
+    margin: 15px auto;
     @media screen and (max-width: 768px){
       width: 480px;
      }
