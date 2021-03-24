@@ -1,4 +1,5 @@
 import {useState,useEffect, useCallback} from 'react'
+import {Link} from 'react-scroll';
 import ViewListIcon from '@material-ui/icons/ViewList';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
@@ -64,10 +65,14 @@ const Hero = ({theme}) => {
           Best option for organize all your  
           <span className={`mainSite__hero-left-desc ${name}`}> {name}</span>
         </p>
-        <button className={`mainSite__hero-left-button ${name}`}>
+        <Link 
+          to='apps' 
+          smooth={true}
+          duration={500}
+          className={`mainSite__hero-left-button ${name}`}>
           EXPLORE 
           <div className={`mainSite__hero-left-button-arrow`}>&darr;</div>
-        </button>
+        </Link>
 
       </section>
       <section className="mainSite__hero-right">

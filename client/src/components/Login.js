@@ -4,7 +4,7 @@ import { actionTypes } from "../reducer";
 import { auth, provider} from "../firebase";
 import { GlobalContext } from "../GlobalProvider";
 
-const Login = () => {
+const Login = ({size}) => {
   const [{userInfo, usersList}, dispatch] = useContext(GlobalContext);
   console.log(userInfo, 'user in login')
   const signIn = () => {
@@ -52,9 +52,21 @@ const Login = () => {
 }
 
   return (
-        <button type="submit" onClick={signIn} className="login__button">
-          Login
-        </button>
+    <>
+    {size === 'small' ?
+    (
+      <button type="submit" onClick={signIn} className="login__button">
+        Login
+      </button>
+    )
+    :
+    (
+      <button type="submit" onClick={signIn} className="login__button-big">
+        Login
+      </button>
+    )
+    }
+    </>    
   )
 }
 

@@ -4,7 +4,7 @@ import Hero from './Hero'
 import Nav from './Nav'
 
 const MainSite = () => {
-  const [theme, setTheme] = useState('dark')
+  const [theme, setTheme] = useState('light')
   return (
     <div className={`mainSite ${theme}`}>
       <Nav theme={theme} setTheme={setTheme}/>

@@ -1,7 +1,9 @@
 import {useState,useEffect, useCallback} from 'react'
 import Article from './Article';
+import Login from '../Login';
 import AOS from "aos";
 import "aos/dist/aos.css";
+import {Link} from 'react-scroll'
 import ReactCompareImage from 'react-compare-image';
 import ViewListIcon from '@material-ui/icons/ViewList';
 import AssignmentIcon from '@material-ui/icons/Assignment';
@@ -40,7 +42,7 @@ const AppsSection = ({theme, setTheme}) => {
   }, []);
 
   useEffect(() => {
-    if(position >=0.5){
+    if(position === null || position >= 0.5){
       setTheme('light')
     }
     else{
@@ -50,7 +52,7 @@ const AppsSection = ({theme, setTheme}) => {
 
   return (
     <main className={`appsSection ${theme}`}>
-      <h2 className="appsSection__title">Explore our apps</h2>
+      <h2 className="appsSection__title" id="apps">Explore our apps</h2>
       <div className="appsSection__apps">
         <div className="appsSection__apps-button">
           <button className="button-icon lists"><AssignmentIcon /></button>
@@ -149,6 +151,12 @@ const AppsSection = ({theme, setTheme}) => {
           rightImage={budgetsdark}
           onSliderPositionChange={setPosition}
         />
+        </div>
+      </section>
+      <section className="appsSection__sections">
+        <h2 className="appsSection__title">Login and start using AXOffice</h2>
+        <div style={{margin: '30px auto'}}>
+          <Login size="big" />
         </div>
       </section>
     </main>

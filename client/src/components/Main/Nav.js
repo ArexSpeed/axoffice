@@ -8,7 +8,7 @@ const Nav = ({theme, setTheme}) => {
       <img src="" alt="" />
       <ul className="mainSite__nav-ul">
         <li><a href="#apps" className={`mainSite__nav-link ${theme}`}>Apps</a></li>
-        <li><Login /></li>
+        <li><Login size="small"/></li>
         <li>
           <button 
             className={`mainSite__nav-button-color ${theme}`}
