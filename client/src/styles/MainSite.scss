@@ -90,6 +90,8 @@
       }
       &-title{
         font-size: 40px;
+        width: 100%;
+        text-align: center;
         @media screen and (max-width: 768px){
           font-size: 30px;
         }
@@ -147,13 +149,21 @@
       }
       &-square{
         position: absolute;
-        top: 0;
+        bottom: 0;
         right: 0;
         width: 900px;
         height: 900px;
         clip-path: polygon(100% 60%, 0 100%, 100% 100%);
         transition: 0.25s all ease-in-out;
         @include bg-app-second;
+        @media screen and (max-width: 768px){
+          width: 700px;
+          height: 700px;
+        }
+        @media screen and (max-width: 540px){
+          width: 500px;
+          height: 500px;
+        }
       }
     }
   }

@@ -8,6 +8,8 @@ import officebudgets from '../../images/officebudgets.svg'
 import officelists from '../../images/officelists.svg'
 import officeprojects from '../../images/officeprojects.svg'
 import officefolders from '../../images/officefolders.svg'
+import logolight from '../../images/logolight.png';
+import logoblack from '../../images/logoblack.png';
 
 const Hero = ({theme}) => {
   const [name, setName] = useState('lists')
@@ -58,7 +60,11 @@ const Hero = ({theme}) => {
     <div className="mainSite__hero">
       <section className={`mainSite__hero-left ${name} ${theme}`}>
         <div className={`mainSite__hero-left-div ${name}`}></div>
-        <p className="mainSite__hero-left-title">AX Office</p>
+        <p className="mainSite__hero-left-title">{theme === 'light' ? 
+          <img src={logoblack} alt='' />
+          :
+          <img src={logolight} alt='' />
+          }</p>
         <p className="mainSite__hero-left-desc">
           One app a lot of <span className={`mainSite__hero-left-desc ${name}`}> tools  </span><button className={`button-icon ${name}`}>{icon}</button>  <br />
           Create and work like you want <br />
