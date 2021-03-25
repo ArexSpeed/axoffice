@@ -34,8 +34,10 @@
   }
   &-list{
     @include center;
+    overflow-x: scroll;
     @media screen and (max-width: 768px){
       flex-direction: row;
+      justify-content: flex-start;
     }
   }
   &-item{

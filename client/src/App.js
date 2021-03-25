@@ -7,6 +7,7 @@ import Projects from './pages/Projects'
 import Lists from './pages/Lists'
 import Budgets from './pages/Budgets'
 import Folders from './pages/Folders'
+import Settings from './pages/Settings'
 import { GlobalContext } from "./GlobalProvider";
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
           <Route path="/budgets" component={Budgets} />
           <Route path="/folders/:id" component={Folders} />
           <Route path="/folders" component={Folders} />
+          <Route path="/settings" component={Settings} />
         </Switch>
 
         </Router>

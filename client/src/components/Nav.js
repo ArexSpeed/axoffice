@@ -11,11 +11,12 @@ import FolderIcon from '@material-ui/icons/Folder';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import InvertColorsIcon from '@material-ui/icons/InvertColors';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import SettingsIcon from '@material-ui/icons/Settings';
 
 const Nav = ({appName}) => {
   const [{userInfo, theme}, dispatch] = useContext(GlobalContext);
   const history = useHistory();
-  console.log(userInfo)
+  // console.log(userInfo)
   const changeTheme = () => {
     if(theme === 'dark') {
       dispatch({ type: actionTypes.SET_THEME, payload: 'light'});
@@ -71,11 +72,17 @@ const Nav = ({appName}) => {
             <FolderIcon />
           </Link>
         </li>
+        <li className='nav-item'>
+          <Link to="/settings" className="nav-link">
+            <SettingsIcon />
+          </Link>
+        </li>
         <li className="nav-item">
           <button className="nav-link color" onClick={changeTheme}>
             <InvertColorsIcon />
           </button>
         </li>
+
         <li className="nav-item">
           <button className="nav-link color" onClick={logout}>
             <ExitToAppIcon />
