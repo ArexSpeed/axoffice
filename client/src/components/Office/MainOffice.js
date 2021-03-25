@@ -9,12 +9,12 @@ import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import { GlobalContext } from "../../GlobalProvider";
 
 
-const MainOffice = () => {
+const MainOffice = ({theme}) => {
   const [{userInfo}] = useContext(GlobalContext)
-  const theme = 'black'
+
   return (
     <main className={`main ${theme}`}>
-      <h1 className="main__title office">Hello {userInfo.displayName}! What do you want to do today?</h1>
+      <h1 className={`header__title ${theme}`}>Hello {userInfo.displayName}! What do you want to do today?</h1>
         <section className="office-apps">
           <ul className="office-list">
             <div>
