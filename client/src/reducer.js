@@ -1,5 +1,9 @@
+const userInfoFromStorage = localStorage.getItem('userInfo')
+  ? JSON.parse(localStorage.getItem('userInfo'))
+  : null
+
 export const initialState = {
-  userInfo: null,
+  userInfo: userInfoFromStorage,
   theme: "light",
   usersList: []
 };
@@ -21,7 +25,7 @@ const reducer = (state, action) => {
     case actionTypes.SET_THEME:
       return {
         ...state,
-        theme: action.theme
+        theme: action.payload
       };
     case actionTypes.SET_USERS_LIST:
       return{

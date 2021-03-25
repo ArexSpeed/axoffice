@@ -15,6 +15,7 @@ const Login = ({size}) => {
         type: actionTypes.SET_USER_INFO,
         payload: result.user
       });
+      localStorage.setItem('userInfo', JSON.stringify(result.user))
       db.collection('users').doc(result.user.uid).get()
       .then((doc) => {
         if (!doc.exists) {
@@ -30,7 +31,7 @@ const Login = ({size}) => {
               .filter(doc => doc.data().name === result.user.displayName ?
               dispatch({
                 type: actionTypes.SET_THEME,
-                theme: doc.data().theme
+                payload: doc.data().theme
               })
                 : null
               )

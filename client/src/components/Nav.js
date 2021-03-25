@@ -2,7 +2,7 @@ import {useContext} from 'react'
 import db from "../firebase";
 import { GlobalContext } from "../GlobalProvider";
 import { actionTypes } from "../reducer";
-import {Link, useParams} from 'react-router-dom'
+import {Link, useParams, useHistory} from 'react-router-dom'
 import HomeIcon from '@material-ui/icons/Home';
 import ViewListIcon from '@material-ui/icons/ViewList';
 import AssignmentIcon from '@material-ui/icons/Assignment';
@@ -10,9 +10,11 @@ import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import FolderIcon from '@material-ui/icons/Folder';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import InvertColorsIcon from '@material-ui/icons/InvertColors';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 const Nav = ({appName}) => {
   const [{userInfo, theme}, dispatch] = useContext(GlobalContext);
+  const history = useHistory();
   console.log(userInfo)
   const changeTheme = () => {
     if(theme === 'dark') {
@@ -27,9 +29,15 @@ const Nav = ({appName}) => {
       theme: 'dark'
     })
     }
-
-    
   };
+  const logout = () => {
+    localStorage.removeItem('userInfo')
+    dispatch({
+      type: actionTypes.SET_USER_INFO,
+      payload: null
+    });
+    history.push('/')
+  }
 
   return (
     <nav className={`nav ${appName}`}>
@@ -66,6 +74,11 @@ const Nav = ({appName}) => {
         <li className="nav-item">
           <button className="nav-link color" onClick={changeTheme}>
             <InvertColorsIcon />
+          </button>
+        </li>
+        <li className="nav-item">
+          <button className="nav-link color" onClick={logout}>
+            <ExitToAppIcon />
           </button>
         </li>
       </ul>
