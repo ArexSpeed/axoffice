@@ -5,9 +5,13 @@ import LaunchIcon from '@material-ui/icons/Launch';
 
 
 const FolderItem = ({docId,itemId,name,url,theme, setItems}) => {
-
-  const host = new URL(url).host;
-  const urlIco = `https://${host}/favicon.ico`
+  let urlIco = ''
+  if(url){
+    const host = new URL(url).host;
+    const urlshort = url.slice(0,5);
+    urlshort === 'https' ? urlIco = `https://${host}/favicon.ico` : urlIco = ``
+  }
+  
   const deleteItem = () => {
     db.collection("folders").doc(docId).collection('items').doc(itemId).delete()
     setItems([])

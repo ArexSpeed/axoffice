@@ -9,16 +9,25 @@ const AddFolder = ({appName, theme,id, setAddItemBox, setItems}) => {
   const [url, setUrl] = useState('')
 
   const addItem = () => {
-    db.collection("folders").doc(id).collection('items').add({
-      name,
-      url,
-      timestamp: new Date()
-  })
-
-    setName('')
-    setUrl('')
-    setItems([])
-    setAddItemBox(false) 
+    if(!url){
+      alert('Add url !')
+    }
+   
+    if(url.slice(0,8) !== 'https://'){
+      setUrl(`https://${url}`)
+    }
+    else{
+      db.collection("folders").doc(id).collection('items').add({
+        name,
+        url,
+        timestamp: new Date()
+    })
+  
+      setName('')
+      setUrl('')
+      setItems([])
+      setAddItemBox(false) 
+    }
   }
 
   return (

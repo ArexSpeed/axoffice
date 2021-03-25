@@ -18,13 +18,13 @@ const Nav = ({appName}) => {
   console.log(userInfo)
   const changeTheme = () => {
     if(theme === 'dark') {
-      dispatch({ type: actionTypes.SET_THEME, theme: 'light'});
+      dispatch({ type: actionTypes.SET_THEME, payload: 'light'});
       db.collection('users').doc(userInfo.uid).update({
       theme: 'light'
     })
     }
     if(theme === 'light') {
-      dispatch({ type: actionTypes.SET_THEME, theme: 'dark'});
+      dispatch({ type: actionTypes.SET_THEME, payload: 'dark'});
       db.collection('users').doc(userInfo.uid).update({
       theme: 'dark'
     })
