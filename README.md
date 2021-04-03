@@ -2,6 +2,7 @@
 
 App for this project is available -> https://ax-office.web.app/
 
+![axo1](https://user-images.githubusercontent.com/62649296/113474818-898f8900-9472-11eb-8cce-3ea572cd8326.png)
 
 ## Description
 
